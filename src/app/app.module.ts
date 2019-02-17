@@ -11,6 +11,8 @@ import { AddConferenceComponent } from './add-conference/add-conference.componen
 import  {FormsModule} from '@angular/forms';
 import { HomeConferenceComponent } from './home-conference/home-conference.component';
 import { ShowDetailConferenceComponent } from './show-detail-conference/show-detail-conference.component';
+import { ArticleComponent } from './components/article/article.component';
+import { ArticleService } from './services/article.service';
 
 
 const  route:Routes=[
@@ -28,6 +30,7 @@ const  route:Routes=[
     AddConferenceComponent,
     HomeConferenceComponent,
     ShowDetailConferenceComponent,
+    ArticleComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,7 @@ const  route:Routes=[
     FormsModule
 
   ],
-  providers: [ConferenceService],
+  providers: [ConferenceService, ArticleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
