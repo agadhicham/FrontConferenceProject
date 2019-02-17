@@ -11,15 +11,10 @@ import { AddConferenceComponent } from './add-conference/add-conference.componen
 import  {FormsModule} from '@angular/forms';
 import { HomeConferenceComponent } from './home-conference/home-conference.component';
 import { ShowDetailConferenceComponent } from './show-detail-conference/show-detail-conference.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
-const  route:Routes=[
-  {path:'conferenceList',component:ConferenceViewComponent},
-  {path:'addconference',component:AddConferenceComponent},
-  {path:'home',component:HomeConferenceComponent},
-  {path:'show/:id', component:ShowDetailConferenceComponent},
-  {path:'',redirectTo:'/conferenceList',pathMatch:'full'}
-]
 
 @NgModule({
   declarations: [
@@ -28,13 +23,13 @@ const  route:Routes=[
     AddConferenceComponent,
     HomeConferenceComponent,
     ShowDetailConferenceComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(route),
     FormsModule
 
   ],
