@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticleModule } from 'src/app/models/article/article.module';
+import { ArticleModule } from 'src/app/modules/article/article.module';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { ArticleService } from 'src/app/services/article.service';
 import { Router } from '@angular/router';

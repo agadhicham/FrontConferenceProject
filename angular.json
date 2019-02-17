@@ -23,18 +23,17 @@
               "src/assets"
             ],
             "styles": [
-
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/uikit/dist/css/uikit.css",
               "./node_modules/uikit/dist/css/uikit-core.css",
               "./node_modules/uikit/dist/css/uikit-core-rtl.css",
               "./node_modules/uikit/dist/css/uikit-rtl.css"
-
             ],
             "scripts": [
               "./node_modules/uikit/dist/js/uikit-icons.min.js",
               "./node_modules/uikit/dist/js/uikit-icons.min.js",
               "./node_modules/uikit/dist/js/uikit.min.js"
-
             ],
             "es5BrowserSupport": true
           },

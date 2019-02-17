@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="container">
+    <div class="alert alert-danger" *ngIf="test==true">
+      <strong>Bad credentials!</strong> invalid username or password
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Authentifiaction</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label class="control-label">Username: </label>
+            <input [(ngModel)]="user.username" class="form-control" type="username" name="" required />
+          </div>
+          <div class="form-group">
+            <label class="control-label">Password: </label>
+            <input [(ngModel)]="user.password" class="form-control" type="password" name="password" required />
+          </div>
+          <div class="form-group">
+            <label class="control-label">Confirme Password: </label>
+            <input [(ngModel)]="user.repassword" class="form-control" type="password" name="passwordConfirm" required />
+          </div>
+          <button class="btn btn-danger" (click)="register()">Register User</button>
+           {{user.username}}
+          {{user.password}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
