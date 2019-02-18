@@ -3,6 +3,8 @@ import { ArticleModule } from 'src/app/modules/article/article.module';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { ArticleService } from 'src/app/services/article.service';
 import { Router } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-article',
@@ -17,7 +19,7 @@ export class ArticleComponent implements OnInit {
   allArticles: Array<ArticleModule>;
   uploader= new FileUploader({url:'',itemAlias:''});
   uri: string = 'http://localhost:8080/';
-  constructor(private articleService: ArticleService,private router: Router) { }
+  constructor(private articleService: ArticleService,private router: Router,private accountservice:AccountService ) { }
 
   ngOnInit() {
   this.article.resume = 'hahahaha'
@@ -46,6 +48,7 @@ export class ArticleComponent implements OnInit {
     this.articles = this.allArticles.filter(item => item.title.includes(title));
   } 
   setArtile(article) {
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
     this.article = article;
     console.log(this.article);
     this.uploader =new FileUploader({ url: this.uri + article.id+'/uploadFile', itemAlias: 'file' });

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AccountService } from './account.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,30 +11,36 @@ export class ArticleService {
   uri: string = 'http://localhost:8080/';
   files: Array<any>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private accountservice:AccountService) { }
 
   getAll(): Observable<any> {
-    return this.http.get(`${this.uri}articles`);
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.get(`${this.uri}articles`,{headers});
   }
 
   getOne(id): any {
-    return this.http.get(`${this.uri}${id}`);
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.get(`${this.uri}${id}`,{headers});
   }
 
   create(article) {
-    return this.http.post(`${this.uri}`, article);
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.post(`${this.uri}`, article,{headers});
   }
 
   edit(article) {
-    return this.http.put(`${this.uri}`, article);
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.put(`${this.uri}`, article,{headers});
   }
 
   remove(id) {
-    return this.http.delete(`${this.uri}${id}`);
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.delete(`${this.uri}${id}`,{headers});
   }
 
   public getFiles(id): Observable<any> {
-    return this.http.get(`${this.uri}${id}` + '/files');
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.get(`${this.uri}${id}` + '/files',{headers});
   }
 
   public saveUploadedFile(file) {
