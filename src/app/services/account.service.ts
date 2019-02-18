@@ -24,9 +24,12 @@ export class AccountService {
     //console.log('Token : '+this.getToken());
     //console.log("Roles : " + JSON.stringify(this.roles));
   }
-  register(user){
-    console.log('service log '+user)
-    return this.http.post(this.url+"/register",user,{observe:"response"});
+  register(user) {
+    console.log('service log ' + user)
+    return this.http.post(this.url + "/register", user, { observe: "response" });
+  }
+  getToken() {
+    return localStorage.getItem('token');
   }
   isAuthenticated() {
     return localStorage.getItem('token') != null;

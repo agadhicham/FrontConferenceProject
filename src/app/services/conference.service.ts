@@ -1,30 +1,33 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
-import {Conference} from '../model.confrerence/conference';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Conference } from '../model.confrerence/conference';
+import { AccountService } from './account.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConferenceService {
-
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private accountservice: AccountService) {
+  }
+  getAll(): Observable<any> {
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.get("http://localhost:8080/conferences/All_Conference", { headers });
+  }
+  getOne(id: number): Observable<any> {
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.get("http://localhost:8080/conferences/conference/" + id, { headers });
   }
 
-  getAll(): Observable<any>{
-    return this.http.get("http://localhost:8080/conferences/All_Conference");
-  }
-  getOne (id: number): Observable<any>{
-    return this.http.get("http://localhost:8080/conferences/conference/"+id);
+  saveConference(conference: Conference): Observable<any> {
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.post("http://localhost:8080/conferences/conference/add", conference, { headers })
   }
 
-  saveConference(conference:Conference): Observable<any>{
-    return this.http.post("http://localhost:8080/conferences/conference/add",conference)
-  }
-
-  getConferences(motCle:string, page:number, size:number){
-    return this.http.get("http://localhost:8080/conferences/chercherConference?mc="+motCle+"&size="+size+"&page="+page);
+  getConferences(motCle: string, page: number, size: number) {
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.get("http://localhost:8080/conferences/chercherConference?mc=" + motCle + "&size=" + size + "&page=" + page, { headers });
   }
 
 }

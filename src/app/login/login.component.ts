@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
   onSignup(form: NgForm) {
     //console.log(form.value)
     this.accountService.onSignin(form).subscribe(
-
       (response) => {
         //console.log("respo: " + response);
         let jwtToken = response.headers.get('authorization');
