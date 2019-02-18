@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Conference} from '../modules/conference/conference';
+import { Conference } from 'src/app/modules/conference/conference';
 
 @Component({
   selector: 'app-add-conference',

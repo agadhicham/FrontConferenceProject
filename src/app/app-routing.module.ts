@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ConferenceViewComponent } from './conference-view/conference-view.component';
-import { AddConferenceComponent } from './add-conference/add-conference.component';
-import { HomeConferenceComponent } from './home-conference/home-conference.component';
-import { ShowDetailConferenceComponent } from './show-detail-conference/show-detail-conference.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ConferenceViewComponent } from './components/conference-view/conference-view.component';
+import { AddConferenceComponent } from './components/add-conference/add-conference.component';
+import { HomeConferenceComponent } from './components/home-conference/home-conference.component';
+import { ShowDetailConferenceComponent } from './components/show-detail-conference/show-detail-conference.component';
 
 const routes: Routes = [
   {

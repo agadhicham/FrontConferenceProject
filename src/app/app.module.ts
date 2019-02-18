@@ -3,18 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ConferenceViewComponent } from './conference-view/conference-view.component';
 import {Router, RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {ConferenceService} from './services/conference.service';
-import { AddConferenceComponent } from './add-conference/add-conference.component';
 import  {FormsModule} from '@angular/forms';
-import { HomeConferenceComponent } from './home-conference/home-conference.component';
-import { ShowDetailConferenceComponent } from './show-detail-conference/show-detail-conference.component';
+
 import { ArticleComponent } from './components/article/article.component';
 import { ArticleService } from './services/article.service';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { ConferenceViewComponent } from './components/conference-view/conference-view.component';
+import { HomeConferenceComponent } from './components/home-conference/home-conference.component';
+import { ShowDetailConferenceComponent } from './components/show-detail-conference/show-detail-conference.component';
+import { AddConferenceComponent } from './components/add-conference/add-conference.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+
 
 
 
