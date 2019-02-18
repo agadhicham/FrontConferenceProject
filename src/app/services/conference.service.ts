@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Conference } from '../model.confrerence/conference';
+import { Conference } from '../modules/conference/conference';
 import { AccountService } from './account.service';
 
 

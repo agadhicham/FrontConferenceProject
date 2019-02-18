@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Conference} from './model.confrerence/conference';
+import {Conference} from './modules/conference/conference';
 
 @Component({
   selector: 'app-root',

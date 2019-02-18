@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ConferenceService} from '../services/conference.service';
-import {Conference} from '../model.confrerence/conference';
+import {Conference} from '../modules/conference/conference';
 
 @Component({
   selector: 'app-conference-view',
