@@ -26,6 +26,7 @@ const routes: Routes = [
   {
     path: 'show/:id', component: ShowDetailConferenceComponent
   },
+
   {
     path: '', redirectTo: 'login', pathMatch: "full"
   }
