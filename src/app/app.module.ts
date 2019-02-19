@@ -8,6 +8,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {ConferenceService} from './services/conference.service';
 import  {FormsModule} from '@angular/forms';
 
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+
+
 import { ArticleComponent } from './components/article/article.component';
 import { ArticleService } from './services/article.service';
 import { ConferenceViewComponent } from './components/conference-view/conference-view.component';
@@ -35,7 +38,8 @@ import { RegisterComponent } from './components/register/register.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
 
   ],
   providers: [ConferenceService, ArticleService],

@@ -1,7 +1,7 @@
+import { ConferenceService } from './../../services/conference.service';
+import { Conference } from './../../modules/conference/conference';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { ConferenceService } from 'src/app/services/conference.service';
-import { Conference } from 'src/app/modules/conference/conference';
 
 @Component({
   selector: 'app-home-conference',

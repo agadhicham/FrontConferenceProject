@@ -1,8 +1,7 @@
+import { Conference } from './../../modules/conference/conference';
+import { ConferenceService } from './../../services/conference.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Conference } from 'src/app/modules/conference/conference';
-import { ConferenceService } from 'src/app/services/conference.service';
-
 
 @Component({
   selector: 'app-show-detail-conference',
