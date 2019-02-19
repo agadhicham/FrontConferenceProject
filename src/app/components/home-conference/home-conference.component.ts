@@ -18,6 +18,7 @@ export class HomeConferenceComponent implements OnInit {
   motCle:string="";
   pages:Array<number>
   private pageConferences;
+  pageActuel:number=1;
 
 
   constructor(private  conferenceService:ConferenceService, private route:Router) { }
