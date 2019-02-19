@@ -27,6 +27,7 @@ const routes: Routes = [
   {
     path: 'show/:id', component: ShowDetailConferenceComponent
   },
+
   {
     path: 'articles', component:ArticleComponent
   },
