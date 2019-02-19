@@ -1,7 +1,7 @@
+import { ConferenceService } from './../../services/conference.service';
+import { Conference } from './../../modules/conference/conference';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { ConferenceService } from 'src/app/services/conference.service';
-import { Conference } from 'src/app/modules/conference/conference';
 
 @Component({
   selector: 'app-home-conference',
@@ -18,6 +18,7 @@ export class HomeConferenceComponent implements OnInit {
   motCle:string="";
   pages:Array<number>
   private pageConferences;
+  pageActuel:number=1;
 
 
   constructor(private  conferenceService:ConferenceService, private route:Router) { }
