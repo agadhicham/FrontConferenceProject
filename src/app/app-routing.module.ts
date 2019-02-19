@@ -6,6 +6,7 @@ import { ConferenceViewComponent } from './components/conference-view/conference
 import { AddConferenceComponent } from './components/add-conference/add-conference.component';
 import { HomeConferenceComponent } from './components/home-conference/home-conference.component';
 import { ShowDetailConferenceComponent } from './components/show-detail-conference/show-detail-conference.component';
+import { ArticleComponent } from './components/article/article.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,9 @@ const routes: Routes = [
   },
   {
     path: 'show/:id', component: ShowDetailConferenceComponent
+  },
+  {
+    path: 'articles', component:ArticleComponent
   },
   {
     path: '', redirectTo: 'login', pathMatch: "full"
