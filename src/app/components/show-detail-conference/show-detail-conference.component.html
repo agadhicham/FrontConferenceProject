@@ -1,8 +1,21 @@
 
 <div class="uk-child-width-1-2@s" uk-grid>
-  <div>
-      <div class="uk-card uk-card-default uk-card-large uk-card-body">
-          <h3 class="uk-card-title">Large</h3>
-          <p>{{ conference.nom }}</p>        </div>
+  <div class="uk-animation-toggle" tabindex="0">
+      <div class="uk-card uk-card-primary uk-card-large uk-card-body uk-animation-shake">
+          <h3 class="uk-card-title">Details for conference: {{ conference.nom }} </h3>
+          <h2 >{{conference.titrePresentation}}</h2>
+          <p >{{conference.dateConference}}</p>
+          <p >{{conference.detail}}</p>
+          <p >{{conference.nombreEquipe}}</p>
+          <p >{{conference.adresseConference}}</p>
+          <div class="example-button-row">
+            <button mat-fab>Basic</button>
+            <button mat-fab color="primary">Primary</button>
+            <button mat-fab color="accent">Accent</button>
+            <button mat-fab color="warn">Warn</button>
+
+          </div>
+        </div>
+
   </div>
 </div>
