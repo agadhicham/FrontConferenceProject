@@ -1,3 +1,5 @@
+import { AdministrationOfConferencesComponent } from './components/conference-admin/administration-of-conferences/administration-of-conferences.component';
+import { AddConferenceComponent } from './components/conference-admin/add-conference/add-conference.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,9 +20,9 @@ import { ArticleService } from './services/article.service';
 import { ConferenceViewComponent } from './components/conference-view/conference-view.component';
 import { HomeConferenceComponent } from './components/home-conference/home-conference.component';
 import { ShowDetailConferenceComponent } from './components/show-detail-conference/show-detail-conference.component';
-import { AddConferenceComponent } from './components/add-conference/add-conference.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { EditConferenceComponent } from './components/conference-admin/edit-conference/edit-conference.component';
 
 
 
@@ -35,6 +37,8 @@ import { RegisterComponent } from './components/register/register.component';
     ArticleComponent,
     LoginComponent,
     RegisterComponent,
+    AdministrationOfConferencesComponent,
+    EditConferenceComponent,
   ],
   imports: [
     BrowserModule,

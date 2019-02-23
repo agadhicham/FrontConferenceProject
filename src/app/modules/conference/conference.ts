@@ -1,4 +1,5 @@
 export class Conference {
+  id:string = "";
   nom : string = "";
   titrePresentation:string="";
   nombreEquipe:string="";
