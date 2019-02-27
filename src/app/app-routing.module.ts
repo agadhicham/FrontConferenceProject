@@ -6,6 +6,9 @@ import { ConferenceViewComponent } from './components/conference-view/conference
 import { AddConferenceComponent } from './components/add-conference/add-conference.component';
 import { HomeConferenceComponent } from './components/home-conference/home-conference.component';
 import { ShowDetailConferenceComponent } from './components/show-detail-conference/show-detail-conference.component';
+import { ArticleComponent } from './components/article/article.component';
+import { ListArtclesComponent } from './components/list-artcles/list-artcles.component';
+import { ShowArticleComponent } from './components/show-article/show-article.component';
 
 const routes: Routes = [
   {
@@ -19,6 +22,22 @@ const routes: Routes = [
   },
   {
     path: 'addconference', component: AddConferenceComponent
+  },
+  {
+    path: 'articles', children: [
+      {
+        path: '', component: ListArtclesComponent
+      },
+      {
+        path: 'create', component: ArticleComponent
+      },
+      {
+        path: 'show/:id', component: ShowArticleComponent
+      },
+      {
+        path: 'edit/:id', component: ArticleComponent
+      }
+    ]
   },
   {
     path: 'home', component: HomeConferenceComponent

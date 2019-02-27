@@ -6,10 +6,9 @@ import { AccountService } from './account.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ArticleService {
+export class DomaineService {
 
-  uri: string = 'http://localhost:8080/articles';
-  files: Array<any>;
+  uri: string = 'http://localhost:8080/domaines';
 
   constructor(private http: HttpClient,private accountservice:AccountService) { }
 
@@ -23,27 +22,18 @@ export class ArticleService {
     return this.http.get(`${this.uri}/${id}`,{headers});
   }
 
-  create(article) {
+  create(domaine) {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
-    return this.http.post(`${this.uri}`, article,{headers});
+    return this.http.post(`${this.uri}`, domaine,{headers});
   }
 
-  edit(article) {
+  edit(domaine) {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
-    return this.http.put(`${this.uri}`, article,{headers});
+    return this.http.put(`${this.uri}`, domaine,{headers});
   }
 
   remove(id) {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
     return this.http.delete(`${this.uri}/${id}`,{headers});
-  }
-
-  public getFiles(id): Observable<any> {
-    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
-    return this.http.get(`${this.uri}/${id}` + '/files',{headers});
-  }
-
-  public saveUploadedFile(file) {
-    this.files.push(file);
   }
 }

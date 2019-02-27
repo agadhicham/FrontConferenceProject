@@ -1,0 +1,19 @@
+<section >
+  <div class="title-aricle-list">
+    <h2 class="athelas ph3 ph0-l">Détails de l'Article</h2>
+    <a class="uk-navbar-right back-link" (click)= "navigateTo('articles')">Liste des article</a>
+  </div>
+    <div class="article-list">
+        <div class="article-list-article">
+            <span class="article-category">
+              {{article.domaine== null?'':article.domaine.name}}
+            </span>
+            <h2 class="article-list-article-title">
+              {{article.title}}
+            </h2>
+            <p class="article-meta">
+              {{article.resume}}
+            </p>
+        </div>
+      </div>
+  </section>
