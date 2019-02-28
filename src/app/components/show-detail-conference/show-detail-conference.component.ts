@@ -1,6 +1,6 @@
 import { Conference } from './../../modules/conference/conference';
 import { ConferenceService } from './../../services/conference.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,7 +13,7 @@ export class ShowDetailConferenceComponent implements OnInit {
   idConference:number;
   conference:Conference= new Conference
    private conferences: Array<any>
-  constructor(private conferenceService:ConferenceService, public activateRoute:ActivatedRoute) {
+  constructor(private conferenceService:ConferenceService, public activateRoute:ActivatedRoute, public router:Router) {
     console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
     console.log(activateRoute.snapshot.params['id']);
     console.log('ù*******')
@@ -31,4 +31,16 @@ export class ShowDetailConferenceComponent implements OnInit {
     )
   }
 
+  onEdit(id:number){
+    this.router.navigate(['edit',id])
+  }
+  upConf(){
+    this.conferenceService.upConference(this.conference)
+    .subscribe(data=>{
+      console.log('update of this conference it done')
+      alert('alert updating with success')
+    },error=>{
+      console.log(error)
+    })
+  }
 }

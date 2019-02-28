@@ -1,4 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Serif:300,300i|Raleway:600');
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* body {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 300;
+} */
+
 p{
   text-align: justify;
 }
@@ -53,11 +63,6 @@ p{
   .article-list-subscribe {
     grid-row: 2;
   }
-}
-
-body {
-  font-family: "IBM Plex Serif", serif;
-  font-weight: 300;
 }
 
 a:focus,
