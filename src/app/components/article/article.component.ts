@@ -28,6 +28,7 @@ export class ArticleComponent implements OnInit {
       if(params.id){
       this.articleService.getOne(params.id).subscribe(data => {
         this.article = data;
+        this.setArtile();
       }, error => console.log(error));
     }
     });
@@ -36,7 +37,9 @@ export class ArticleComponent implements OnInit {
     this.getAllDomaines();
   }
   create() {
-   console.log(this.article)
+    if(this.article.id){
+      this.uploader.uploadAll();
+    }
     this.articleService.create(this.article).subscribe(data => {
         console.log(data)
     }, error => console.log(error));
@@ -62,9 +65,9 @@ export class ArticleComponent implements OnInit {
       }, error => console.log(error));
   }
   
-  setArtile(article) {
-    console.log(article);
-    this.uploader = new FileUploader({ url: this.uri + article.id + '/uploadFile', itemAlias: 'file'});
+  setArtile() {
+    console.log(this.article);
+    this.uploader = new FileUploader({ url: this.uri + this.article.id + '/uploadFile', itemAlias: 'file'});
     var uploaderOptions: FileUploaderOptions = {};
     uploaderOptions.headers = [{ name: 'authorization', value : this.accountservice.getToken() } ]
     this.uploader.setOptions(uploaderOptions);

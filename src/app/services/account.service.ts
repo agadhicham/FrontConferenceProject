@@ -4,6 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { getToken } from '@angular/router/src/utils/preactivation';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,10 @@ export class AccountService {
     this.roles = jwtHelper.decodeToken(token).roles;
     //console.log('Token : '+this.getToken());
     //console.log("Roles : " + JSON.stringify(this.roles));
+  }
+  getCurrentUser() {
+    let jwtHelper = new JwtHelperService();
+    return jwtHelper.decodeToken(this.getToken()).sub;
   }
   register(user) {
     console.log('service log ' + user)

@@ -9,11 +9,8 @@ import { AddConferenceComponent } from './components/conference-admin/add-confer
 import { HomeConferenceComponent } from './components/home-conference/home-conference.component';
 import { ShowDetailConferenceComponent } from './components/show-detail-conference/show-detail-conference.component';
 import { ArticleComponent } from './components/article/article.component';
-<<<<<<< HEAD
 import { ListArtclesComponent } from './components/list-artcles/list-artcles.component';
 import { ShowArticleComponent } from './components/show-article/show-article.component';
-=======
->>>>>>> 022dd52c78b2ecd2fb8d434f59286c41b4a8d4e1
 
 const routes: Routes = [
   {
