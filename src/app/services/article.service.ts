@@ -15,12 +15,15 @@ export class ArticleService {
 
   getAll(): Observable<any> {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
-    return this.http.get(`${this.uri}`,{headers});
+    return this.http.get(`${this.uri}`, { headers });
   }
-
+  getAllAccepted(): Observable<any> {
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.get(this.uri + "/accepted", { headers });
+  }
   getOne(id): any {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
-    return this.http.get(`${this.uri}/${id}`,{headers});
+    return this.http.get(`${this.uri}/${id}`, { headers });
   }
 
   create(article) {
@@ -35,12 +38,12 @@ export class ArticleService {
 
   remove(id) {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
-    return this.http.delete(`${this.uri}/${id}`,{headers});
+    return this.http.delete(`${this.uri}/${id}`, { headers });
   }
 
   public getFiles(id): Observable<any> {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
-    return this.http.get(`${this.uri}/${id}` + '/files',{headers});
+    return this.http.get(`${this.uri}/${id}` + '/files', { headers });
   }
 
   public saveUploadedFile(file) {

@@ -25,6 +25,13 @@ import { ListArtclesComponent } from './components/list-artcles/list-artcles.com
 import { ShowArticleComponent } from './components/show-article/show-article.component';
 import { EditAricleComponent } from './components/edit-aricle/edit-aricle.component';
 import { EditConferenceComponent } from './components/conference-admin/edit-conference/edit-conference.component';
+import { PresentationComponent } from './components/presentationComponent/presentation/presentation.component';
+import { ShowPresentationComponent } from './components/presentationComponent/show-presentation/show-presentation.component';
+import { EditPresentationComponent } from './components/presentationComponent/edit-presentation/edit-presentation.component';
+import { ListPresentationComponent } from './components/presentationComponent/list-presentation/list-presentation.component';
+import { ChairComponent } from './components/chairComponent/chair/chair.component';
+import { ListChairComponent } from './components/chairComponent/list-chair/list-chair.component';
+import { ShowChairComponent } from './components/chairComponent/show-chair/show-chair.component';
 
 
 
@@ -46,6 +53,13 @@ import { EditConferenceComponent } from './components/conference-admin/edit-conf
     EditAricleComponent,
     AdministrationOfConferencesComponent,
     EditConferenceComponent,
+    PresentationComponent,
+    ShowPresentationComponent,
+    EditPresentationComponent,
+    ListPresentationComponent,
+    ChairComponent,
+    ListChairComponent,
+    ShowChairComponent,
   ],
   imports: [
     BrowserModule,
