@@ -11,6 +11,10 @@ import { ShowDetailConferenceComponent } from './components/show-detail-conferen
 import { ArticleComponent } from './components/article/article.component';
 import { ListArtclesComponent } from './components/list-artcles/list-artcles.component';
 import { ShowArticleComponent } from './components/show-article/show-article.component';
+import { ListPresentationComponent } from './components/presentationComponent/list-presentation/list-presentation.component';
+import { PresentationComponent } from './components/presentationComponent/presentation/presentation.component';
+import { ShowPresentationComponent } from './components/presentationComponent/show-presentation/show-presentation.component';
+
 
 const routes: Routes = [
   {
@@ -38,6 +42,22 @@ const routes: Routes = [
       },
       {
         path: 'edit/:id', component: ArticleComponent
+      }
+    ]
+  },
+  {
+    path: 'presentations', children: [
+      {
+        path: '', component: ListPresentationComponent
+      },
+      {
+        path: 'create', component: PresentationComponent
+      },
+      {
+        path: 'show/:id', component: ShowPresentationComponent
+      },
+      {
+        path: 'edit/:id', component: PresentationComponent
       }
     ]
   },
