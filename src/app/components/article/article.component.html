@@ -1,57 +1,56 @@
-<div id="page-wrapper">
-  <div class="header">
-    <h1 class="page-header">
-      Mes notes
-    </h1>
-    <ol class="breadcrumb">
-      <li><a href="#">Acceuil</a></li>
-      <li><a href="#">Nouvelle note</a></li>
+<div class="title-aricle-list">
+  <h2 *ngIf="!article.id" class="athelas ph3 ph0-l">Poster un nouveau Article</h2>
+  <h2 *ngIf="article.id" class="athelas ph3 ph0-l">Modifier l'article</h2>
+</div>
+<div class="col col-md-12">
+  <form class="uk-form-stacked">
 
-    </ol>
-
-  </div>
-  <div id="page-inner">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <div class="card-title">
-              <div class="title">Sauvegarder vos notes</div>
-            </div>
-          </div>
-          <div class="panel-body">
-            <div>
-              <div class="form-group">
-                <div class="sub-title">Titre : </div>
-                <div>
-                  <input #title name="title" type="text" class="form-control" />
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="sub-title">Resume : </div>
-                <div>
-                  <textarea #resume name="resume"  class="form-control" rows="7"></textarea>
-                </div>
-              </div>
-              <div class="form-group">
-                <!-- <label for="exampleInputFile">Voulez-vous importer un fichier?</label>
-                <input type="file" name="photo" ng2FileSelect [uploader]="uploader" id="exampleInputFile" />
-              </div>
-              <button type="button" class="btn btn-default" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-                Importer
-              </button> -->
-                <div>
-                  <button class="btn btn-default form-control" (click)="create(title.value, resume.value)"> valider</button>
-                </div>
-                <div *ngFor="let article of articles">
-                  <p>{{article.title}}</p>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="uk-container">
+      <label class="uk-form-label">Titre</label>
+      <div class="uk-margin">
+        <input class="uk-input" type="text" placeholder="Some text . . ." name="nom" [(ngModel)]="article.title"
+          minlength="4" appForbiddenName="bob" #title="ngModel" ngModel required>
+        <div *ngIf="title.invalid && (title.dirty || title.touched)" class="uk-alert-danger" uk-alert>
+          <a class="uk-alert-close" uk-close></a>
+          Titre non valid
         </div>
       </div>
     </div>
-    <!-- /. PAGE INNER  -->
-  </div>
-  <!-- /. PAGE WRAPPER  -->
+    <div class="uk-container">
+      <label class="uk-form-label">resume</label>
+      <div class="uk-margin">
+        <textarea class="uk-textarea" rows=8 type="text" placeholder="resume . . ." name="resume" [(ngModel)]="article.resume"
+          minlength="4" appForbiddenName="bob" #resume="ngModel" ngModel required></textarea>
+        <div *ngIf="resume.invalid && ( resume.touched || resume.dirty)" class="uk-alert-danger" uk-alert>
+          <a class="uk-alert-close" uk-close></a>
+          Resume non valid
+        </div>
+      </div>
+    </div>
+    <div class="uk-container">
+      <label class="uk-form-label">Domaine</label>
+      <div class="uk-margin">
+        <select class="uk-select" name="domaine" [(ngModel)]="article.domaine">
+          <option [ngValue]="domaine" *ngFor="let domaine of domaines" [selected]="article.id && (domaine.id===article.domaine.id)">{{domaine.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div *ngIf="article.id" class="uk-container">
+      <label class="uk-form-label">Importer l'article</label>
+      <div class="uk-margin">
+        <button class="uk-button uk-button-secondary uk-width-1-1 uk-margin-small-bottom"
+          (click)="create()">Save</button>
+        <input type="file" class="uk-i" name="articlePdf" ng2FileSelect [uploader]="uploader" id="exampleInputFile" />
+      </div>
+    </div>
+
+
+    <div class="uk-container">
+      <div class="uk-margin form-inline">
+        <a class="uk-button uk-button" (click)="navigateTo('articles')">Annuler</a>
+        <a class="uk-button uk-button" (click)="create()">Save</a>
+      </div>
+    </div>
+  </form>
+</div>

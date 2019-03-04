@@ -10,16 +10,17 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
   styleUrls: ['./add-conference.component.css']
 })
 export class AddConferenceComponent implements OnInit {
-   conference:Conference=new Conference();
-  constructor(private conference_service: ConferenceService, public router:Router) { }
+  conference: Conference = new Conference();
+  constructor(private conference_service: ConferenceService, public router: Router) { }
 
 
   ngOnInit() {
   }
 
-  saveConference(dataForm){
+  saveConference(dataForm) {
     console.log(dataForm)
     this.conference_service.saveConference(dataForm)
+<<<<<<< HEAD
     .subscribe(data=>{
       console.log(data)
       console.log("conference added succefuly")
@@ -28,6 +29,16 @@ export class AddConferenceComponent implements OnInit {
     },error=>{
       console.log(error,Message)
     })
+=======
+      .subscribe(data => {
+        console.log(data)
+        console.log("conference added succefuly")
+        this.router.navigate(['home'])
+
+      }, error => {
+        console.log(JSON.parse(error._body), Message)
+      })
+>>>>>>> 9294691f97c7ba423bf176136a18e957c206d7c9
 
 
   }

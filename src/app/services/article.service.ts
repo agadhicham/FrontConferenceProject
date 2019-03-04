@@ -8,19 +8,22 @@ import { AccountService } from './account.service';
 })
 export class ArticleService {
 
-  uri: string = 'http://localhost:8080/';
+  uri: string = 'http://localhost:8080/articles';
   files: Array<any>;
 
   constructor(private http: HttpClient, private accountservice: AccountService) { }
 
   getAll(): Observable<any> {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
-    return this.http.get(`${this.uri}articles`, { headers });
+    return this.http.get(`${this.uri}`, { headers });
   }
-
+  getAllAccepted(): Observable<any> {
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.get(this.uri + "/accepted", { headers });
+  }
   getOne(id): any {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
-    return this.http.get(`${this.uri}${id}`, { headers });
+    return this.http.get(`${this.uri}/${id}`, { headers });
   }
 
   create(article) {
@@ -35,12 +38,12 @@ export class ArticleService {
 
   remove(id) {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
-    return this.http.delete(`${this.uri}${id}`, { headers });
+    return this.http.delete(`${this.uri}/${id}`, { headers });
   }
 
   public getFiles(id): Observable<any> {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
-    return this.http.get(`${this.uri}${id}` + '/files', { headers });
+    return this.http.get(`${this.uri}/${id}` + '/files', { headers });
   }
 
   public saveUploadedFile(file) {

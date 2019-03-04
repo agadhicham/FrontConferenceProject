@@ -9,6 +9,12 @@ import { AddConferenceComponent } from './components/conference-admin/add-confer
 import { HomeConferenceComponent } from './components/home-conference/home-conference.component';
 import { ShowDetailConferenceComponent } from './components/show-detail-conference/show-detail-conference.component';
 import { ArticleComponent } from './components/article/article.component';
+import { ListArtclesComponent } from './components/list-artcles/list-artcles.component';
+import { ShowArticleComponent } from './components/show-article/show-article.component';
+import { ListPresentationComponent } from './components/presentationComponent/list-presentation/list-presentation.component';
+import { PresentationComponent } from './components/presentationComponent/presentation/presentation.component';
+import { ShowPresentationComponent } from './components/presentationComponent/show-presentation/show-presentation.component';
+
 
 const routes: Routes = [
   {
@@ -22,6 +28,38 @@ const routes: Routes = [
   },
   {
     path: 'addconference', component: AddConferenceComponent
+  },
+  {
+    path: 'articles', children: [
+      {
+        path: '', component: ListArtclesComponent
+      },
+      {
+        path: 'create', component: ArticleComponent
+      },
+      {
+        path: 'show/:id', component: ShowArticleComponent
+      },
+      {
+        path: 'edit/:id', component: ArticleComponent
+      }
+    ]
+  },
+  {
+    path: 'presentations', children: [
+      {
+        path: '', component: ListPresentationComponent
+      },
+      {
+        path: 'create', component: PresentationComponent
+      },
+      {
+        path: 'show/:id', component: ShowPresentationComponent
+      },
+      {
+        path: 'edit/:id', component: PresentationComponent
+      }
+    ]
   },
   {
     path: 'home', component: HomeConferenceComponent
