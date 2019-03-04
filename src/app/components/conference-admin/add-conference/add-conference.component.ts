@@ -23,10 +23,10 @@ export class AddConferenceComponent implements OnInit {
     .subscribe(data=>{
       console.log(data)
       console.log("conference added succefuly")
-      this.router.navigate(['home'])
+      this.router.navigate(['admin'])
 
     },error=>{
-      console.log(JSON.parse(error._body),Message)
+      console.log(error,Message)
     })
 
 
