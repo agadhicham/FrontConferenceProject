@@ -74,9 +74,9 @@ export class PresentationComponent implements OnInit {
     return item.domaine.name.toLowerCase().includes(domaineName.toLowerCase());
   }
   removeArticle(article) {
-    this.allArticlesAccepted.forEach((element , indx)=> {
-      if (element== article){
-        this.allArticlesAccepted.splice(indx,1);
+    this.allArticlesAccepted.forEach((element, indx) => {
+      if (element == article) {
+        this.allArticlesAccepted.splice(indx, 1);
       }
     });
   }
@@ -97,9 +97,9 @@ export class PresentationComponent implements OnInit {
       this.presentation.chair = this.chair
       this.chairs = null
       this.articlesAccepted = this.allArticlesAccepted
-      // this.presentationService.create(this.presentation).subscribe(data => {
-      //   console.log(data)
-      // }, error => console.log(error));
+      this.presentationService.create(this.presentation).subscribe(data => {
+        console.log(data)
+      }, error => console.log(error));
 
     }
 
