@@ -41,7 +41,7 @@ export class ArticleComponent implements OnInit {
       this.uploader.uploadAll();
     }
     this.articleService.create(this.article).subscribe(data => {
-        console.log(data)
+      this.navigateTo('articles');
     }, error => console.log(error));
   }
 
@@ -52,29 +52,26 @@ export class ArticleComponent implements OnInit {
   getAllArticles() {
     this.articleService.getAll()
       .subscribe(data => {
-        this.allArticles = data,
-          this.articles = data,
-          console.log(data)
+        this.allArticles = data
+          this.articles = data
       }, error => console.log(error));
   }
   getAllDomaines() {
     this.domaineService.getAll()
       .subscribe(data => {
-          this.domaines = data,
-          console.log(data)
+          this.domaines = data
       }, error => console.log(error));
   }
   
   setArtile() {
-    console.log(this.article);
     this.uploader = new FileUploader({ url: this.uri + this.article.id + '/uploadFile', itemAlias: 'file'});
     var uploaderOptions: FileUploaderOptions = {};
     uploaderOptions.headers = [{ name: 'authorization', value : this.accountservice.getToken() } ]
     this.uploader.setOptions(uploaderOptions);
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
-    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-      console.log('ImageUpload:uploaded:', item, status, response);
-    };
+    // this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+    //   console.log('ImageUpload:uploaded:', item, status, response);
+    // };
   }
 
 }

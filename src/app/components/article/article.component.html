@@ -1,3 +1,7 @@
+<div class="title-aricle-list">
+  <h2 *ngIf="!article.id" class="athelas ph3 ph0-l">Poster un nouveau Article</h2>
+  <h2 *ngIf="article.id" class="athelas ph3 ph0-l">Modifier l'article</h2>
+</div>
 <div class="col col-md-12">
   <form class="uk-form-stacked">
 
@@ -6,20 +10,20 @@
       <div class="uk-margin">
         <input class="uk-input" type="text" placeholder="Some text . . ." name="nom" [(ngModel)]="article.title"
           minlength="4" appForbiddenName="bob" #title="ngModel" ngModel required>
-        <div *ngIf="title.invalid && ( title.touched) || (title.dirty)" class="uk-alert-primary" uk-alert>
+        <div *ngIf="title.invalid && (title.dirty || title.touched)" class="uk-alert-danger" uk-alert>
           <a class="uk-alert-close" uk-close></a>
-
+          Titre non valid
         </div>
       </div>
     </div>
     <div class="uk-container">
       <label class="uk-form-label">resume</label>
       <div class="uk-margin">
-        <textarea class="uk-textarea" rows=8 type="text" placeholder="resume . . ." name="resume"
-          [(ngModel)]="article.resume" minlength="4" appForbiddenName="bob" #resume="ngModel" ngModel
-          required></textarea>
-        <div *ngIf="resume.invalid && ( resume.touched) || (resume.dirty)" class="uk-alert-primary" uk-alert>
+        <textarea class="uk-textarea" rows=8 type="text" placeholder="resume . . ." name="resume" [(ngModel)]="article.resume"
+          minlength="4" appForbiddenName="bob" #resume="ngModel" ngModel required></textarea>
+        <div *ngIf="resume.invalid && ( resume.touched || resume.dirty)" class="uk-alert-danger" uk-alert>
           <a class="uk-alert-close" uk-close></a>
+          Resume non valid
         </div>
       </div>
     </div>
@@ -27,11 +31,12 @@
       <label class="uk-form-label">Domaine</label>
       <div class="uk-margin">
         <select class="uk-select" name="domaine" [(ngModel)]="article.domaine">
-          <option [ngValue]="domaine" *ngFor="let domaine of domaines">{{domaine.name}}</option>
+          <option [ngValue]="domaine" *ngFor="let domaine of domaines" [selected]="article.id && (domaine.id===article.domaine.id)">{{domaine.name}}</option>
         </select>
       </div>
     </div>
-    <div class="uk-container">
+
+    <div *ngIf="article.id" class="uk-container">
       <label class="uk-form-label">Importer l'article</label>
       <div class="uk-margin">
         <button class="uk-button uk-button-secondary uk-width-1-1 uk-margin-small-bottom"

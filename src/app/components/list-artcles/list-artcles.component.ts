@@ -19,7 +19,6 @@ export class ListArtclesComponent implements OnInit {
 
   ngOnInit() {
     this.getAllArticles();
-    console.log(this.accountService.getCurrentUser());
     this.currentUser = this.accountService.getCurrentUser();
   }
 
@@ -32,8 +31,7 @@ export class ListArtclesComponent implements OnInit {
     this.articleService.getAll()
       .subscribe(data => {
         this.allArticles = data,
-          this.articles = data,
-          console.log(data)
+          this.articles = data
       }, error => console.log(error));
   }
   search(title) {
