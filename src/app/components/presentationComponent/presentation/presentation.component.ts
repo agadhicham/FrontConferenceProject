@@ -10,7 +10,7 @@ import { ChairService } from 'src/app/services/chair.service';
 import { PresentationModule } from 'src/app/modules/presentation/presentation.module';
 import { RoleModule } from 'src/app/modules/role/role.module';
 import { Router } from '@angular/router';
-import { $ } from 'protractor';
+
 
 @Component({
   selector: 'app-presentation',
@@ -45,13 +45,14 @@ export class PresentationComponent implements OnInit {
       .subscribe(data => {
         this.allArticlesAccepted = data,
           this.articlesAccepted = data
+        console.log(this.articlesAccepted)
       }, error => console.log(error));
   }
   getAllChairs() {
     this.chairService.getAll()
       .subscribe(data => {
         this.chairs = data,
-        console.log(data)
+          console.log(data)
       }, error => console.log(error));
   }
 
@@ -72,29 +73,34 @@ export class PresentationComponent implements OnInit {
   filterByDomaine(item, domaineName) {
     return item.domaine.name.toLowerCase().includes(domaineName.toLowerCase());
   }
-  // show(article) {
-  //   this.navigateTo('articles/show/' + article.id);
-  // }
-
+  removeArticle(article) {
+    this.allArticlesAccepted.forEach((element , indx)=> {
+      if (element== article){
+        this.allArticlesAccepted.splice(indx,1);
+      }
+    });
+  }
   ObjetSelected(objet) {
     if (objet != null && this.articlesAccepted != null) {
       this.article = objet
       this.presentation.article = this.article
       this.articlesAccepted = null;
+      this.removeArticle(this.article)
       this.getAllConferences();
     } else if (this.article != null && this.conferences != null) {
       this.conference = objet;
       this.presentation.conference = objet;
-      this.conferences=null;
+      this.conferences = null;
       this.getAllChairs()
     } else if (this.article != null && this.conference != null && this.chairs != null) {
-      this.chair=objet
-      this.presentation.chair=this.chair
+      this.chair = objet
+      this.presentation.chair = this.chair
       this.chairs = null
-      this.getAllArticlesAccepted();
-      this.presentationService.create(this.presentation).subscribe(data => {
-        console.log(data)
-      }, error => console.log(error));
+      this.articlesAccepted = this.allArticlesAccepted
+      // this.presentationService.create(this.presentation).subscribe(data => {
+      //   console.log(data)
+      // }, error => console.log(error));
+
     }
 
   }
