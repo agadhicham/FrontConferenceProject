@@ -23,10 +23,11 @@ export class PresentationComponent implements OnInit {
   articlesAccepted: Array<ArticleModule>;
   allArticlesAccepted: Array<ArticleModule>;
   chairs: Array<ChairModule>;
+  allCharis: Array<ChairModule>;
   domaines: Array<DomaineModule>;
-  private conferences: Array<any>
-  private conference = new Conference();
-  presentation = new PresentationModule(0, new Conference(), new ArticleModule(0, '', '', new DomaineModule(0, '')), this.chair);
+  conferences: Array<any>
+  conference = new Conference();
+  presentation = new PresentationModule(0, this.conference, this.article, this.chair);
 
 
   constructor(private presentationService: PresentationService, private conferenceService: ConferenceService,
@@ -49,11 +50,16 @@ export class PresentationComponent implements OnInit {
       }, error => console.log(error));
   }
   getAllChairs() {
-    this.chairService.getAll()
-      .subscribe(data => {
-        this.chairs = data,
+    if (this.allCharis == null) {
+      this.chairService.getAll()
+        .subscribe(data => {
+          this.chairs = data,
+            this.allCharis = data
           console.log(data)
-      }, error => console.log(error));
+        }, error => console.log(error));
+    } else if (this.conferences == null && this.presentation.conference != null) {
+      this.chairs = this.allCharis
+    }
   }
 
   getAllConferences() {
@@ -73,10 +79,10 @@ export class PresentationComponent implements OnInit {
   filterByDomaine(item, domaineName) {
     return item.domaine.name.toLowerCase().includes(domaineName.toLowerCase());
   }
-  removeArticle(article) {
-    this.allArticlesAccepted.forEach((element, indx) => {
-      if (element == article) {
-        this.allArticlesAccepted.splice(indx, 1);
+  removeElementFromArray(array, objet) {
+    array.forEach((element, indx) => {
+      if (element == objet) {
+        array.splice(indx, 1);
       }
     });
   }
@@ -85,7 +91,7 @@ export class PresentationComponent implements OnInit {
       this.article = objet
       this.presentation.article = this.article
       this.articlesAccepted = null;
-      this.removeArticle(this.article)
+      this.removeElementFromArray(this.allArticlesAccepted, this.article)
       this.getAllConferences();
     } else if (this.article != null && this.conferences != null) {
       this.conference = objet;
@@ -95,7 +101,7 @@ export class PresentationComponent implements OnInit {
     } else if (this.article != null && this.conference != null && this.chairs != null) {
       this.chair = objet
       this.presentation.chair = this.chair
-      this.chairs = null
+      this.removeElementFromArray(this.allCharis, this.chair)
       this.articlesAccepted = this.allArticlesAccepted
       this.presentationService.create(this.presentation).subscribe(data => {
         console.log(data)

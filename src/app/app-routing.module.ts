@@ -14,6 +14,9 @@ import { ShowArticleComponent } from './components/show-article/show-article.com
 import { ListPresentationComponent } from './components/presentationComponent/list-presentation/list-presentation.component';
 import { PresentationComponent } from './components/presentationComponent/presentation/presentation.component';
 import { ShowPresentationComponent } from './components/presentationComponent/show-presentation/show-presentation.component';
+import { AffectationComponent } from './components/affectationComponent/affectation/affectation.component';
+import { ShowAffectationComponent } from './components/affectationComponent/show-affectation/show-affectation.component';
+import { ListAffectationsComponent } from './components/affectationComponent/list-affectations/list-affectations.component';
 
 
 const routes: Routes = [
@@ -62,6 +65,23 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'affectations', children: [
+      {
+        path: '', component: ListAffectationsComponent
+      },
+      {
+        path: 'create', component: AffectationComponent
+      },
+      {
+        path: 'show/:id', component: ShowAffectationComponent
+      },
+      {
+        path: 'edit/:id', component: AffectationComponent
+      }
+
+    ]
+  },
+  {
     path: 'home', component: HomeConferenceComponent
   },
   {
@@ -71,10 +91,10 @@ const routes: Routes = [
     path: 'edit/:id', component: EditConferenceComponent
   },
   {
-    path: 'articles', component:ArticleComponent
+    path: 'articles', component: ArticleComponent
   },
   {
-    path: 'admin', component:AdministrationOfConferencesComponent
+    path: 'admin', component: AdministrationOfConferencesComponent
   },
   {
     path: '', redirectTo: 'login', pathMatch: "full"

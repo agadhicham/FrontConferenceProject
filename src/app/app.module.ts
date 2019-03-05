@@ -32,6 +32,9 @@ import { ListPresentationComponent } from './components/presentationComponent/li
 import { ChairComponent } from './components/chairComponent/chair/chair.component';
 import { ListChairComponent } from './components/chairComponent/list-chair/list-chair.component';
 import { ShowChairComponent } from './components/chairComponent/show-chair/show-chair.component';
+import { AffectationComponent } from './components/affectationComponent/affectation/affectation.component';
+import { ListAffectationsComponent } from './components/affectationComponent/list-affectations/list-affectations.component';
+import { ShowAffectationComponent } from './components/affectationComponent/show-affectation/show-affectation.component';
 
 
 
@@ -60,6 +63,9 @@ import { ShowChairComponent } from './components/chairComponent/show-chair/show-
     ChairComponent,
     ListChairComponent,
     ShowChairComponent,
+    AffectationComponent,
+    ListAffectationsComponent,
+    ShowAffectationComponent,
   ],
   imports: [
     BrowserModule,

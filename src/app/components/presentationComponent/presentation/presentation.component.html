@@ -53,7 +53,7 @@
     </ul>
   </div>
 
-  <div *ngIf="chairs!=null">
+  <div *ngIf="chairs!=null && conferences==null && articlesAccepted==null ">
     <ul class="article-list">
       <div *ngFor="let chair of chairs">
         <li class="article-list-article">
