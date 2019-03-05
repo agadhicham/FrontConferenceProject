@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-presentation.component.css']
 })
 export class ListPresentationComponent implements OnInit {
-  presentation: Array<PresentationModule>;
-  allPresentations: Array<PresentationModule>;
+  allPresentations: Array<PresentationModule>
+  PresentationsNotSelected: Array<PresentationModule>
   constructor(private presentationServie: PresentationService, private router: Router) { }
 
   ngOnInit() {
@@ -20,7 +20,6 @@ export class ListPresentationComponent implements OnInit {
     this.presentationServie.getAll()
       .subscribe(data => {
         this.allPresentations = data,
-          this.presentation = data,
           console.log(data)
       }, error => console.log(error));
   }

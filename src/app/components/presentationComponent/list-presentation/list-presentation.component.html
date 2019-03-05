@@ -1,3 +1,23 @@
-<p>
-  list-presentation works!
-</p>
+<section>
+  <div *ngIf="jurys==null">
+    <ul class="article-list">
+      <div *ngFor="let presentation of allPresentations ">
+        <li class="article-list-article">
+          <div class="article">
+            <span class="article-category">
+              Presentation : {{presentation.id== null?'':presentation.id}}
+            </span>
+            <p class="article-list-article-title" style="margin-top: 20%; margin-right: 30%">
+              <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="show(presentation.article)">Voir
+                L'article</a>
+            </p>
+            <p class="article-meta article-resume" style="margin-top: 30%; margin-right: 25%">
+              <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="show(presentation.conference)">Voir
+                conference</a>
+            </p>
+          </div>
+        </li>
+      </div>
+    </ul>
+  </div>
+</section>
