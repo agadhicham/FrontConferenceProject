@@ -26,6 +26,7 @@ export class AffectationComponent implements OnInit {
   jury = new JuryModule(0, "", "", "")
   affectation = new AffectationModule(0, this.presentation, this.jury)
   allPresentations: Array<PresentationModule>
+  PresentationsNotSelected: Array<PresentationModule>
 
   constructor(private affectationService: AffectationService, private presentationService: PresentationService, private juryService: JuryService, private router: Router) { }
 
@@ -35,8 +36,43 @@ export class AffectationComponent implements OnInit {
   getAllPresentations() {
     this.presentationService.getAll().subscribe(data => {
       this.allPresentations = data
+      this.PresentationsNotSelected = data
       console.log(data)
     }, error => console.log(error));
+  }
+  getAllJurys() {
+    this.juryService.getAll().subscribe(data => {
+      this.jurys = data
+      console.log(data)
+    }, error => console.log(error));
+  }
+  show(objet) {
+
+  }
+  removeElementFromArray(array, objet) {
+    array.forEach((element, indx) => {
+      if (element == objet) {
+        array.splice(indx, 1);
+      }
+    });
+  }
+  ObjetSelected(objet) {
+    if (objet != null) {
+      if (this.allPresentations != null && this.jurys==null) {
+        this.presentation = objet;
+        this.removeElementFromArray(this.PresentationsNotSelected, this.presentation);
+        this.getAllJurys();
+        this.allPresentations = null
+      } else if (this.jurys != null && this.allPresentations == null) {
+        this.jury = objet
+        this.affectationService.create(this.affectation).subscribe(data => {
+          console.log(data)
+        }, error => console.log(error));
+        this.allPresentations = this.PresentationsNotSelected
+        this.jurys=null;
+      }
+
+    }
   }
 
 }

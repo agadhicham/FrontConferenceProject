@@ -35,6 +35,10 @@ export class PresentationService {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
     return this.http.delete(`${this.uri}/${id}`,{headers});
   }
+  // getPresentationByPage(motCle: string, page: number, size: number) {
+  //   const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+  //   return this.http.get("http://localhost:8080/presentations/findPresentation?mc=" + motCle + "&size=" + size + "&page=" + page, { headers });
+  // }
 
 
 

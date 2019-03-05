@@ -1,34 +1,43 @@
-<div class="container">
-    <h2>Modal Example</h2>
-    <!-- Button to Open the Modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-      Open modal
-    </button>
-  
-    <!-- The Modal -->
-    <div class="modal" id="myModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-        
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h4 class="modal-title">Modal Heading</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+<section>
+  <div *ngIf="jurys==null">
+    <ul class="article-list">
+      <div *ngFor="let presentation of PresentationsNotSelected ">
+        <li class="article-list-article">
+          <div class="article">
+            <span class="article-category">
+              Presentation : {{presentation.id== null?'':presentation.id}}
+            </span>
+            <a class="uk-navbar-right back-link uk-button uk-button-text"
+              (click)="ObjetSelected(presentation)">Affecter Jury</a>
+            <p class="article-list-article-title" style="margin-top: 20%; margin-right: 30%">
+              <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="show(presentation.article)">Voir
+                L'article</a>
+            </p>
+            <p class="article-meta article-resume" style="margin-top: 30%; margin-right: 25%">
+              <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="show(presentation.conference)">Voir
+                conference</a>
+            </p>
           </div>
-          
-          <!-- Modal body -->
-          <div class="modal-body">
-            Modal body..
-          </div>
-          
-          <!-- Modal footer -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          </div>
-          
-        </div>
+        </li>
       </div>
-    </div>
-    
+    </ul>
   </div>
-  
+  <div *ngIf="jurys!=null">
+      <ul class="article-list">
+          <div *ngFor="let jury of jurys">
+            <li class="article-list-article">
+              <div class="article">
+                <span class="article-category">
+                  {{jury.firstName== null?'':jury.firstName}}
+                </span>
+                <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetSelected(jury)">Choisir
+                  jury</a>
+                <p class="article-list-article-title">
+                  {{jury.lastName}}<br> Email:{{jury.email}}
+                </p>
+              </div>
+            </li>
+          </div>
+        </ul>
+  </div>
+</section>

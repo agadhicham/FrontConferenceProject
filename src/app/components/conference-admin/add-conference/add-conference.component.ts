@@ -20,16 +20,6 @@ export class AddConferenceComponent implements OnInit {
   saveConference(dataForm) {
     console.log(dataForm)
     this.conference_service.saveConference(dataForm)
-<<<<<<< HEAD
-    .subscribe(data=>{
-      console.log(data)
-      console.log("conference added succefuly")
-      this.router.navigate(['admin'])
-
-    },error=>{
-      console.log(error,Message)
-    })
-=======
       .subscribe(data => {
         console.log(data)
         console.log("conference added succefuly")
@@ -38,7 +28,6 @@ export class AddConferenceComponent implements OnInit {
       }, error => {
         console.log(JSON.parse(error._body), Message)
       })
->>>>>>> 9294691f97c7ba423bf176136a18e957c206d7c9
 
 
   }
