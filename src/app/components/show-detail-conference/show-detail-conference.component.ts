@@ -20,8 +20,8 @@ export class ShowDetailConferenceComponent implements OnInit {
      this.idConference=activateRoute.snapshot.params['id']
   }
 
-  ngOnInit() {
-
+  ngOnInit()
+  {
     this.conferenceService.getOne(this.idConference).
     subscribe(data=>{
       this.conference=data
@@ -31,14 +31,29 @@ export class ShowDetailConferenceComponent implements OnInit {
     )
   }
 
-  onEdit(id:number){
+  onEdit(id:number)
+  {
     this.router.navigate(['edit',id])
   }
-  upConf(){
+
+  upConf()
+  {
     this.conferenceService.upConference(this.conference)
     .subscribe(data=>{
       console.log('update of this conference it done')
       alert('alert updating with success')
+    },error=>{
+      console.log(error)
+    })
+  }
+
+  deletConf(id:number)
+  {
+    this.conferenceService.deleteOne(id)
+    .subscribe(data=>{
+      console.log('deleting.............. of this conference it done')
+      alert('conference deleted with success')
+      this.router.navigate(['admin'])
     },error=>{
       console.log(error)
     })

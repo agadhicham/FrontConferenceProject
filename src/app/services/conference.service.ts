@@ -20,6 +20,11 @@ export class ConferenceService {
     return this.http.get("http://localhost:8080/conferences/conference/" + id, { headers });
   }
 
+  deleteOne(id: number): Observable<any> {
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.get("http://localhost:8080/conferences/conference/delete/"+id, { headers });
+  }
+
   saveConference(conference: Conference): Observable<any> {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
     return this.http.post("http://localhost:8080/conferences/conference/add", conference, { headers })

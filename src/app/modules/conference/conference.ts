@@ -1,5 +1,5 @@
 export class Conference {
-  id:string = "";
+  id:number = 0;
   nom : string = "";
   titrePresentation:string="";
   nombreEquipe:string="";
