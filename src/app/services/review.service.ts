@@ -16,4 +16,9 @@ export class ReviewService {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
     return this.http.get(`${this.uri}/${articleId}`, { headers });
   }
+
+  review(review) {
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.post(`${this.uri}`, review, { headers });
+  }
 }

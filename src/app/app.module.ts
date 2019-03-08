@@ -3,6 +3,7 @@ import { AddConferenceComponent } from './components/conference-admin/add-confer
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -79,6 +80,7 @@ import { ShowAffectationComponent } from './components/affectationComponent/show
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
+    NgbModule,
   ],
   providers: [ConferenceService, ArticleService],
   bootstrap: [AppComponent]

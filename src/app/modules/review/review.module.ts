@@ -9,9 +9,19 @@ import { UserModule } from '../user/user.module';
     CommonModule
   ]
 })
-export class ReviewModule { 
+export class ReviewModule {
   id: number;
+  rate: number;
   view: string;
   article: ArticleModule;
   reviewer: UserModule;
+  constructor(
+    id: number,
+    rate: number,
+    view: string,
+    article: ArticleModule,
+    reviewer: UserModule,
+  ) {
+
+  }
 }
