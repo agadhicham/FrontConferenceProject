@@ -1,3 +1,5 @@
+import { AddChairComponent } from './components/chairComponent/add-chair/add-chair.component';
+import { SelectOptionToAdministrationComponent } from './components/select-option-to-administration/select-option-to-administration.component';
 import { EditConferenceComponent } from './components/conference-admin/edit-conference/edit-conference.component';
 import { AdministrationOfConferencesComponent } from './components/conference-admin/administration-of-conferences/administration-of-conferences.component';
 import { NgModule } from '@angular/core';
@@ -27,12 +29,19 @@ const routes: Routes = [
   {
     path: 'register', component: RegisterComponent
   },
+
+
   {
     path: 'conferenceList', component: ConferenceViewComponent
   },
   {
-    path: 'addconference', component: AddConferenceComponent
+    path: 'administration', component: SelectOptionToAdministrationComponent
   },
+  {
+    path: 'addconference', component: AddConferenceComponent
+
+  },
+
   {
     path: 'articles', children: [
       {
@@ -99,7 +108,10 @@ const routes: Routes = [
   },
   {
     path: '', redirectTo: 'login', pathMatch: "full"
-  }
+  },
+  {
+    path: 'addChair', component: AddChairComponent
+  },
 
 ];
 

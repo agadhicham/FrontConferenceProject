@@ -1,10 +1,11 @@
 <div>
-  <input type="text" [(ngModel)]="motCle">
-  <button (click)="chercher()" class="uk-button  uk-button-secondary">saersh conference</button>
+  <input class="form-control in" type="text" [(ngModel)]="motCle" />
+  <button (click)="chercher()" class="btn btn-primary btn-xs">
+    saersh
+  </button>
 </div>
-
 <div class="uk-child-width-1-4@s uk-grid-match "   uk-grid >
-    <div *ngFor="let conference of conferences | paginate: { itemsPerPage: 2, currentPage: pageActuel}" class="uk-animation-toggle" tabindex="0">
+    <div *ngFor="let conference of (pageConferences?.content| paginate: { itemsPerPage: 4, currentPage: pageActuel })" class="uk-animation-toggle" >
       <div class="uk-card-hover uk-card uk-card-primary uk-card-body  uk-animation-scale-up">
         <h3 class="uk-card-title">Default</h3>
         <p >{{conference.nom}}</p>
@@ -22,7 +23,6 @@
                 <h1>Headline</h1>
                 <p>{{conference.nom}}</p>
                 <p>{{conference.nom}}</p>
-
               </div>
             </div>
           </div>
@@ -30,19 +30,13 @@
       </div>
       </div>
     </div>
-
-
     <pagination-controls (pageChange)="pageActuel = $event"></pagination-controls>
     <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #modal-close-outside">Outside</button>
-
     <div id="modal-close-outside" class="uk-modal-full" uk-modal>
       <div class="uk-modal-dialog">
         <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
         <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
           <div class="uk-background-cover" style="background-image: url('assets/images/conf1.jpg');" uk-height-viewport></div>
-
-
-
           <div class="uk-card uk-card-default uk-width-1-2@m">
             <div class="uk-card-header">
               <div class="uk-grid-small uk-flex-middle" uk-grid>
@@ -57,15 +51,11 @@
                             style="width:105px;height:75px;"
                             src="https://www.mathieuweb.fr/calendrier/date-jour-bleu2.html"
                             scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-
                   </p>
                 </div>
               </div>
             </div>
             <div class="uk-card-body">
-
-
-
               <div class="uk-padding-large uk-card uk-card-default uk-card-large uk-card-body">
 
                 <form class="uk-form-stacked" #f="ngForm" (ngSubmit)="saveConference(f.value)" >
@@ -90,9 +80,6 @@
                       </div>
                     </div>
                   </div>
-
-
-
                   <div class="uk-container">
                     <label class="uk-form-label" >adresseConference</label>
                     <div class="uk-margin">
@@ -110,11 +97,9 @@
                            <div *ngIf="adresseConference.errors.forbiddenName">
                             adresse Conference cannot be Bob.
                            </div>
-
                       </div>
                     </div>
                   </div>
-
                   <div class="uk-container">
                     <label class="uk-form-label" >dateConference</label>
                     <div class="uk-margin">
@@ -132,11 +117,9 @@
                            <div *ngIf="dateConference.errors.forbiddenName">
                             date Conference cannot be Bob.
                            </div>
-
                       </div>
                     </div>
                   </div>
-
                   <div class="uk-container">
                     <label class="uk-form-label" >nombreEquipe</label>
                     <div class="uk-margin">
@@ -144,7 +127,6 @@
                              #nombreEquipe="ngModel" ngModel required >
                              <div *ngIf="nombreEquipe.invalid && (nombreEquipe.dirty || nombreEquipe.touched)"
                              class="alert alert-danger">
-
                            <div *ngIf="nombreEquipe.errors.required">
                             nombre Equipe is required.
                            </div>
@@ -154,11 +136,9 @@
                            <div *ngIf="nombreEquipe.errors.forbiddenName">
                             nombre Equipe cannot be Bob.
                            </div>
-
                       </div>
                     </div>
                   </div>
-
                   <div class="uk-container">
                     <label class="uk-form-label" >titrePresentation</label>
                     <div class="uk-margin">
@@ -166,7 +146,6 @@
                              #titrePresentation="ngModel" ngModel required >
                              <div *ngIf="titrePresentation.invalid && (titrePresentation.dirty || titrePresentation.touched)"
                              class="alert alert-danger">
-
                            <div *ngIf="titrePresentation.errors.required">
                             titre Presentation is required.
                            </div>
@@ -176,11 +155,9 @@
                            <div *ngIf="titrePresentation.errors.forbiddenName">
                             titre Presentation cannot be Bob.
                            </div>
-
                       </div>
                     </div>
                   </div>
-
                   <div class="uk-container">
                     <label class="uk-form-label" >detail</label>
                     <div class="uk-margin">
@@ -188,7 +165,6 @@
                              #detail="ngModel" ngModel required >
                              <div *ngIf="detail.invalid && (detail.dirty || detail.touched)"
                              class="alert alert-danger">
-
                            <div *ngIf="detail.errors.required">
                             detail is required.
                            </div>
@@ -198,13 +174,9 @@
                            <div *ngIf="detail.errors.forbiddenName">
                             detail cannot be Bob.
                            </div>
-
                       </div>
                     </div>
                   </div>
-
-
-
                   <div class="uk-container">
                     <label class="uk-form-label" ></label>
                     <div class="uk-margin">

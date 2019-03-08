@@ -3,6 +3,7 @@ import { AddConferenceComponent } from './components/conference-admin/add-confer
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -35,6 +36,8 @@ import { ShowChairComponent } from './components/chairComponent/show-chair/show-
 import { AffectationComponent } from './components/affectationComponent/affectation/affectation.component';
 import { ListAffectationsComponent } from './components/affectationComponent/list-affectations/list-affectations.component';
 import { ShowAffectationComponent } from './components/affectationComponent/show-affectation/show-affectation.component';
+import { AddChairComponent } from './components/chairComponent/add-chair/add-chair.component';
+import { SelectOptionToAdministrationComponent } from './components/select-option-to-administration/select-option-to-administration.component';
 
 
 
@@ -66,6 +69,8 @@ import { ShowAffectationComponent } from './components/affectationComponent/show
     AffectationComponent,
     ListAffectationsComponent,
     ShowAffectationComponent,
+    AddChairComponent,
+    SelectOptionToAdministrationComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,6 +84,7 @@ import { ShowAffectationComponent } from './components/affectationComponent/show
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
+    NgbModule,
   ],
   providers: [ConferenceService, ArticleService],
   bootstrap: [AppComponent]
