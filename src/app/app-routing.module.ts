@@ -17,6 +17,7 @@ import { ShowPresentationComponent } from './components/presentationComponent/sh
 import { AffectationComponent } from './components/affectationComponent/affectation/affectation.component';
 import { ShowAffectationComponent } from './components/affectationComponent/show-affectation/show-affectation.component';
 import { ListAffectationsComponent } from './components/affectationComponent/list-affectations/list-affectations.component';
+import { EditPresentationComponent } from './components/presentationComponent/edit-presentation/edit-presentation.component';
 
 
 const routes: Routes = [
@@ -60,7 +61,7 @@ const routes: Routes = [
         path: 'show/:id', component: ShowPresentationComponent
       },
       {
-        path: 'edit/:id', component: PresentationComponent
+        path: 'edit/:id', component: EditPresentationComponent
       }
     ]
   },

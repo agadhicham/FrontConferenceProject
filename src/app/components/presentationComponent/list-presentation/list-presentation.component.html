@@ -4,27 +4,38 @@
       <div *ngFor="let presentation of allPresentations ">
         <li class="article-list-article">
           <div class="article">
-            <span class="article-category">
-              Presentation : {{presentation.id== null?'':presentation.id}}
-            </span>
-            <p class="article-list-article-title" style="margin-top: 20%; margin-right: 30%">
-              <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="showArticle(presentation.article)"
-                data-toggle="modal" data-target="#myModal">Voir
-                L'article</a>
-            </p>
-            <div class="article-meta article-resume" style="margin-top: 10%; margin-right: 25%">
-              <a class="uk-navbar-right back-link uk-button uk-button-text"
-                (click)="showConference(presentation.conference)" data-toggle="modal" data-target="#myModal1">Voir
-                conference</a>
-                <br>
-              <p>
-                <a class="uk-navbar-right back-link uk-button uk-button-text" style="margin-right: 23%" (click)="showChair(presentation.chair)"
-                  data-toggle="modal" data-target="#myModal2">Voir
-                  Chair</a>
+            <a class="article-list-article-link" (click)="show(presentation)">
+              <span class="article-category">
+                Presentation : {{presentation.id== null?'':presentation.id}}
+              </span>
+              <!-- <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="show(presentation)">Voir
+              presentation</a> -->
+              <p class="article-list-article-title" style="margin-top: 20%; margin-right: 30%">
+                <a class="uk-navbar-right back-link uk-button uk-button-text"
+                  (click)="showArticle(presentation.article)" data-toggle="modal" data-target="#myModal">Voir
+                  L'article</a>
               </p>
-            </div>
-
+              <div class="article-meta article-resume" style="margin-top: 10%; margin-right: 25%">
+                <a class="uk-navbar-right back-link uk-button uk-button-text"
+                  (click)="showConference(presentation.conference)" data-toggle="modal" data-target="#myModal1">Voir
+                  conference</a>
+                <br>
+                <p>
+                  <a class="uk-navbar-right back-link uk-button uk-button-text" style="margin-right: 23%"
+                    (click)="showChair(presentation.chair)" data-toggle="modal" data-target="#myModal2">Voir
+                    Chair</a>
+                </p>
+              </div>
+              <div class="uk-navbar-right back-link uk-button-text article-date">
+                <span class="">
+                  <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="edit(presentation)"
+                    data-toggle="modal" data-target="#myModal">Modifier
+                    L'presentation</a>
+                </span>
+              </div>
+            </a>
           </div>
+
         </li>
       </div>
     </ul>
@@ -83,7 +94,7 @@
     </div>
   </div>
 </div>
-<!-- modal of the article view -->
+<!-- modal of the chair view -->
 <div *ngIf="chair!=null">
   <div class="container">
     <!-- The Modal -->

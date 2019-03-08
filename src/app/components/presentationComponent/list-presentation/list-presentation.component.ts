@@ -31,6 +31,9 @@ export class ListPresentationComponent implements OnInit {
           console.log(data)
       }, error => console.log(error));
   }
+  navigateTo(path) {
+    this.router.navigate([path]);
+  }
   // showObjet(objet: any) {
   //   if (objet != null) {
   //     if (objet instanceof ArticleModule) {
@@ -55,5 +58,11 @@ export class ListPresentationComponent implements OnInit {
       this.chair = chair;
       console.log(chair)
     }
+  }
+  show(presentation) {
+    this.navigateTo('presentations/show/' + presentation.id);
+  }
+  edit(presentation) {
+    this.navigateTo('presentations/edit/' + presentation.id);
   }
 }
