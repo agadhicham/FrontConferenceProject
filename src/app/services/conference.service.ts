@@ -35,9 +35,15 @@ export class ConferenceService {
     return this.http.post("http://localhost:8080/conferences/conference/put/"+conference.id, conference, { headers })
   }
 
-  getConferences(motCle: string, page: number, size: number) {
+  /*getConferences(motCle: string, page: number, size: number) {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
-    return this.http.get("http://localhost:8080/conferences/chercherConference?mc=" + motCle + "&size=" + size + "&page=" + page, { headers });
+    return this.http.get("http://localhost:8080/conferences/chercher?mc=" + motCle + "&size=" + size + "&page=" + page, { headers });
   }
+*/
+  getConferences(motCle: string, page: number, size: number){
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+     return this.http.get("http://localhost:8080/conferences/chercher?mc=" + motCle + "&size=" + size + "&page=" + page,{ headers })
+
+   }
 
 }
