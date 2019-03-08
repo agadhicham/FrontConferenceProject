@@ -1,0 +1,126 @@
+<form class="uk-form-stacked" #f="ngForm" (ngSubmit)="saveConference(f.value)" >
+
+    <div class="uk-container">
+      <label class="uk-form-label" >Nom</label>
+      <div class="uk-margin">
+        <input class="uk-input"  type="text" placeholder="Some text..." name="nom" [(ngModel)]="conference.username"   minlength="4" appForbiddenName="bob"
+               #nom="ngModel" ngModel required >
+          <div *ngIf="nom.invalid && (nom.dirty || nom.touched)"
+class="alert alert-danger">
+
+<div *ngIf="nom.errors.required">
+Nom is required.
+</div>
+<div *ngIf="nom.errors.minlength">
+Nom must be at least 4 characters long.
+</div>
+<div *ngIf="nom.errors.forbiddenName">
+Nom cannot be Bob.
+</div>
+        </div>
+      </div>
+    </div>
+    <div class="uk-container">
+      <label class="uk-form-label" >adresseConference</label>
+      <div class="uk-margin">
+        <input class="uk-input"  type="text" placeholder="adresseConference" name="adresseConference" [(ngModel)]="conference.adresseConference"   minlength="4" appForbiddenName="bob"
+               #adresseConference="ngModel" ngModel required >
+               <div *ngIf="adresseConference.invalid && (adresseConference.dirty || adresseConference.touched)"
+               class="alert alert-danger">
+
+             <div *ngIf="adresseConference.errors.required">
+              adresse Conference is required.
+             </div>
+             <div *ngIf="adresseConference.errors.minlength">
+              adresse Conference must be at least 4 characters long.
+             </div>
+             <div *ngIf="adresseConference.errors.forbiddenName">
+              adresse Conference cannot be Bob.
+             </div>
+        </div>
+      </div>
+    </div>
+    <div class="uk-container">
+      <label class="uk-form-label" >dateConference</label>
+      <div class="uk-margin">
+        <input class="uk-input"  type="date" placeholder="dateConference" name="dateConference" [(ngModel)]="conference.dateConference"   minlength="4" appForbiddenName="bob"
+               #dateConference="ngModel" ngModel required >
+               <div *ngIf="dateConference.invalid && (dateConference.dirty || dateConference.touched)"
+               class="alert alert-danger">
+
+             <div *ngIf="dateConference.errors.required">
+              date Conference is required.
+             </div>
+             <div *ngIf="dateConference.errors.minlength">
+              date Conference must be at least 4 characters long.
+             </div>
+             <div *ngIf="dateConference.errors.forbiddenName">
+              date Conference cannot be Bob.
+             </div>
+        </div>
+      </div>
+    </div>
+    <div class="uk-container">
+      <label class="uk-form-label" >nombreEquipe</label>
+      <div class="uk-margin">
+        <input class="uk-input"  type="text" placeholder="nombreEquipe" name="nombreEquipe" [(ngModel)]="conference.nombreEquipe"   minlength="4" appForbiddenName="bob"
+               #nombreEquipe="ngModel" ngModel required >
+               <div *ngIf="nombreEquipe.invalid && (nombreEquipe.dirty || nombreEquipe.touched)"
+               class="alert alert-danger">
+             <div *ngIf="nombreEquipe.errors.required">
+              nombre Equipe is required.
+             </div>
+             <div *ngIf="nombreEquipe.errors.minlength">
+              nombre Equipe must be at least 4 characters long.
+             </div>
+             <div *ngIf="nombreEquipe.errors.forbiddenName">
+              nombre Equipe cannot be Bob.
+             </div>
+        </div>
+      </div>
+    </div>
+    <div class="uk-container">
+      <label class="uk-form-label" >titrePresentation</label>
+      <div class="uk-margin">
+        <input class="uk-input"  type="text" placeholder="titrePresentation" name="titrePresentation" [(ngModel)]="conference.titrePresentation"   minlength="4" appForbiddenName="bob"
+               #titrePresentation="ngModel" ngModel required >
+               <div *ngIf="titrePresentation.invalid && (titrePresentation.dirty || titrePresentation.touched)"
+               class="alert alert-danger">
+             <div *ngIf="titrePresentation.errors.required">
+              titre Presentation is required.
+             </div>
+             <div *ngIf="titrePresentation.errors.minlength">
+              titre Presentation must be at least 4 characters long.
+             </div>
+             <div *ngIf="titrePresentation.errors.forbiddenName">
+              titre Presentation cannot be Bob.
+             </div>
+        </div>
+      </div>
+    </div>
+    <div class="uk-container">
+      <label class="uk-form-label" >detail</label>
+      <div class="uk-margin">
+        <input class="uk-input"  type="text" placeholder="detail" name="detail" [(ngModel)]="conference.detail"   minlength="4" appForbiddenName="bob"
+               #detail="ngModel" ngModel required >
+               <div *ngIf="detail.invalid && (detail.dirty || detail.touched)"
+               class="alert alert-danger">
+             <div *ngIf="detail.errors.required">
+              detail is required.
+             </div>
+             <div *ngIf="detail.errors.minlength">
+              detail must be at least 4 characters long.
+             </div>
+             <div *ngIf="detail.errors.forbiddenName">
+              detail cannot be Bob.
+             </div>
+        </div>
+      </div>
+    </div>
+    <div class="uk-container">
+      <label class="uk-form-label" ></label>
+      <div class="uk-margin">
+        <button  class="uk-button uk-button-secondary uk-width-1-1 uk-margin-small-bottom" [disabled]="!f.valid" type="submit">Save</button>
+      </div>
+    </div>
+  </form>
