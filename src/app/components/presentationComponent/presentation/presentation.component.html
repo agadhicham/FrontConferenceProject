@@ -26,7 +26,7 @@
               {{article.title}}
             </p>
             <p class="article-meta article-resume">
-              {{article.resume.slice(0, 100)}}...
+              {{article.resume==null?"":article.resume.slice(0, 100)}}...
             </p>
             <!-- </a> -->
           </div>
