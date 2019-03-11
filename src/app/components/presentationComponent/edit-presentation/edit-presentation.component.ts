@@ -118,6 +118,9 @@ export class EditPresentationComponent implements OnInit {
        this.chair=objet
        console.log(this.presentation.chair)
        this.removeElementFromArray(this.allchairsNotSelected, objet)
+       this.presentationService.edit(this.presentation).subscribe(data=>{
+        console.log(data)
+       })
        this.chairs=null
        this.conferences=null
        this.articlesAccepted=null
