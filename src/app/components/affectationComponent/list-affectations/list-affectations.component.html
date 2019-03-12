@@ -1,1 +1,25 @@
-
+<section>
+  <div class="container">
+    <div *ngFor="let affectation of allAffectation ">
+      <ul class="article-list">
+        <li class="article-list-article">
+          <div class="article">
+            <span class="article-category">
+              Affectation : {{affectation.id== null?'':affectation.id}}
+            </span>
+            <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetSelected(affectation)">Affecter
+              Jury</a>
+            <p class="article-list-article-title" style="margin-top: 20%; margin-right: 30%">
+              <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="show(affectation)">Voir
+                L'article</a>
+            </p>
+            <p class="article-meta article-resume" style="margin-top: 30%; margin-right: 25%">
+              <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="show(affectation)">Voir
+                conference</a>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

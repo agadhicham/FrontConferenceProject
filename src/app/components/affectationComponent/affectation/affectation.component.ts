@@ -53,7 +53,7 @@ export class AffectationComponent implements OnInit {
     });
   }
   getAllPresentations() {
-    this.presentationService.getAll().subscribe(data => {
+    this.presentationService.getAllNotAffected().subscribe(data => {
       this.allPresentations = data
       this.PresentationsNotSelected = data
       console.log(data)

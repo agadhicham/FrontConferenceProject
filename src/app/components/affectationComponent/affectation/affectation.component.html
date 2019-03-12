@@ -1,8 +1,8 @@
 <section>
   <div *ngIf="affectationTopdate==null">
     <div *ngIf="jurys==null">
-      <ul class="article-list">
-        <div *ngFor="let presentation of PresentationsNotSelected ">
+      <div *ngFor="let presentation of PresentationsNotSelected ">
+        <ul class="article-list">
           <li class="article-list-article">
             <div class="article">
               <span class="article-category">
@@ -22,8 +22,8 @@
               </p>
             </div>
           </li>
-        </div>
-      </ul>
+        </ul>
+      </div>
     </div>
     <div *ngIf="jurys!=null">
       <ul class="article-list">
@@ -53,7 +53,7 @@
     <div class="container" style="margin-left: 20% ; max-width: 50%;">
       <ul class="article-list">
         <li class="article-list-article">
-          <h4 class="athelas ph3 ph0-l">{{updateFinished==false?'Modifier Presentation':' Presentation est Modifier'}} :
+          <h4 class="athelas ph3 ph0-l">{{!updateFinished?'Modifier Presentation':' Presentation est Modifier'}} :
             {{presentationToUpdate.id}}</h4>
           <div class="article">
             <span class="article-category">
@@ -79,10 +79,10 @@
   </div>
   <!-- partie jury -->
   <div *ngIf="juryToUpdate!=null && jurys==null || updateFinished==true">
-    <div>
+    <div class="container" style="margin-left: 20% ; max-width: 50%;">
       <ul class="article-list">
         <li class="article-list-article">
-          <h4 class="athelas ph3 ph0-l">{{updateFinished==false?'Modifier Jury':' Jury est Modifier'}} :
+          <h4 class="athelas ph3 ph0-l">{{!updateFinished==false?'Modifier Jury':' Jury est Modifier'}} :
             {{juryToUpdate.id}}</h4>
           <div class="article">
             <span class="article-category">
