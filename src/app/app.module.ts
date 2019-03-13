@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxBraintreeModule } from 'ngx-braintree';
 import { ConferenceService } from './services/conference.service';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 import { FileSelectDirective } from 'ng2-file-upload';
@@ -84,7 +85,11 @@ import { SelectOptionToAdministrationComponent } from './components/select-optio
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
+<<<<<<< HEAD
+    NgxBraintreeModule,
+=======
     NgbModule,
+>>>>>>> aca67fa6135f527bc7aad51fe7a0dabb132c35f5
   ],
   providers: [ConferenceService, ArticleService],
   bootstrap: [AppComponent]
