@@ -108,6 +108,8 @@ export class AffectationComponent implements OnInit {
       }
     }
   }
+  
+
   updateObject(objet) {
     if (objet != null) {
       if(this.affectationTopdate != null && this.presentationToUpdate == null && this.juryToUpdate == null && this.jurys==null){
