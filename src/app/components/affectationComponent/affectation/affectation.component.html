@@ -1,14 +1,117 @@
 <section>
-  <div *ngIf="jurys==null">
-    <ul class="article-list">
+  <div *ngIf="affectationTopdate==null">
+    <div *ngIf="jurys==null">
+      <div *ngFor="let presentation of PresentationsNotSelected ">
+        <ul class="article-list">
+          <li class="article-list-article">
+            <div class="article">
+              <span class="article-category">
+                Presentation : {{presentation.id== null?'':presentation.id}}
+              </span>
+              <a class="uk-navbar-right back-link uk-button uk-button-text"
+                (click)="ObjetSelected(presentation)">Affecter
+                Jury</a>
+              <p class="article-list-article-title" style="margin-top: 20%; margin-right: 30%">
+                <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="show(presentation.article)">Voir
+                  L'article</a>
+              </p>
+              <p class="article-meta article-resume" style="margin-top: 30%; margin-right: 25%">
+                <a class="uk-navbar-right back-link uk-button uk-button-text"
+                  (click)="show(presentation.conference)">Voir
+                  conference</a>
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div *ngIf="jurys!=null">
+      <ul class="article-list">
+        <div *ngFor="let jury of jurys">
+          <li class="article-list-article">
+            <div class="article">
+              <span class="article-category">
+                {{jury.firstName== null?'':jury.firstName}}
+              </span>
+              <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetSelected(jury)">Choisir
+                jury</a>
+              <p class="article-list-article-title">
+                {{jury.lastName}}<br> Email:{{jury.email}}
+              </p>
+            </div>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+</section>
+<section *ngIf="affectationTopdate!=null ">
+
+  <!-- partie update  -->
+  <!-- partie presentation -->
+  <div *ngIf="presentationToUpdate!=null || updateFinished==true">
+    <div class="container" style="margin-left: 20% ; max-width: 50%;">
+      <ul class="article-list">
+        <li class="article-list-article">
+          <h4 class="athelas ph3 ph0-l">{{!updateFinished?'Modifier Presentation':' Presentation est Modifier'}} :
+            {{presentationToUpdate.id}}</h4>
+          <div class="article">
+            <span class="article-category">
+              Presentation : {{presentationToUpdate.id== null?'':presentationToUpdate.id}}
+            </span>
+            <div *ngIf="!updateFinished">
+              <a class="uk-navbar-right back-link uk-button uk-button-text"
+                (click)="ObjetSelected(presentationToUpdate)">Modifier Presentation</a></div>
+            <p class="article-list-article-title" style="margin-top: 20%; margin-right: 30%">
+              <a class="uk-navbar-right back-link uk-button uk-button-text"
+                (click)="show(presentationToUpdate.article)">Voir
+                L'article</a>
+            </p>
+            <p class="article-meta article-resume" style="margin-top: 30%; margin-right: 25%">
+              <a class="uk-navbar-right back-link uk-button uk-button-text"
+                (click)="show(presentationToUpdate.conference)">Voir
+                conference</a>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- partie jury -->
+  <div *ngIf="juryToUpdate!=null && jurys==null || updateFinished==true">
+    <div class="container" style="margin-left: 20% ; max-width: 50%;">
+      <ul class="article-list">
+        <li class="article-list-article">
+          <h4 class="athelas ph3 ph0-l">{{!updateFinished==false?'Modifier Jury':' Jury est Modifier'}} :
+            {{juryToUpdate.id}}</h4>
+          <div class="article">
+            <span class="article-category">
+              {{juryToUpdate.firstName== null?'':juryToUpdate.firstName}}
+            </span>
+            <div *ngIf="!updateFinished">
+              <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetSelected(juryToUpdate)">
+                Modifier Jury</a>
+            </div>
+            <p class="article-list-article-title">
+              {{juryToUpdate.lastName}}<br> Email:{{juryToUpdate.email}}
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- partie list presentation to update -->
+
+  <div *ngIf="presentationToUpdate==null && juryToUpdate==null && jurys==null">
+    <div class="container" style="margin-left: 20% ; max-width: 50%;">
       <div *ngFor="let presentation of PresentationsNotSelected ">
         <li class="article-list-article">
           <div class="article">
             <span class="article-category">
               Presentation : {{presentation.id== null?'':presentation.id}}
             </span>
-            <a class="uk-navbar-right back-link uk-button uk-button-text"
-              (click)="ObjetSelected(presentation)">Affecter Jury</a>
+            <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="updateObject(presentation)">Choisi
+              Presentation</a>
             <p class="article-list-article-title" style="margin-top: 20%; margin-right: 30%">
               <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="show(presentation.article)">Voir
                 L'article</a>
@@ -20,24 +123,25 @@
           </div>
         </li>
       </div>
-    </ul>
+    </div>
   </div>
-  <div *ngIf="jurys!=null">
-      <ul class="article-list">
-          <div *ngFor="let jury of jurys">
-            <li class="article-list-article">
-              <div class="article">
-                <span class="article-category">
-                  {{jury.firstName== null?'':jury.firstName}}
-                </span>
-                <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetSelected(jury)">Choisir
-                  jury</a>
-                <p class="article-list-article-title">
-                  {{jury.lastName}}<br> Email:{{jury.email}}
-                </p>
-              </div>
-            </li>
+  <!-- list des jurys  -->
+  <div *ngIf="jurys!=null && updateFinished==false">
+    <ul class="article-list">
+      <div *ngFor="let jury of jurys">
+        <li class="article-list-article">
+          <div class="article">
+            <span class="article-category">
+              {{jury.firstName== null?'':jury.firstName}}
+            </span>
+            <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="updateObject(jury)">Choisir
+              jury</a>
+            <p class="article-list-article-title">
+              {{jury.lastName}}<br> Email:{{jury.email}}
+            </p>
           </div>
-        </ul>
+        </li>
+      </div>
+    </ul>
   </div>
 </section>

@@ -16,6 +16,10 @@ export class PresentationService {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
     return this.http.get(`${this.uri}`,{headers});
   }
+  getAllNotAffected(): Observable<any> {
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.get(`${this.uri}/notAffected`,{headers});
+  }
   getOne(id): any {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
     return this.http.get(`${this.uri}/${id}`,{headers});
