@@ -1,3 +1,5 @@
+import { AddChairComponent } from './components/chairComponent/add-chair/add-chair.component';
+import { SelectOptionToAdministrationComponent } from './components/select-option-to-administration/select-option-to-administration.component';
 import { EditConferenceComponent } from './components/conference-admin/edit-conference/edit-conference.component';
 import { AdministrationOfConferencesComponent } from './components/conference-admin/administration-of-conferences/administration-of-conferences.component';
 import { NgModule } from '@angular/core';
@@ -14,6 +16,10 @@ import { ShowArticleComponent } from './components/show-article/show-article.com
 import { ListPresentationComponent } from './components/presentationComponent/list-presentation/list-presentation.component';
 import { PresentationComponent } from './components/presentationComponent/presentation/presentation.component';
 import { ShowPresentationComponent } from './components/presentationComponent/show-presentation/show-presentation.component';
+import { AffectationComponent } from './components/affectationComponent/affectation/affectation.component';
+import { ShowAffectationComponent } from './components/affectationComponent/show-affectation/show-affectation.component';
+import { ListAffectationsComponent } from './components/affectationComponent/list-affectations/list-affectations.component';
+import { EditPresentationComponent } from './components/presentationComponent/edit-presentation/edit-presentation.component';
 
 
 const routes: Routes = [
@@ -23,12 +29,19 @@ const routes: Routes = [
   {
     path: 'register', component: RegisterComponent
   },
+
+
   {
     path: 'conferenceList', component: ConferenceViewComponent
   },
   {
-    path: 'addconference', component: AddConferenceComponent
+    path: 'administration', component: SelectOptionToAdministrationComponent
   },
+  {
+    path: 'addconference', component: AddConferenceComponent
+
+  },
+
   {
     path: 'articles', children: [
       {
@@ -57,8 +70,25 @@ const routes: Routes = [
         path: 'show/:id', component: ShowPresentationComponent
       },
       {
-        path: 'edit/:id', component: PresentationComponent
+        path: 'edit/:id', component: EditPresentationComponent
       }
+    ]
+  },
+  {
+    path: 'affectations', children: [
+      {
+        path: '', component: ListAffectationsComponent
+      },
+      {
+        path: 'create', component: AffectationComponent
+      },
+      {
+        path: 'show/:id', component: ShowAffectationComponent
+      },
+      {
+        path: 'edit/:id', component: AffectationComponent
+      }
+
     ]
   },
   {
@@ -71,14 +101,17 @@ const routes: Routes = [
     path: 'edit/:id', component: EditConferenceComponent
   },
   {
-    path: 'articles', component:ArticleComponent
+    path: 'articles', component: ArticleComponent
   },
   {
-    path: 'admin', component:AdministrationOfConferencesComponent
+    path: 'admin', component: AdministrationOfConferencesComponent
   },
   {
     path: '', redirectTo: 'login', pathMatch: "full"
-  }
+  },
+  {
+    path: 'addChair', component: AddChairComponent
+  },
 
 ];
 

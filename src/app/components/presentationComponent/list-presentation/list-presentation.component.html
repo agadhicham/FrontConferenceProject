@@ -1,3 +1,121 @@
-<p>
-  list-presentation works!
-</p>
+<section>
+  <div *ngIf="jurys==null">
+    <ul class="article-list">
+      <div *ngFor="let presentation of allPresentations ">
+        <li class="article-list-article">
+          <div class="article">
+            <!-- <a class="article-list-article-link" (click)="show(presentation)"> -->
+              <span class="article-category">
+                Presentation : {{presentation.id== null?'':presentation.id}}
+              </span>
+              <!-- <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="show(presentation)">Voir
+              presentation</a> -->
+              <p class="article-list-article-title" style="margin-top: 20%; margin-right: 30%">
+                <a class="uk-navbar-right back-link uk-button uk-button-text"
+                  (click)="showArticle(presentation.article)" data-toggle="modal" data-target="#myModal">Voir
+                  L'article</a>
+              </p>
+              <div class="article-meta article-resume" style="margin-top: 10%; margin-right: 25%">
+                <a class="uk-navbar-right back-link uk-button uk-button-text"
+                  (click)="showConference(presentation.conference)" data-toggle="modal" data-target="#myModal1">Voir
+                  conference</a>
+                <br>
+                <p>
+                  <a class="uk-navbar-right back-link uk-button uk-button-text" style="margin-right: 23%"
+                    (click)="showChair(presentation.chair)" data-toggle="modal" data-target="#myModal2">Voir
+                    Chair</a>
+                </p>
+              </div>
+              <div class="uk-navbar-right back-link uk-button-text article-date">
+                <span class="">
+                  <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="edit(presentation)"
+                    data-toggle="modal" data-target="#myModal">Modifier
+                    L'presentation</a>
+                </span>
+              </div>
+            <!-- </a> -->
+          </div>
+
+        </li>
+      </div>
+    </ul>
+  </div>
+</section>
+<!-- modal of the article view -->
+<div *ngIf="article!=null">
+  <div class="container">
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h1 class="modal-title">Article:{{article.id}} Titre:{{article.title}}</h1>
+            <button type="button" class="close" data-dismiss="modal">×</button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <h3>{{article.domaine== null?'':article.domaine.name}}</h3>
+            <p>{{article.resume}}
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal of confernce -->
+<div *ngIf="conference!=null">
+  <div class="container">
+    <!-- The Modal -->
+    <div class="modal" id="myModal1">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h1 class="modal-title">Conference: {{conference.id }} {{conference.nom== null?'':conference.nom}}</h1>
+            <button type="button" class="close" data-dismiss="modal">×</button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <h3>{{conference.detail}}</h3>
+            <p>{{conference.adresseConference}}
+              <p> {{conference.titrePresentation}}</p>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal of the chair view -->
+<div *ngIf="chair!=null">
+  <div class="container">
+    <!-- The Modal -->
+    <div class="modal" id="myModal2">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h1 class="modal-title">Chair:{{chair.id}}</h1>
+            <button type="button" class="close" data-dismiss="modal">×</button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <h3>{{chair.username== null?'':chair.username}}</h3>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

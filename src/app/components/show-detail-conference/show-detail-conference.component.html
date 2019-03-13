@@ -10,10 +10,8 @@
           <p >{{conference.adresseConference}}</p>
           <div class="example-button-row">
             <button mat-fab>Basic</button>
-            <button mat-fab color="primary">Primary</button>
-            <button mat-fab color="accent">Accent</button>
-            <button mat-fab color="warn" >Warn</button>
             <a mat-fab color="primary" href="#modal-sections" uk-toggle>Modier</a>
+            <a mat-fab color="warn" (click)="deletConf(conference.id)" uk-toggle>Delete</a>
             <a mat-fab color="primary"  (click)="onEdit(conference.id)" >Modier Confer</a>
 
 
