@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxBraintreeModule } from 'ngx-braintree';
 import { ConferenceService } from './services/conference.service';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 import { FileSelectDirective } from 'ng2-file-upload';
@@ -73,6 +74,7 @@ import { ShowChairComponent } from './components/chairComponent/show-chair/show-
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
+    NgxBraintreeModule,
   ],
   providers: [ConferenceService, ArticleService],
   bootstrap: [AppComponent]
