@@ -1,80 +1,74 @@
-<div class="col col-md-12">
-  <form class="uk-form-stacked">
-
-    <div class="uk-container">
-      <label class="uk-form-label">Titre</label>
-      <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder="Some text . . ." name="nom" [(ngModel)]="article.title"
-          minlength="4" appForbiddenName="bob" #title="ngModel" ngModel required>
-        <div *ngIf="title.invalid && ( title.touched) || (title.dirty)" class="uk-alert-primary" uk-alert>
-          <a class="uk-alert-close" uk-close></a>
-
+<section>
+  <div *ngIf="articlesAccepted!=null">
+    <div class="title-aricle-list">
+      <h2 class="athelas ph3 ph0-l">Liste des Article Acceptées</h2>
+      <div class="input-group" style="display: inline-flex;width: 94%;">
+        <input #searchedTitle type="text" class="form-control" placeholder="Titre, Domaine ..."
+          (keyup)="search(searchedTitle.value)">
+        <div class="input-group-btn">
+          <button class="btn btn-default" (click)="search(searchedTitle.value)">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
         </div>
       </div>
     </div>
-    <div class="uk-container">
-      <label class="uk-form-label">resume</label>
-      <div class="uk-margin">
-        <textarea class="uk-textarea" rows=8 type="text" placeholder="resume . . ." name="resume"
-          [(ngModel)]="article.resume" minlength="4" appForbiddenName="bob" #resume="ngModel" ngModel
-          required></textarea>
-        <div *ngIf="resume.invalid && ( resume.touched) || (resume.dirty)" class="uk-alert-primary" uk-alert>
-          <a class="uk-alert-close" uk-close></a>
-        </div>
+    <ul class="article-list">
+      <div *ngFor="let article of articlesAccepted ">
+        <li class="article-list-article">
+          <div class="article">
+            <!-- <a class="article-list-article-link" (click)="show(article)"> -->
+            <span class="article-category">
+              {{article.domaine== null?'':article.domaine.name}}
+            </span>
+            <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetSelected(article)">Choisi
+              L'article</a>
+            <p class="article-list-article-title">
+              {{article.title}}
+            </p>
+            <p class="article-meta article-resume">
+              {{article.resume==null?"":article.resume.slice(0, 100)}}...
+            </p>
+            <!-- </a> -->
+          </div>
+        </li>
       </div>
-    </div>
-    <div class="uk-container">
-      <label class="uk-form-label">Domaine</label>
-      <div class="uk-margin">
-        <select class="uk-select" name="domaine" [(ngModel)]="article.domaine">
-          <option [ngValue]="domaine" *ngFor="let domaine of domaines">{{domaine.name}}</option>
-        </select>
-      </div>
-    </div>
-    <div class="uk-container">
-      <label class="uk-form-label"></label>
-      <div class="uk-margin">
-        <button class="uk-button uk-button-secondary uk-width-1-1 uk-margin-small-bottom"
-          (click)="create()">Save</button>
-      </div>
-    </div>
-    <a class="uk-button uk-button-text" (click)="navigateTo('articles')">Annuler</a>
-  </form>
-  <div class="form-group">
-    <!-- <label for="exampleInputFile">Voulez-vous importer un fichier?</label>
-                  <input type="file" name="photo" ng2FileSelect [uploader]="uploader" id="exampleInputFile" />
-                </div>
-                <button type="button" class="btn btn-default" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-                  Importer
-                </button> -->
-    <button class=" icon-cog" style="display: inline-block;float: right;" data-toggle="modal" data-target="#mymodal"
-      (click)="setArtile(article)"><i class="fa fa-upload"></i>upload</button>
-    <div>
-      <!-- <button class="btn btn-default form-control" (click)="create(title.value, resume.value)"> valider</button> -->
-    </div>
-    <!-- <div *ngFor="let article of articles">
-                    <p>{{article.title}}</p>
-                  </div> -->
+    </ul>
   </div>
-</div>
+  <div *ngIf="conferences!=null">
+    <ul class="article-list">
+      <div *ngFor="let conference of conferences ">
+        <li class="article-list-article">
+          <div class="article">
+            <span class="article-category">
+              {{conference.titrePresentation== null?'':conference.titrePresentation}}
+            </span>
+            <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetSelected(conference)">Choisir
+              conference</a>
+            <p class="article-list-article-title">
+              {{conference.nom}}
+            </p>
+          </div>
+        </li>
+      </div>
+    </ul>
+  </div>
 
-<div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Joindre un fichier</h4>
+  <div *ngIf="chairs!=null && conferences==null && articlesAccepted==null ">
+    <ul class="article-list">
+      <div *ngFor="let chair of chairs">
+        <li class="article-list-article">
+          <div class="article">
+            <span class="article-category">
+              {{chair.username== null?'':chair.username}}
+            </span>
+            <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetSelected(chair)">Choisir
+              chair</a>
+            <p class="article-list-article-title">
+              {{chair.username}}
+            </p>
+          </div>
+        </li>
       </div>
-      <div class="modal-body">
-        <label for="exampleInputFile">Voulez-vous importer un fichier?</label>
-        <input type="file" name="photo" ng2FileSelect [uploader]="uploader" id="exampleInputFile" />
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-default" (click)="uploader.uploadAll()">
-          Importer
-        </button>
-      </div>
-    </div>
+    </ul>
   </div>
-</div>
+</section>

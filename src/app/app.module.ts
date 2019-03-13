@@ -3,6 +3,7 @@ import { AddConferenceComponent } from './components/conference-admin/add-confer
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -33,6 +34,11 @@ import { ListPresentationComponent } from './components/presentationComponent/li
 import { ChairComponent } from './components/chairComponent/chair/chair.component';
 import { ListChairComponent } from './components/chairComponent/list-chair/list-chair.component';
 import { ShowChairComponent } from './components/chairComponent/show-chair/show-chair.component';
+import { AffectationComponent } from './components/affectationComponent/affectation/affectation.component';
+import { ListAffectationsComponent } from './components/affectationComponent/list-affectations/list-affectations.component';
+import { ShowAffectationComponent } from './components/affectationComponent/show-affectation/show-affectation.component';
+import { AddChairComponent } from './components/chairComponent/add-chair/add-chair.component';
+import { SelectOptionToAdministrationComponent } from './components/select-option-to-administration/select-option-to-administration.component';
 
 
 
@@ -61,6 +67,11 @@ import { ShowChairComponent } from './components/chairComponent/show-chair/show-
     ChairComponent,
     ListChairComponent,
     ShowChairComponent,
+    AffectationComponent,
+    ListAffectationsComponent,
+    ShowAffectationComponent,
+    AddChairComponent,
+    SelectOptionToAdministrationComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +86,7 @@ import { ShowChairComponent } from './components/chairComponent/show-chair/show-
     MatIconModule,
     MatCardModule,
     NgxBraintreeModule,
+    NgbModule,
   ],
   providers: [ConferenceService, ArticleService],
   bootstrap: [AppComponent]
