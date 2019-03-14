@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./select-option-to-administration.component.css']
 })
 export class SelectOptionToAdministrationComponent implements OnInit {
-   chaire:ChairModule;
+   chaire:ChairModule=new ChairModule();
   constructor(private chair:ChairService ,private router:Router) { }
 
   ngOnInit() {
@@ -21,7 +21,7 @@ export class SelectOptionToAdministrationComponent implements OnInit {
       .subscribe(data => {
         console.log(data)
         console.log("chair added succefuly")
-        this.router.navigate(['home'])
+        this.router.navigate(['chairList'])
 
       }, error => {
         console.log(error)
