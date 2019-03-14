@@ -39,6 +39,8 @@ import { ListAffectationsComponent } from './components/affectationComponent/lis
 import { ShowAffectationComponent } from './components/affectationComponent/show-affectation/show-affectation.component';
 import { AddChairComponent } from './components/chairComponent/add-chair/add-chair.component';
 import { SelectOptionToAdministrationComponent } from './components/select-option-to-administration/select-option-to-administration.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -72,6 +74,8 @@ import { SelectOptionToAdministrationComponent } from './components/select-optio
     ShowAffectationComponent,
     AddChairComponent,
     SelectOptionToAdministrationComponent,
+    NavBarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

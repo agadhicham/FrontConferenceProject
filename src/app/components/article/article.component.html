@@ -1,6 +1,11 @@
+<app-nav-bar></app-nav-bar>
 <div class="title-aricle-list">
-  <h2 *ngIf="!article.id" class="athelas ph3 ph0-l">Poster un nouveau Article</h2>
-  <h2 *ngIf="article.id" class="athelas ph3 ph0-l">Modifier l'article</h2>
+  <h2 *ngIf="!article.id" class="athelas ph3 ph0-l"><div class="section-header">
+      <h2>Post Nouveau Articles</h2>
+    </div></h2>
+  <h2 *ngIf="article.id" class="athelas ph3 ph0-l"><div class="section-header">
+      <h2>Modifier Article :{{article.id}}</h2>
+    </div></h2>
 </div>
 <div class="col col-md-12">
   <form class="uk-form-stacked">
