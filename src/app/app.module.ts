@@ -86,7 +86,7 @@ import { SelectOptionToAdministrationComponent } from './components/select-optio
     MatIconModule,
     MatCardModule,
     NgxBraintreeModule,
-    NgbModule,
+    NgbModule
   ],
   providers: [ConferenceService, ArticleService],
   bootstrap: [AppComponent]
