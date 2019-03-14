@@ -10,15 +10,16 @@ export class ReviewService {
 
   uri: string = 'http://localhost:8080/reviews';
 
-  constructor(private http: HttpClient, private accountservice: AccountService) { }
+  constructor(private http: HttpClient, private accountService: AccountService) { }
 
   getAll(articleId): Observable<any> {
-    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    const headers = new HttpHeaders().set("authorization", this.accountService.getToken());
     return this.http.get(`${this.uri}/${articleId}`, { headers });
   }
 
   review(review) {
-    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    review.reviewer.username = this.accountService.getCurrentUser();
+    const headers = new HttpHeaders().set("authorization", this.accountService.getToken());
     return this.http.post(`${this.uri}`, review, { headers });
   }
 }
