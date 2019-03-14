@@ -7,6 +7,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { AccountService } from 'src/app/services/account.service';
 import { DomaineService } from 'src/app/services/domaine.service';
 import { DomaineModule } from 'src/app/modules/domaine/domaine.module';
+import { PaymentModule } from 'src/app/modules/payment/payment.module';
 
 @Component({
   selector: 'app-article',
@@ -16,6 +17,7 @@ import { DomaineModule } from 'src/app/modules/domaine/domaine.module';
 export class ArticleComponent implements OnInit {
 
   article = new ArticleModule(0, '', '',new DomaineModule(0,''));
+  payment = new PaymentModule(0,0, '', this.article);
   articles: Array<ArticleModule>;
   domaines: Array<DomaineModule>;
   allArticles: Array<ArticleModule>;
@@ -73,5 +75,12 @@ export class ArticleComponent implements OnInit {
     //   console.log('ImageUpload:uploaded:', item, status, response);
     // };
   }
-
+  createPurchase(nonce: string, chargeAmount: number) {
+    console.log(nonce)
+    this.payment.article= this.article
+    this.payment.chargeAmount=chargeAmount;
+    this.payment.nonce=nonce
+    console.log(this.payment)
+    return this.articleService.createPurchase(this.payment);
+  }
 }

@@ -48,8 +48,8 @@
       <div>
         <ngx-braintree 
         [clientTokenURL]="'http://localhost:8080/client/token'"
-          [createPurchaseURL]="'http://localhost:8080/client/payment/process'" 
-          [chargeAmount]="50"
+          [createPurchase]="createPurchase.bind(this)" 
+          [chargeAmount]="5"
           [buttonText]="'Payer'">
         </ngx-braintree>
       </div>
