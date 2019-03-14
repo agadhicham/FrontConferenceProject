@@ -22,7 +22,6 @@ import { HomeConferenceComponent } from './components/home-conference/home-confe
 import { ShowDetailConferenceComponent } from './components/show-detail-conference/show-detail-conference.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { DomaineComponent } from './components/domaine/domaine.component';
 import { ListArtclesComponent } from './components/list-artcles/list-artcles.component';
 import { ShowArticleComponent } from './components/show-article/show-article.component';
 import { EditAricleComponent } from './components/edit-aricle/edit-aricle.component';
@@ -41,6 +40,12 @@ import { AddChairComponent } from './components/chairComponent/add-chair/add-cha
 import { SelectOptionToAdministrationComponent } from './components/select-option-to-administration/select-option-to-administration.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ListJuryComponent } from './components/jury/list-jury/list-jury.component';
+import { AddJuryComponent } from './components/jury/add-jury/add-jury.component';
+import { ListDomaineComponent } from './components/domaine/list-domaine/list-domaine.component';
+import { AddDomaineComponent } from './components/domaine/add-domaine/add-domaine.component';
+import { ListReviewerComponent } from './components/reviwer/list-reviewer/list-reviewer.component';
+import { AddReviewerComponent } from './components/reviwer/add-reviewer/add-reviewer.component';
 
 
 
@@ -56,7 +61,6 @@ import { FooterComponent } from './components/footer/footer.component';
     LoginComponent,
     RegisterComponent,
     FileSelectDirective,
-    DomaineComponent,
     ListArtclesComponent,
     ShowArticleComponent,
     EditAricleComponent,
@@ -76,6 +80,12 @@ import { FooterComponent } from './components/footer/footer.component';
     SelectOptionToAdministrationComponent,
     NavBarComponent,
     FooterComponent,
+    ListJuryComponent,
+    AddJuryComponent,
+    ListDomaineComponent,
+    AddDomaineComponent,
+    ListReviewerComponent,
+    AddReviewerComponent,
   ],
   imports: [
     BrowserModule,

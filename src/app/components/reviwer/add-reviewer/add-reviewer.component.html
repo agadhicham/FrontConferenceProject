@@ -1,0 +1,108 @@
+<form class="uk-form-stacked" #f="ngForm" (ngSubmit)="saveChair(f.value)">
+  <div class="uk-container">
+    <label class="uk-form-label">Nom Chair</label>
+    <div class="uk-margin">
+      <input
+        class="uk-input"
+        type="text"
+        placeholder="Some text..."
+        name="username"
+        [(ngModel)]="chaire.username"
+        minlength="4"
+        appForbiddenName="bob"
+        #username="ngModel"
+        ngModel
+        required
+      />
+      <div
+        *ngIf="username.invalid && (username.dirty || username.touched)"
+        class="alert alert-danger"
+      >
+        <div *ngIf="username.errors.required">
+          Nom is required.
+        </div>
+        <div *ngIf="username.errors.minlength">
+          Nom must be at least 4 characters long.
+        </div>
+        <div *ngIf="username.errors.forbiddenName">
+          Nom cannot be Bob.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="uk-container">
+    <label class="uk-form-label">password</label>
+    <div class="uk-margin">
+      <input
+        class="uk-input"
+        type="text"
+        placeholder="password"
+        name="password"
+        [(ngModel)]="chaire.password"
+        minlength="4"
+        appForbiddenName="bob"
+        #password="ngModel"
+        ngModel
+        required
+      />
+      <div
+        *ngIf="detail.invalid && (detail.dirty || detail.touched)"
+        class="alert alert-danger"
+      >
+        <div *ngIf="password.errors.required">
+          password is required.
+        </div>
+        <div *ngIf="password.errors.minlength">
+            password must be at least 4 characters long.
+        </div>
+        <div *ngIf="password.errors.forbiddenName">
+            password cannot be Bob.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="uk-container">
+      <label class="uk-form-label">role</label>
+      <div class="uk-margin">
+        <input
+          class="uk-input"
+          type="text"
+          placeholder="role"
+          name="role"
+          [(ngModel)]="chaire.role"
+          minlength="4"
+          appForbiddenName="bob"
+          #role="ngModel"
+          ngModel
+          required
+        />
+        <div
+          *ngIf="role.invalid && (role.dirty || role.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="role.errors.required">
+            password is required.
+          </div>
+          <div *ngIf="role.errors.minlength">
+              password must be at least 4 characters long.
+          </div>
+          <div *ngIf="role.errors.forbiddenName">
+              password cannot be Bob.
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="uk-container">
+    <label class="uk-form-label"></label>
+    <div class="uk-margin">
+      <button
+        class="uk-button uk-button-secondary uk-width-1-1 uk-margin-small-bottom"
+        [disabled]="!f.valid"
+        type="submit"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</form>
