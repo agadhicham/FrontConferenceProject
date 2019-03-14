@@ -1,82 +1,36 @@
-<!-- <div class="container-scroller">
-  <div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
-    <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
-      <div class="row w-100">
-        <div class="col-lg-4 mx-auto">
-          <div class="auto-form-wrapper">
-            <form (ngSubmit)="onSignup(f)" #f="ngForm">
-              <div class="alert alert-danger" style="text-align:centers" role="alert" *ngIf="onError">
-                <strong>Ooops !</strong> Username ou Mot de passe est incorecct
-              </div>
-              <div class="form-group">
-                <label class="label">Username</label>
-                <div class="input-group">
-                  <input type="text" name="username" class="form-control" placeholder="Username" ngModel required>
-                  <div class="input-group-append">
-                    <span class="input-group-text">
-                      <i class="mdi mdi-check-circle-outline"></i>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="label">Password</label>
-                <div class="input-group">
-                  <input type="password" name="password" class="form-control" placeholder="*********" ngModel required>
-                  <div class="input-group-append">
-                    <span class="input-group-text">
-                      <i class="mdi mdi-check-circle-outline"></i>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <button class="btn btn-primary submit-btn btn-block" type="submit" [disabled]="!f.valid">Login</button>
-              </div>
-              <div class="form-group">
-                <button class="btn btn-primary submit-btn btn-block" [routerLink]="['/register']" type="submit">Register</button>
-              </div>
+<div class="main">
+  <section class="sign-in">
+    <div class="container">
+      <div class="signin-content">
+        <div class="signin-image">
+          <base href="/">
+          <figure><img src="/assets/images/signin-image.jpg" alt="sing up image"></figure>
+        </div>
 
-            </form>
-          </div>
+        <div class="signin-form">
+          <h2 class="form-title">Authentification</h2>
+          <form (ngSubmit)="onSignup(f)" #f="ngForm">
+            <div class="alert alert-danger" style="text-align:centers" role="alert" *ngIf="onError">
+              Nom d'utilisateur ou Mot de passe est incorecct
+            </div>
+            <div class="form-group">
+              <input type="text" name="username" class="form-input" placeholder="Nom d'utilisateur" ngModel required>
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" class="form-input" placeholder="Mot de passe" ngModel required>
+              <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+            </div>
+            <div class="form-group form-button">
+              <button type="submit" name="submit" id="submit" class="form-submit" [disabled]="!f.valid">Se
+                connecter</button>
+            </div>
+          </form>
+          <p class="loginhere">
+            Vous n'êtes pas inscrit
+            <a class="loginhere-link" [routerLink]="['/register']" type="submit">Inscrivez-vous</a>
+          </p>
         </div>
       </div>
-    </div> -->
-
-    <div class="main">
-
-      <section class="signup">
-        <!-- <img src="images/signup-bg.jpg" alt=""> -->
-        <div class="container">
-          <div class="signup-content">
-              <form (ngSubmit)="onSignup(f)" #f="ngForm">
-                  <div class="alert alert-danger" style="text-align:centers" role="alert" *ngIf="onError">
-                      Nom d'utilisateur ou Mot de passe est incorecct
-                    </div>
-              <h2 class="form-title">Authentification</h2>
-
-              <div class="form-group">
-                <input type="text" name="username" class="form-input" placeholder="Nom d'utilisateur" ngModel required>
-              </div>
-              <div class="form-group">
-                <input type="password" name="password" class="form-input"  placeholder="Mot de passe" ngModel required>
-                <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
-              </div>
-
-
-              <div class="form-group">
-
-
-                <button type="submit" name="submit" id="submit" class="form-submit" [disabled]="!f.valid">Se connecter</button>
-
-              </div>
-            </form>
-            <p class="loginhere">
-              Vous n'êtes pas inscrit 
-              <a class="loginhere-link" [routerLink]="['/register']" type="submit">Inscrivez-vous</a>
-            </p>
-          </div>
-        </div>
-      </section>
-
     </div>
+  </section>
+</div>
