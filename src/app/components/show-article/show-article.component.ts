@@ -30,7 +30,6 @@ export class ShowArticleComponent implements OnInit {
         this.article = data;
       }, error => console.log(error));
       this.reviewService.getAll(params.id).subscribe(data => {
-        console.log(data)
         this.reviews = data;
       }, error => console.log(error));
     });
@@ -44,9 +43,10 @@ export class ShowArticleComponent implements OnInit {
   }
   makeReview() {
     this.review.article = this.article;
-    console.log(this.review)
+    this.review.reviewer=new UserModule(0,'','','');
     this.reviewService.review(this.review).subscribe(data => {
-      console.log(data)
+      this.reviews.push(data);
+      this.review =new ReviewModule(0,0,'',null,null);
     }, error => console.error(error)
     );
   }

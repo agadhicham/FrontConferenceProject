@@ -1,0 +1,21 @@
+.star,.editable-star {
+    color: #faf5df;
+  }
+  .star{
+    font-size: 1rem;
+  }
+  .editable-star{
+      font-size: 1.5rem;
+  }
+  .filled {
+    color: #ffe606f3;
+  }
+  .bad {
+    color: #f5d9d9;
+  }
+  .filled.bad {
+    color: #fc7575;
+  }
+  .review-input{
+      width: 100% !important; 
+  }
