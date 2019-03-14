@@ -1,3 +1,26 @@
-<p>
-  list-affectations works!
-</p>
+<app-nav-bar></app-nav-bar>
+<div class="section-header">
+    <h2>List Des Affectations</h2>
+  </div>
+<div class="super_container">
+  <div class="intro">
+    <div class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
+      <!-- Intro Item -->
+      <div class="intro_item" *ngFor="let affectation of allAffectation ">
+        <div class="container">
+          <base href="/">
+          <div class="intro_image"><img src="/assets/images/intro_1.jpg" alt=""></div>
+          <div class="intro_body">
+            <div class="intro_title"><a href="#"> Affectation : {{affectation.id== null?'':affectation.id}}</a></div>
+            <div class="intro_subtitle"> kkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
+            <div class="intro_subtitle"> kkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
+          </div>
+          <div>
+            <a class="uk-navbar-right back-link uk-button uk-button-text"
+              (click)="edit(affectation)"><strong>Modifier</strong></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

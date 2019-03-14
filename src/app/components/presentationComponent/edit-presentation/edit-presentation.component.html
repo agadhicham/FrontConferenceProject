@@ -1,21 +1,23 @@
+<app-nav-bar></app-nav-bar>
 <section>
   <div class="container">
     <div class="title-aricle-list">
       <h2 class="athelas ph3 ph0-l">Presentation: {{presentation.id}} </h2>
     </div>
-    <div class="container" *ngIf="article!=null && articleSelected==null">
+    <!-- partie article -->
+    <div class="container" *ngIf="articleSelected==null && allArticlesAccepted!=null && articlesAccepted==null">
       <ul class="article-list">
         <li class="article-list-article">
           <div class="title-aricle-list">
-            <h4 class="athelas ph3 ph0-l">Modifier L'article: {{article.id}} </h4>
+            <h4 class="athelas ph3 ph0-l">{{updateFinish==false?'Modifier L article':' Larticle est Modifier'}} : {{article.id}} </h4>
           </div>
           <div class="article">
             <!-- <a class="article-list-article-link" (click)="show(article)"> -->
             <span class="article-category">
               L'Article: {{article.id}} {{article.domaine== null?'':article.domaine.name}}
             </span>
-            <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetSelected(article)">Modifier
-              L'article</a>
+           <div *ngIf="updateFinish==false"><a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetToUpdate(article)">Modifier
+              L'article</a></div>
             <p class="article-list-article-title">
               {{article.title}}
             </p>
@@ -27,67 +29,109 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div class="container"
-    *ngIf="conference!=null && conferenceSelected==null && articleSelected!=null && allArticlesAccepted==null">
-    <ul class="article-list">
-      <li class="article-list-article">
-        <div class="title-aricle-list">
-          <h4 class="athelas ph3 ph0-l">Modifier L'Conference: {{conference.id}} </h4>
-        </div>
-        <div class="article">
-          <span class="article-category">
-            {{conference.titrePresentation== null?'':conference.titrePresentation}}
-          </span>
-          <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetSelected(conference)">Modifier
-            L'Confernce</a>
-          <p class="article-list-article-title">
-            {{conference.nom}}
-          </p>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div class="container" *ngIf="chair!=null && chairSelected==null && conferenceSelected!=null  ">
-    <ul class="article-list">
-      <li class="article-list-article">
-        <div class="title-aricle-list">
-          <h4 class="athelas ph3 ph0-l">Modifier Chair: {{chair.id}} </h4>
-        </div>
-        <div class="article">
-          <span class="article-category">
-            {{chair.username== null?'':chair.username}}
-          </span>
-          <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetSelected(chair)">Modifier
-            Chair</a>
-          <p class="article-list-article-title">
-            {{chair.username}}
-          </p>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div *ngIf="articlesAccepted!=null && conferences==null">
-    <ul class="article-list">
-      <div *ngFor="let article of allArticlesAccepted ">
+    <!-- partie confernce -->
+    <div class="container" *ngIf="conferences==null && conferenceSelected==null && AllconferencesNotSelected!=null  ">
+      <ul class="article-list">
         <li class="article-list-article">
+          <div class="title-aricle-list">
+            <h4 class="athelas ph3 ph0-l">{{updateFinish==false?'Modifier LConference':' confernce est Modifier'}} : {{conference.id}} </h4>
+          </div>
           <div class="article">
-            <!-- <a class="article-list-article-link" (click)="show(article)"> -->
             <span class="article-category">
-              {{article.domaine== null?'':article.domaine.name}}
+              {{conference.titrePresentation== null?'':conference.titrePresentation}}
             </span>
-            <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetChose(article)">Choisi
-              L'article</a>
+            <div *ngIf="updateFinish==false"><a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetToUpdate(conference)">Modifier
+              L'Confernce</a></div>
             <p class="article-list-article-title">
-              {{article.title}}
+              {{conference.nom}}
             </p>
-            <p class="article-meta article-resume">
-                {{article.resume==null?"":article.resume.slice(0, 100)}}...
-            </p>
-            <!-- </a> -->
           </div>
         </li>
+      </ul>
+    </div>
+    <!-- partie chair -->
+    <div class="container" *ngIf="allchairsNotSelected!=null && chairs==null">
+      <ul class="article-list">
+        <li class="article-list-article">
+          <div class="title-aricle-list">
+            <h4 class="athelas ph3 ph0-l">{{updateFinish==false?'Modifier Chair':' Chair est Modifier'}} : {{chair.id}}</h4>
+          </div>
+          <div class="article">
+            <span class="article-category">
+              {{chair.username== null?'':chair.username}}
+            </span>
+            <div *ngIf="updateFinish==false"><a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetToUpdate(chair)">Modifier
+              Chair</a></div>
+            <p class="article-list-article-title">
+              {{chair.username}}
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- list des articles acceptée  -->
+    <div *ngIf="articlesAccepted!=null && conferences==null">
+      <ul class="article-list">
+        <div *ngFor="let articleView of allArticlesAccepted ">
+          <!-- <div *ngIf="articleView == article"> -->
+          <li class="article-list-article">
+            <div class="article">
+              <!-- <a class="article-list-article-link" (click)="show(article)"> -->
+              <span class="article-category">
+                {{articleView.domaine== null?'':articleView.domaine.name}}
+              </span>
+              <div *ngIf="updateFinish==false"><a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetSelected(articleView)">Choisi
+                L'article</a></div>
+              <p class="article-list-article-title">
+                {{articleView.title}}
+              </p>
+              <p class="article-meta article-resume">
+                {{articleView.resume==null?"":articleView.resume.slice(0, 100)}}...
+              </p>
+              <!-- </a> -->
+            </div>
+          </li>
+          <!-- </div> -->
+        </div>
+      </ul>
+    </div>
+    <!-- list des conferences -->
+    <div *ngIf="conferences!=null && conferenceSelected!=null && allchairsNotSelected==null">
+      <ul class="article-list">
+        <div *ngFor="let conference of AllconferencesNotSelected ">
+          <li class="article-list-article">
+            <div class="article">
+              <span class="article-category">
+                {{conference.titrePresentation== null?'':conference.titrePresentation}}
+              </span>
+              <div *ngIf="updateFinish==false"><a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetSelected(conference)">Choisir
+                conference</a></div>
+              <p class="article-list-article-title">
+                {{conference.nom}}
+              </p>
+            </div>
+          </li>
+        </div>
+      </ul>
+    </div>
+    <!-- list des chairs  -->
+    <div *ngIf="chairs!=null && chairSelected!=null">
+        <ul class="article-list">
+          <div *ngFor="let chair of allchairsNotSelected">
+            <li class="article-list-article">
+              <div class="article">
+                <span class="article-category">
+                  {{chair.username== null?'':chair.username}}
+                </span>
+                <div *ngIf="updateFinish==false"><a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetSelected(chair)">Choisir
+                  chair</a></div>
+                <p class="article-list-article-title">
+                  {{chair.username}}
+                </p>
+              </div>
+            </li>
+          </div>
+        </ul>
       </div>
-    </ul>
   </div>
 </section>

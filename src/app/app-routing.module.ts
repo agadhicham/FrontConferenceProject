@@ -1,3 +1,7 @@
+import { AddDomaineComponent } from './components/domaine/add-domaine/add-domaine.component';
+import { AddReviewerComponent } from './components/reviwer/add-reviewer/add-reviewer.component';
+import { AddJuryComponent } from './components/jury/add-jury/add-jury.component';
+import { ListChairComponent } from './components/chairComponent/list-chair/list-chair.component';
 import { AddChairComponent } from './components/chairComponent/add-chair/add-chair.component';
 import { SelectOptionToAdministrationComponent } from './components/select-option-to-administration/select-option-to-administration.component';
 import { EditConferenceComponent } from './components/conference-admin/edit-conference/edit-conference.component';
@@ -25,6 +29,18 @@ import { EditPresentationComponent } from './components/presentationComponent/ed
 const routes: Routes = [
   {
     path: 'login', component: LoginComponent
+  },
+  {
+    path: 'addJury', component: AddJuryComponent
+  },
+  {
+    path: 'addDomaine', component: AddDomaineComponent
+  },
+  {
+    path: 'addChair', component: AddChairComponent
+  },
+  {
+    path: 'addReviewer', component: AddReviewerComponent
   },
   {
     path: 'register', component: RegisterComponent
@@ -111,6 +127,9 @@ const routes: Routes = [
   },
   {
     path: 'addChair', component: AddChairComponent
+  },
+  {
+    path: 'chairList', component: ListChairComponent
   },
 
 ];

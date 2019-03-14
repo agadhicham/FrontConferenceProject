@@ -1,3 +1,4 @@
+<app-nav-bar></app-nav-bar>
 <section>
   <div *ngIf="articlesAccepted!=null">
     <div class="title-aricle-list">
@@ -26,7 +27,7 @@
               {{article.title}}
             </p>
             <p class="article-meta article-resume">
-              {{article.resume.slice(0, 100)}}...
+              {{article.resume==null?"":article.resume.slice(0, 100)}}...
             </p>
             <!-- </a> -->
           </div>
@@ -72,3 +73,4 @@
     </ul>
   </div>
 </section>
+
