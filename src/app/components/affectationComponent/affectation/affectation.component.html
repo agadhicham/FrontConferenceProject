@@ -1,4 +1,7 @@
-<section>
+<app-nav-bar></app-nav-bar>
+<div class="section-header">
+    <h2>Ajouter Affectation</h2>
+  </div>
   <div *ngIf="affectationTopdate==null">
     <div *ngIf="jurys==null">
       <div *ngFor="let presentation of PresentationsNotSelected ">
@@ -44,9 +47,8 @@
       </ul>
     </div>
   </div>
-</section>
-<section *ngIf="affectationTopdate!=null ">
 
+<div *ngIf="affectationTopdate!=null ">
   <!-- partie update  -->
   <!-- partie presentation -->
   <div *ngIf="presentationToUpdate!=null || updateFinished==true">
@@ -144,4 +146,5 @@
       </div>
     </ul>
   </div>
-</section>
+</div>
+

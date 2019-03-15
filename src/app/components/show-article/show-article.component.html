@@ -17,17 +17,30 @@
       </p>
     </div>
   </div>
-  <div *ngIf="isShowReviews" class="reviews title-aricle-list">
-    <div class="form-inline uk-margin">
-        <ngb-rating [(rate)]="review.rate" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly" ></ngb-rating>
-      <input class="uk-input" type="text" placeholder="your review . . ." name="review" minlength="4" [(ngModel)]="review.view">
-      <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="makeReview()">review</a>
+  <div *ngIf="isShowReviews" >
+  <div class="title-aricle-list">
+    <div class="uk-margin">
+      <ngb-rating [(rate)]="review.rate" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly">
+        <ng-template let-fill="fill" let-index="index">
+          <span class="editable-star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
+        </ng-template>
+      </ngb-rating>
+      <input class="uk-input form-control review-input" type="text" placeholder="your review . . ." name="review" minlength="4" [(ngModel)]="review.view" (keydown.enter)="makeReview()">
     </div>
     <br><br>
-    <div *ngFor="let review of reviews">
-        <div class="row">
-          <span>{{ 'reviewer: '+ review.reviewer.username +' review: '+ review.view }}</span>
-        </div>
-      </div>
   </div>
+  <div *ngFor="let review of reviews " class="title-aricle-list">
+    <div class="row">
+      <span class="article-category">{{review.reviewer.username}}</span>
+      <div class="uk-margin">
+        <p>{{review.view}}</p>
+        <ngb-rating [(rate)]="review.rate" [readonly]="true" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly">
+          <ng-template let-fill="fill" let-index="index">
+            <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
+          </ng-template>
+        </ngb-rating>
+      </div>
+    </div>
+  </div>
+</div>
 </section>

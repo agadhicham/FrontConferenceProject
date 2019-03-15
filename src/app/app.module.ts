@@ -37,6 +37,8 @@ import { ListAffectationsComponent } from './components/affectationComponent/lis
 import { ShowAffectationComponent } from './components/affectationComponent/show-affectation/show-affectation.component';
 import { AddChairComponent } from './components/chairComponent/add-chair/add-chair.component';
 import { SelectOptionToAdministrationComponent } from './components/select-option-to-administration/select-option-to-administration.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { ListJuryComponent } from './components/jury/list-jury/list-jury.component';
 import { AddJuryComponent } from './components/jury/add-jury/add-jury.component';
 import { ListDomaineComponent } from './components/domaine/list-domaine/list-domaine.component';
@@ -74,6 +76,8 @@ import { AddReviewerComponent } from './components/reviwer/add-reviewer/add-revi
     ShowAffectationComponent,
     AddChairComponent,
     SelectOptionToAdministrationComponent,
+    NavBarComponent,
+    FooterComponent,
     ListJuryComponent,
     AddJuryComponent,
     ListDomaineComponent,
