@@ -1,13 +1,4 @@
 
-<app-nav-bar></app-nav-bar>
-<ul class="nav nav-tabs" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/home']" role="tab" data-toggle="tab">List Des Conferences</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/addconference']" role="tab" data-toggle="tab">Ajouter Conference</a>
-    </li>
-  </ul>
 <div class="uk-child-width-1-2@s" uk-grid>
   <div class="uk-animation-toggle" tabindex="0">
       <div class="uk-card uk-card-primary uk-card-large uk-card-body uk-animation-shake">
@@ -46,13 +37,13 @@
                   <div *ngIf="nom.invalid && (nom.dirty || nom.touched)"
 class="alert alert-danger">
 
-<div *ngIf="nom.errors.required">
+<div *ngIf="nom?.errors.required">
 Nom is required.
 </div>
-<div *ngIf="nom.errors.minlength">
+<div *ngIf="nom?.errors.minlength">
 Nom must be at least 4 characters long.
 </div>
-<div *ngIf="nom.errors.forbiddenName">
+<div *ngIf="nom?.errors.forbiddenName">
 Nom cannot be Bob.
 </div>
                 </div>
@@ -69,13 +60,13 @@ Nom cannot be Bob.
                        <div *ngIf="adresseConference.invalid && (adresseConference.dirty || adresseConference.touched)"
                        class="alert alert-danger">
 
-                     <div *ngIf="adresseConference.errors.required">
+                     <div *ngIf="adresseConference?.errors.required">
                       adresse Conference is required.
                      </div>
-                     <div *ngIf="adresseConference.errors.minlength">
+                     <div *ngIf="adresseConference?.errors.minlength">
                       adresse Conference must be at least 4 characters long.
                      </div>
-                     <div *ngIf="adresseConference.errors.forbiddenName">
+                     <div *ngIf="adresseConference?.errors.forbiddenName">
                       adresse Conference cannot be Bob.
                      </div>
 

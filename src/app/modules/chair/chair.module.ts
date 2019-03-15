@@ -13,6 +13,6 @@ export class ChairModule {
   username: string;
   password: string;
   role:RoleModule
-  
+
   constructor(id: number, username: string, password: string,role:RoleModule) { }
  }
