@@ -46,6 +46,7 @@ import { ListDomaineComponent } from './components/domaine/list-domaine/list-dom
 import { AddDomaineComponent } from './components/domaine/add-domaine/add-domaine.component';
 import { ListReviewerComponent } from './components/reviwer/list-reviewer/list-reviewer.component';
 import { AddReviewerComponent } from './components/reviwer/add-reviewer/add-reviewer.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 
 
@@ -86,6 +87,7 @@ import { AddReviewerComponent } from './components/reviwer/add-reviewer/add-revi
     AddDomaineComponent,
     ListReviewerComponent,
     AddReviewerComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,

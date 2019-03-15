@@ -36,8 +36,16 @@
         </div>
       </li> -->
 <app-nav-bar></app-nav-bar>
-<div class="section-header">
-  <h2>List Des Articles</h2>
+<div>
+  <div class="section-header">
+    <h2>List Des Articles</h2>
+  </div>
+  <div class="uk-navbar-right input-group" style="display: inline-flex;width: 80%;padding-left: 20%">
+    Rechercher :
+    <input #searchedTitle type="text" class="form-control" placeholder="Titre, Domaine ..."
+      (keyup)="search(searchedTitle.value)">
+      <a class="uk-navbar-left" (click)="navigateTo('articles/create')">+ Poster un nouveau article</a>
+  </div>
 </div>
 <div class="super_container">
   <div class="intro">
@@ -47,13 +55,21 @@
         <div class="container">
           <base href="/">
           <div class="intro_image"><img src="/assets/images/intro_4.jpg" alt=""></div>
-          <div class="intro_body">
-            <div class="intro_title"><a href="#">Article:{{article.id}}</a></div>
-            <div class="intro_subtitle"> {{article.domaine== null?'':article.domaine.name}}</div>
-            <div class="intro_subtitle"> {{article.resume== null?'':article.resume.slice(0, 100)}}...</div>
-          </div>
+          <a (click)="show(article)">
+            <div class="intro_body">
+              <div class="intro_title"><a>{{article.title}}</a></div>
+              <div class="intro_subtitle"> {{article.domaine== null?'':article.domaine.name}}</div>
+              <div class="intro_subtitle"> {{article.resume== null?'':article.resume.slice(0, 100)}}...</div>
+            </div>
+          </a>
           <div>
-            <a class="uk-navbar-right back-link uk-button uk-button-text"
+            <div class=" back-link uk-button-text article-date">
+              <span class="">
+                Posté par <strong>{{currentUser}}</strong> le
+                {{ article.postedAt | date:'yyyy-MM-dd à HH:mm'}}
+              </span>
+            </div>
+            <a class="uk-navbar-left back-link uk-button uk-button-text"
               (click)="edit(article)"><strong>Modifier</strong></a>
           </div>
         </div>

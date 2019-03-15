@@ -24,6 +24,7 @@ import { AffectationComponent } from './components/affectationComponent/affectat
 import { ShowAffectationComponent } from './components/affectationComponent/show-affectation/show-affectation.component';
 import { ListAffectationsComponent } from './components/affectationComponent/list-affectations/list-affectations.component';
 import { EditPresentationComponent } from './components/presentationComponent/edit-presentation/edit-presentation.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 
 const routes: Routes = [
@@ -131,6 +132,9 @@ const routes: Routes = [
   {
     path: 'chairList', component: ListChairComponent
   },
+  {
+    path: 'payments/:id', component: PaymentComponent
+  }
 
 ];
 

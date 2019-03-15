@@ -1,10 +1,10 @@
 <app-nav-bar></app-nav-bar>
 <div class="title-aricle-list">
   <h2 *ngIf="!article.id" class="athelas ph3 ph0-l"><div class="section-header">
-      <h2>Post Nouveau Articles</h2>
+      <h2>Poster un Nouveau Articles</h2>
     </div></h2>
   <h2 *ngIf="article.id" class="athelas ph3 ph0-l"><div class="section-header">
-      <h2>Modifier Article :{{article.id}}</h2>
+      <h2>Modifier Article</h2>
     </div></h2>
 </div>
 <div class="col col-md-12">
@@ -49,14 +49,6 @@
         <button class="uk-button uk-button-secondary uk-width-1-1 uk-margin-small-bottom"
           (click)="create()">Save</button>
         <input type="file" class="uk-i" name="articlePdf" ng2FileSelect [uploader]="uploader" id="exampleInputFile" />
-      </div>
-      <div>
-        <ngx-braintree 
-        [clientTokenURL]="'http://localhost:8080/client/token'"
-          [createPurchase]="createPurchase.bind(this)" 
-          [chargeAmount]="5"
-          [buttonText]="'Payer'">
-        </ngx-braintree>
       </div>
     </div>
 
