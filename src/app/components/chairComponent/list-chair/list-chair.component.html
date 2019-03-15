@@ -1,38 +1,38 @@
-<div class="uk-child-width-1-3@s" uk-grid>
-    <div class="uk-animation-toggle bod" tabindex="0" *ngFor="let chair of chaires">
-        <div class="uk-card   uk-card-large uk-card-body uk-animation-shake">
-          <h3 class="uk-card-title">Details for chair:  </h3>
-            <h2 >{{ chair.id }}</h2>
-            <p >{{ chair.username }}</p>
-            <div class="example-button-row">
-             <!-- <a mat-fab color="primary" href="#modal-sections" uk-toggle>Updating Chair </a>
-              <a mat-fab color="warn"  href="#modal-delete" uk-toggle>Delete chair</a>-->
-              <button class="btn btn1 btn-xs " href="#modal-sections" uk-toggle (click)="editChair(chair)">Editing Chair</button>
-              <button class="btn btn-default btn-xs" href="#modal-delete" uk-toggle uk-toggle>Delete chair</button>
+  <div class="row">
+    <div class="bg bg-info mb-3 col-sm-3" uk-margin *ngFor="let chair of chaires">
+        <div class="card-header">Details for chair:</div>
+        <div class="card-body" >
+                <h2 >{{ chair.id }}</h2>
+                <p >{{ chair.username }}</p>
+                <div class="example-button-row">
+                 <!-- <a mat-fab color="primary" href="#modal-sections" uk-toggle>Updating Chair </a>
+                  <a mat-fab color="warn"  href="#modal-delete" uk-toggle>Delete chair</a>-->
+                  <button class="btn btn1 btn-xs " href="#modal-sections" uk-toggle (click)="editChair(chair)">Editing Chair</button>
+                  <button class="btn btn-default btn-xs" href="#modal-delete" uk-toggle uk-toggle>Delete chair</button>
 
-              <div id="modal-delete" uk-modal>
-                <div class="uk-modal-dialog">
-                    <button class="uk-modal-close-default" type="button" uk-close></button>
-                    <div class="uk-modal-header">
-                        <h2 class="uk-modal-title">chair à supprimer</h2>
+                  <div id="modal-delete" uk-modal>
+                    <div class="uk-modal-dialog">
+                        <button class="uk-modal-close-default" type="button" uk-close></button>
+                        <div class="uk-modal-header">
+                            <h2 class="uk-modal-title">chair à supprimer</h2>
+                        </div>
+                        <div class="uk-modal-body">
+                        confirmer votre suppresion !
+                        <p>pour {{ chair.username }}</p>
+                        <div class="uk-modal-footer uk-text-right">
+                            <button class="btn btn-xs btn-default uk-modal-close" type="button">Cancel</button>
+                            <button class="btn btn-xs btn-warning" (click)="deletChair(chair.id)" type="button" >delete</button>
+                          </div>
                     </div>
-                    <div class="uk-modal-body">
-                    confirmer votre suppresion !
-                    <p>pour {{ chair.username }}</p>
-                    <div class="uk-modal-footer uk-text-right">
-                        <button class="btn btn-xs btn-default uk-modal-close" type="button">Cancel</button>
-                        <button class="btn btn-xs btn-warning" (click)="deletChair(chair.id)" type="button" >delete</button>
-                      </div>
+                  </div>
+                  </div>
                 </div>
-              </div>
-              </div>
-            </div>
-          </div>
-    </div>
-  </div>
+        </div>
+      </div>
+</div>
 
 
-  <div id="modal-sections" uk-modal>
+<div id="modal-sections" uk-modal>
     <div class="uk-modal-dialog">
         <button class="uk-modal-close-default" type="button" uk-close></button>
         <div class="uk-modal-header">
@@ -105,20 +105,13 @@
                 <div class="uk-container">
                   <label class="uk-form-label"></label>
                   <div class="uk-margin">
-                    <button
-                      class="uk-button uk-button-secondary uk-width-1-1 uk-margin-small-bottom"
-                      [disabled]="!f?.valid"
-                      type="submit"
-                    >
-                      Save
-                    </button>
+                    <button class="uk-width-1-1 uk-margin-small-bottom btn btn-secondary" type="button" (click)="updateChair()" >Save change</button>
                   </div>
                 </div>
           </form>
 
         <div class="uk-modal-footer uk-text-right">
-            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-            <button class="uk-button uk-button-primary" type="button" (click)="updateChair()" >Save</button>
+            <button class="btn btn-default uk-modal-close" type="button">Cancel</button>
         </div>
     </div>
 </div>

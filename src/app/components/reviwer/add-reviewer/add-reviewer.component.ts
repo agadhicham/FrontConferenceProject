@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { ReviewService } from './../../../services/review.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,5 +13,7 @@ export class AddReviewerComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
 
 }

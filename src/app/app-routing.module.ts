@@ -1,3 +1,6 @@
+import { ListReviewerComponent } from './components/reviwer/list-reviewer/list-reviewer.component';
+import { ListDomaineComponent } from './components/domaine/list-domaine/list-domaine.component';
+import { ListJuryComponent } from './components/jury/list-jury/list-jury.component';
 import { AddDomaineComponent } from './components/domaine/add-domaine/add-domaine.component';
 import { AddReviewerComponent } from './components/reviwer/add-reviewer/add-reviewer.component';
 import { AddJuryComponent } from './components/jury/add-jury/add-jury.component';
@@ -126,6 +129,15 @@ const routes: Routes = [
   },
   {
     path: 'chairList', component: ListChairComponent
+  },
+  {
+    path: 'juryList', component: ListJuryComponent
+  },
+  {
+    path: 'domaineList', component: ListDomaineComponent
+  },
+  {
+    path: 'reviwerList', component: ListReviewerComponent
   },
   {
     path: 'payments/:id', component: PaymentComponent

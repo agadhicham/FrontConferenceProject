@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { ReviewService } from './../../../services/review.service';
+import { ReviewModule } from './../../../modules/review/review.module';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListReviewerComponent implements OnInit {
 
-  constructor() { }
+  private idChair:number;
+  //chaire:ReviewModule= new ReviewModule()
+   private chaires: Array<any>
+  constructor(private chairService: ReviewService, private router:Router) { }
 
   ngOnInit() {
+
+
+
   }
+
+
+
+
+
 
 }
