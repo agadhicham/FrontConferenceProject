@@ -10,6 +10,7 @@ import { RoleModule } from 'src/app/modules/role/role.module';
   styleUrls: ['./select-option-to-administration.component.css']
 })
 export class SelectOptionToAdministrationComponent implements OnInit {
+
    chaire:ChairModule=new ChairModule(0,"","", new RoleModule(0,""));
   constructor(private chair:ChairService ,private router:Router) { }
 

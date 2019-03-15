@@ -45,8 +45,6 @@ const routes: Routes = [
   {
     path: 'register', component: RegisterComponent
   },
-
-
   {
     path: 'conferenceList', component: ConferenceViewComponent
   },
