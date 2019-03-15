@@ -13,6 +13,7 @@ export class AccountService {
   roles: Array<any> = [];
   token: string;
   url = 'http://localhost:8080';
+  role:string;
   constructor(private router: Router, private http: HttpClient) { }
   onSignin(form: NgForm) {
     //console.log(form.value);
@@ -22,8 +23,10 @@ export class AccountService {
     localStorage.setItem("token", token);
     let jwtHelper = new JwtHelperService();
     this.roles = jwtHelper.decodeToken(token).roles;
-    //console.log('Token : '+this.getToken());
-    //console.log("Roles : " + JSON.stringify(this.roles));
+    // console.log('Token : '+this.getToken());
+    // console.log("Roles : " + JSON.stringify(this.role));
+    this.getRoles()
+    console.log(this.role)
   }
   getCurrentUser() {
     let jwtHelper = new JwtHelperService();
@@ -42,5 +45,13 @@ export class AccountService {
   onLogout() {
     localStorage.removeItem('token');
     this.router.navigate(['/']);
+  }
+  getRoles() {
+    this.roles.forEach(element => {
+      this.role=element.authority
+    });
+  }
+  typeOfCurrentUser(){
+    return this.role
   }
 }

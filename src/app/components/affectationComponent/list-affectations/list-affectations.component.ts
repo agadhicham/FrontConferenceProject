@@ -26,8 +26,8 @@ export class ListAffectationsComponent implements OnInit {
           console.log(data)
       }, error => console.log(error));
   }
- edit(presentation) {
-    this.navigateTo('presentations/edit/' + presentation.id);
+ edit(affectation) {
+    this.navigateTo('affectations/edit/' + affectation.id);
   }
 
 }

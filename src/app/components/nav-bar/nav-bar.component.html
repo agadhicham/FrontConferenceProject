@@ -1,23 +1,23 @@
 <header id="header" style="background-color: grey">
-    <div class="container">
+  <div class="container">
 
-      <div id="logo" class="pull-left">
-        <a href="#intro" class="scrollto"><img src="img/logo.png" alt="" title=""></a>
-      </div>
-
-      <nav id="nav-menu-container">
-        <ul class="nav-menu">
-          <li class="menu-active"><a  [routerLink]="['/articles']">Home</a></li>
-          <li><a  [routerLink]="['/articles']"> Articles</a></li>
-          <li><a  [routerLink]="['/conferences']">Conference</a></li>
-          <li><a  [routerLink]="['/affectations']">Affectations</a></li>
-          <li><a  [routerLink]="['/presentations']">Presentations</a></li>
-          <li><a  [routerLink]="['/jury']">Jury</a></li>
-          <li><a  [routerLink]="['/Auteur']">Auteurs</a></li>
-          <li><a  [routerLink]="['/chairs']">Chair</a></li>
-          <li><a  [routerLink]="['/keyNotes']"></a></li>
-          <li class="buy-tickets"><a [routerLink]="['/']">Déconnection</a></li>
-        </ul>
-      </nav><!-- #nav-menu-container -->
+    <div id="logo" class="pull-left">
+      <a href="#intro" class="scrollto"><img src="img/logo.png" alt="" title=""></a>
     </div>
-  </header>
+
+    <nav id="nav-menu-container">
+      <ul class="nav-menu">
+        <li class="menu-active" *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/articles']">Home</a></li>
+        <li *ngIf="currentUser=='ADMIN' || currentUser=='USER' "><a [routerLink]="['/articles']"> Articles</a></li>
+        <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/conferences']">Conference</a></li>
+        <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/affectations']">Affectations</a></li>
+        <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/presentations']">Presentations</a></li>
+        <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/jury']">Jury</a></li>
+        <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/Auteur']">Auteurs</a></li>
+        <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/chairs']">Chair</a></li>
+        <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/keyNotes']"></a></li>
+        <li class="buy-tickets"><a (click)="onLogout()">Déconnection</a></li>
+      </ul>
+    </nav><!-- #nav-menu-container -->
+  </div>
+</header>

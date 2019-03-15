@@ -11,9 +11,7 @@
           <base href="/">
           <div class="intro_image"><img src="/assets/images/intro_1.jpg" alt=""></div>
           <div class="intro_body">
-            <div class="intro_title"><a href="#"> Affectation : {{affectation.id== null?'':affectation.id}}</a></div>
-            <div class="intro_subtitle"> kkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
-            <div class="intro_subtitle"> kkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
+            <div class="intro_title"><a [routerLink]="['/affectations']"> Affectation : {{affectation.id== null?'':affectation.id}}</a></div>
           </div>
           <div>
             <a class="uk-navbar-right back-link uk-button uk-button-text"

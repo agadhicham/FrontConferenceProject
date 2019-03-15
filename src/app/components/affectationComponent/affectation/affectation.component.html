@@ -1,54 +1,62 @@
 <app-nav-bar></app-nav-bar>
-<div class="section-header">
+
+
+<div *ngIf="affectationTopdate==null">
+  <div class="section-header">
     <h2>Ajouter Affectation</h2>
   </div>
-  <div *ngIf="affectationTopdate==null">
-    <div *ngIf="jurys==null">
-      <div *ngFor="let presentation of PresentationsNotSelected ">
-        <ul class="article-list">
-          <li class="article-list-article">
-            <div class="article">
-              <span class="article-category">
-                Presentation : {{presentation.id== null?'':presentation.id}}
-              </span>
-              <a class="uk-navbar-right back-link uk-button uk-button-text"
-                (click)="ObjetSelected(presentation)">Affecter
-                Jury</a>
-              <p class="article-list-article-title" style="margin-top: 20%; margin-right: 30%">
-                <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="show(presentation.article)">Voir
-                  L'article</a>
-              </p>
-              <p class="article-meta article-resume" style="margin-top: 30%; margin-right: 25%">
-                <a class="uk-navbar-right back-link uk-button uk-button-text"
-                  (click)="show(presentation.conference)">Voir
-                  conference</a>
-              </p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div *ngIf="jurys!=null">
+  <div *ngIf="jurys==null">
+    <div *ngFor="let presentation of PresentationsNotSelected ">
       <ul class="article-list">
-        <div *ngFor="let jury of jurys">
-          <li class="article-list-article">
-            <div class="article">
-              <span class="article-category">
-                {{jury.firstName== null?'':jury.firstName}}
-              </span>
-              <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetSelected(jury)">Choisir
-                jury</a>
-              <p class="article-list-article-title">
-                {{jury.lastName}}<br> Email:{{jury.email}}
-              </p>
-            </div>
-          </li>
-        </div>
+        <li class="article-list-article">
+          <div class="article">
+            <span class="article-category">
+              Presentation : {{presentation.id== null?'':presentation.id}}
+            </span>
+            <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetSelected(presentation)">Affecter
+              Jury</a>
+            <p class="article-list-article-title" style="margin-top: 20%; margin-right: 30%">
+              <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="show(presentation.article)">Voir
+                L'article</a>
+            </p>
+            <p class="article-meta article-resume" style="margin-top: 30%; margin-right: 25%">
+              <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="show(presentation.conference)">Voir
+                conference</a>
+            </p>
+          </div>
+        </li>
       </ul>
     </div>
   </div>
+  <div *ngIf="jurys!=null">
+    <ul class="article-list">
+      <div *ngFor="let jury of jurys">
+        <li class="article-list-article">
+          <div class="article">
+            <span class="article-category">
+              {{jury.firstName== null?'':jury.firstName}}
+            </span>
+            <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="ObjetSelected(jury)">Choisir
+              jury</a>
+            <p class="article-list-article-title">
+              {{jury.lastName}}<br> Email:{{jury.email}}
+            </p>
+          </div>
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>
 
 <div *ngIf="affectationTopdate!=null ">
+  <div class="section-header">
+    <h2>Modifier Affectation</h2>
+  </div>
+  <div *ngIf="PresentationsNotSelected==null">
+    <div class="section-header">
+      <h2>List des affectations est vide</h2>
+    </div>
+  </div>
   <!-- partie update  -->
   <!-- partie presentation -->
   <div *ngIf="presentationToUpdate!=null || updateFinished==true">
@@ -147,4 +155,3 @@
     </ul>
   </div>
 </div>
-
