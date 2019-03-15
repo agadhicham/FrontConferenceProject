@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { ChairService } from './../../services/chair.service';
 import { ChairModule } from './../../modules/chair/chair.module';
 import { Component, OnInit } from '@angular/core';
+import { RoleModule } from 'src/app/modules/role/role.module';
 
 @Component({
   selector: 'app-select-option-to-administration',
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./select-option-to-administration.component.css']
 })
 export class SelectOptionToAdministrationComponent implements OnInit {
-   chaire:ChairModule=new ChairModule();
+   chaire:ChairModule=new ChairModule(0,"","",new RoleModule(0,""));
   constructor(private chair:ChairService ,private router:Router) { }
 
   ngOnInit() {

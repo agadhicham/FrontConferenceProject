@@ -30,7 +30,6 @@ import { PresentationComponent } from './components/presentationComponent/presen
 import { ShowPresentationComponent } from './components/presentationComponent/show-presentation/show-presentation.component';
 import { EditPresentationComponent } from './components/presentationComponent/edit-presentation/edit-presentation.component';
 import { ListPresentationComponent } from './components/presentationComponent/list-presentation/list-presentation.component';
-import { ChairComponent } from './components/chairComponent/chair/chair.component';
 import { ListChairComponent } from './components/chairComponent/list-chair/list-chair.component';
 import { ShowChairComponent } from './components/chairComponent/show-chair/show-chair.component';
 import { AffectationComponent } from './components/affectationComponent/affectation/affectation.component';
@@ -68,7 +67,6 @@ import { AddReviewerComponent } from './components/reviwer/add-reviewer/add-revi
     ShowPresentationComponent,
     EditPresentationComponent,
     ListPresentationComponent,
-    ChairComponent,
     ListChairComponent,
     ShowChairComponent,
     AffectationComponent,
