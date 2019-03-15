@@ -19,12 +19,11 @@ export class RegisterComponent implements OnInit {
   }
   register() {
     console.log(this.user.repassword)
-
     if (this.user.password == this.user.repassword) {
       this.accountService.register(this.user).subscribe(e => {
         console.log(e)
-        this.route.navigate(["/login"]);
         this.test = false;
+        this.route.navigate(["/login"]);
       });
     } else {
       this.test = true;

@@ -1,7 +1,15 @@
 <app-nav-bar></app-nav-bar>
+<ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link"  [routerLink]="['/affectations']" role="tab" data-toggle="tab">List Des Affectations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/affectations/create']"role="tab" data-toggle="tab">Ajouter Affectation</a>
+    </li>
+  </ul>
 <div class="section-header">
-    <h2>List Des Affectations</h2>
-  </div>
+  <h2>List Des Affectations</h2>
+</div>
 <div class="super_container">
   <div class="intro">
     <div class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
@@ -11,9 +19,8 @@
           <base href="/">
           <div class="intro_image"><img src="/assets/images/intro_1.jpg" alt=""></div>
           <div class="intro_body">
-            <div class="intro_title"><a href="#"> Affectation : {{affectation.id== null?'':affectation.id}}</a></div>
-            <div class="intro_subtitle"> kkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
-            <div class="intro_subtitle"> kkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
+            <div class="intro_title"><a [routerLink]="['/affectations']"> Affectation :
+                {{affectation.id== null?'':affectation.id}}</a></div>
           </div>
           <div>
             <a class="uk-navbar-right back-link uk-button uk-button-text"

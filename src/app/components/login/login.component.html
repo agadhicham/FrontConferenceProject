@@ -2,12 +2,16 @@
   <div class="container">
     <div class="signin-content">
       <div class="signin-image">
-          <base href="/">
-          <figure><img src="/assets/images/signin-image.jpg" alt="sing up image"></figure>
+        <base href="/">
+        <figure><img src="/assets/images/signin-image.jpg" alt="sing up image"></figure>
       </div>
 
       <div class="signin-form">
-        <h2 class="form-title">Authentification</h2>
+        <h2 class="form-title">
+          <div class="section-header">
+            <h2>Authentification</h2>
+          </div>
+        </h2>
         <form (ngSubmit)="onSignup(f)" #f="ngForm">
           <div class="alert alert-danger" style="text-align:centers" role="alert" *ngIf="onError">
             Nom d'utilisateur ou Mot de passe est incorecct
