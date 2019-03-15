@@ -1,35 +1,43 @@
+<app-nav-bar></app-nav-bar>
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/home']" role="tab" data-toggle="tab">List Des Conferences</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/addconference']" role="tab" data-toggle="tab">Ajouter Conference</a>
+  </li>
+</ul>
 <div>
   <input type="text" [(ngModel)]="motCle">
   <button (click)="chercher()" class="uk-button  uk-button-secondary">saersh conference</button>
 </div>
 
-<div class="uk-child-width-1-4@s uk-grid-match "   uk-grid >
-    <div *ngFor="let conference of conferences | paginate: { itemsPerPage: 2, currentPage: pageActuel}" class="uk-animation-toggle" tabindex="0">
-      <div class="uk-card-hover uk-card uk-card-secondary uk-card-body  uk-animation-scale-up">
-        <h3 class="uk-card-title">Default</h3>
-        <p >{{conference.nom}}</p>
-        <p >{{conference.dateConference}}</p>
-        <p >{{conference.adresseConference}}</p>
-       <p uk-margin>
-          <button mat-fab color="primary" (click)="showOne(conference.id)">Show this conference</button>
-        </p>
-        <div id="modal-full2" class="uk-modal-full" uk-modal>
-          <div class="uk-modal-dialog">
-            <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
-            <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
-              <div class="uk-background-cover" style="background-image: url('assets/images/conf3.jpg');" uk-height-viewport></div>
-              <div class="uk-padding-large" *ngFor="let conference of conferences">
-                <h1>Headline</h1>
-                <p>{{conference.nom}}</p>
-                <p>{{conference.nom}}</p>
-
-              </div>
+<div class="uk-child-width-1-4@s uk-grid-match " uk-grid>
+  <div *ngFor="let conference of conferences | paginate: { itemsPerPage: 2, currentPage: pageActuel}"
+    class="uk-animation-toggle" tabindex="0">
+    <div class="uk-card-hover uk-card uk-card-secondary uk-card-body  uk-animation-scale-up">
+      <h3 class="uk-card-title">Default</h3>
+      <p>{{conference.nom}}</p>
+      <p>{{conference.dateConference}}</p>
+      <p>{{conference.adresseConference}}</p>
+      <p uk-margin>
+        <button mat-fab color="primary" (click)="showOne(conference.id)">Show this conference</button>
+      </p>
+      <div id="modal-full2" class="uk-modal-full" uk-modal>
+        <div class="uk-modal-dialog">
+          <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+          <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
+            <div class="uk-background-cover" style="background-image: url('assets/images/conf3.jpg');"
+              uk-height-viewport></div>
+            <div class="uk-padding-large" *ngFor="let conference of conferences">
+              <h1>Headline</h1>
+              <p>{{conference.nom}}</p>
+              <p>{{conference.nom}}</p>
             </div>
           </div>
         </div>
       </div>
-      </div>
     </div>
-
-
-    <pagination-controls (pageChange)="pageActuel = $event"></pagination-controls>
+  </div>
+</div>
+<pagination-controls (pageChange)="pageActuel = $event"></pagination-controls>

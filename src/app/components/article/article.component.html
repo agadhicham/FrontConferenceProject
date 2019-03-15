@@ -1,4 +1,12 @@
 <app-nav-bar></app-nav-bar>
+<ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link"  [routerLink]="['/articles']" role="tab" data-toggle="tab">List Des Articles</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/articles/create']"role="tab" data-toggle="tab">Ajouter Article</a>
+    </li>
+  </ul>
 <div class="title-aricle-list">
   <h2 *ngIf="!article.id" class="athelas ph3 ph0-l"><div class="section-header">
       <h2>Post Nouveau Articles</h2>

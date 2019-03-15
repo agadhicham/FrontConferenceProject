@@ -1,4 +1,13 @@
 
+<app-nav-bar></app-nav-bar>
+<ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/home']" role="tab" data-toggle="tab">List Des Conferences</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/addconference']" role="tab" data-toggle="tab">Ajouter Conference</a>
+    </li>
+  </ul>
 <div class="uk-child-width-1-2@s" uk-grid>
   <div class="uk-animation-toggle" tabindex="0">
       <div class="uk-card uk-card-primary uk-card-large uk-card-body uk-animation-shake">
