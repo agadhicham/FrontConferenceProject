@@ -34,13 +34,12 @@ export class ListArtclesComponent implements OnInit {
   }
 
 
-
   getAllArticles() {
     this.articleService.getAll()
       .subscribe(data => {
         this.allArticles = data,
           this.articles = data
-      }, error => console.log(error));
+      }, error => console.log(error)); 
   }
   search(title) {
     this.articles = this.allArticles.filter(item => (this.filterByTitle(item, title) || this.filterByDomaine(item, title)));
