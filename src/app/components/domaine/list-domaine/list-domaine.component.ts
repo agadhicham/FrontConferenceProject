@@ -32,7 +32,7 @@ export class ListDomaineComponent implements OnInit {
     .subscribe(data=>{
       console.log('deleting.............. of this conference it done')
       alert('chaire deleted with success')
-      this.router.navigate(['chairList'])
+      this.router.navigate(['domaineList'])
     },error=>{
       console.log(error)
     })
