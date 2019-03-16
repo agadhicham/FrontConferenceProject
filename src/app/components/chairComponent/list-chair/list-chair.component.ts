@@ -10,6 +10,8 @@ import { RoleModule } from 'src/app/modules/role/role.module';
   styleUrls: ['./list-chair.component.css']
 })
 export class ListChairComponent implements OnInit {
+
+  private idChair:number;
   chaire:ChairModule= new ChairModule(0,"","",new RoleModule(0,""))
    private chaires: Array<any>
   constructor(private chairService: ChairService, private router:Router) { }
@@ -21,6 +23,8 @@ export class ListChairComponent implements OnInit {
     },error=>{
       console.log(error)
     })
+
+
   }
 
   deletChair(id:number)
@@ -30,6 +34,23 @@ export class ListChairComponent implements OnInit {
       console.log('deleting.............. of this conference it done')
       alert('chaire deleted with success')
       this.router.navigate(['chairList'])
+    },error=>{
+      console.log(error)
+    })
+  }
+
+  editChair(chair)
+  {
+
+    this.chaire=chair;
+  }
+
+  updateChair()
+  {
+    this.chairService.edit(this.chaire)
+    .subscribe(data=>{
+      console.log('update of this chair it done')
+      alert('alert updating with success')
     },error=>{
       console.log(error)
     })

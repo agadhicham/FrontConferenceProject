@@ -1,3 +1,4 @@
+import { ChairModule } from 'src/app/modules/chair/chair.module';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
@@ -16,11 +17,15 @@ export class ChairService {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
     return this.http.get(`${this.uri}`,{headers});
   }
-  getOne(id): any {
+  getOne(id:number): Observable<any> {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
     return this.http.get(`${this.uri}/${id}`,{headers});
   }
-
+/*
+  getOne(id: number): Observable<any> {
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.get("http://localhost:8080/chair/" + id, { headers });
+  }*/
   create(chairs) {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
     return this.http.post(`${this.uri}`, chairs, { headers });
@@ -29,6 +34,10 @@ export class ChairService {
   edit(chairs) {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
     return this.http.put(`${this.uri}`, chairs, { headers });
+  }
+  upConference(chair: ChairModule): Observable<any> {
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.post("http://localhost:8080/chair/put/"+chair.id, chair, { headers })
   }
 
   remove(id) {
