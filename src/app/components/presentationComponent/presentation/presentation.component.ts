@@ -10,6 +10,7 @@ import { ChairService } from 'src/app/services/chair.service';
 import { PresentationModule } from 'src/app/modules/presentation/presentation.module';
 import { RoleModule } from 'src/app/modules/role/role.module';
 import { Router } from '@angular/router';
+import { AccountService } from 'src/app/services/account.service';
 
 
 @Component({
@@ -28,19 +29,27 @@ export class PresentationComponent implements OnInit {
   conferences: Array<any>
   conference = new Conference();
   presentation = new PresentationModule(0, this.conference, this.article, this.chair);
+  currentUser:string=""
 
 
   constructor(private presentationService: PresentationService, private conferenceService: ConferenceService,
     private articleService: ArticleService, private chairService: ChairService,
-    private router: Router) { }
+    private router: Router,private accountService:AccountService) { }
 
   ngOnInit() {
-    this.getAllArticlesAccepted();
-
+    this.currentUser = this.accountService.typeOfCurrentUser()
+    this.getAllArticlesAccepted()
   }
   navigateTo(path) {
-    this.router.navigate([path]);
+    if (this.currentUser == "ADMIN") {
+      this.router.navigate([path]);
+    } else if (this.currentUser != "ADMIN") {
+      this.router.navigate(['/']);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
+  
   getAllArticlesAccepted() {
     this.articleService.getAllAccepted()
       .subscribe(data => {

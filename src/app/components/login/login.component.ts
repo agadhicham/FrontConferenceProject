@@ -25,7 +25,13 @@ export class LoginComponent implements OnInit {
         console.log("Token from response " + jwtToken);
         this.accountService.setToken(jwtToken);
         //console.log("Token from service "+ this.authentificationService.getToken());
-        this.router.navigate(['/articles']);
+        if (this.accountService.typeOfCurrentUser() == "AUTHOR") {
+          this.router.navigate(['/articles']);
+        } else if (this.accountService.typeOfCurrentUser() == "ADMIN") {
+          this.router.navigate(['/home']);
+        } else if (this.accountService.typeOfCurrentUser() == "REVIEWER") {
+          this.router.navigate(['/articles']);
+        }
       },
       (error) => {
         form.reset();

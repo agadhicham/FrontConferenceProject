@@ -7,148 +7,165 @@
     <a class="nav-link" [routerLink]="['/presentations/create']" role="tab" data-toggle="tab">Ajouter Presentation</a>
   </li>
 </ul>
-<section>
-  <div class="container">
-    <div class="section-header">
-        <h2>Modifier Presentation: {{presentation.id}} </h2>
+<div class="container" style="margin-left: 14%">
+  <div class="section-header">
+    <h2>Modifier Presentation: {{presentation.id}} </h2>
+  </div>
+  <!-- partie article -->
+  <div *ngIf="articleSelected==null && allArticlesAccepted!=null && articlesAccepted==null">
+    <!-- Intro Item -->
+    <div class="intro">
+      <div class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
+        <div class="intro_item">
+          <h4 class="athelas ph3 ph0-l">{{updateFinish==false?'Modifier L article':' Larticle est Modifier'}} :
+            {{article.id}} </h4>
+          <div class="container">
+            <base href="/">
+            <div class="intro_image"><img src="/assets/images/intro_4.jpg" alt=""></div>
+            <div class="intro_body">
+              <div class="intro_title"><a href="#">Article:{{article.id}}</a></div>
+              <div class="intro_subtitle"> {{article.domaine== null?'':article.domaine.name}}</div>
+              <div class="intro_subtitle"> {{article.resume== null?'':article.resume.slice(0, 100)}}...</div>
+            </div>
+            <div *ngIf="updateFinish==false">
+              <a class="uk-navbar-right back-link uk-button uk-button-text"
+                (click)="ObjetToUpdate(article)"><strong>Modifier</strong></a>
+            </div>
+          </div>
+        </div>
       </div>
-    <!-- partie article -->
-    <div class="container" *ngIf="articleSelected==null && allArticlesAccepted!=null && articlesAccepted==null">
-      <div class="super_container">
-          <div class="intro">
-            <div class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
-              <!-- Intro Item -->
-              <div class="intro_item">
-                  <h4 class="athelas ph3 ph0-l">{{updateFinish==false?'Modifier L article':' Larticle est Modifier'}} :
-                      {{article.id}} </h4>
-                <div class="container">
-                  <base href="/">
-                  <div class="intro_image"><img src="/assets/images/intro_4.jpg" alt=""></div>
-                  <div class="intro_body">
-                    <div class="intro_title"><a href="#">Article:{{article.id}}</a></div>
-                    <div class="intro_subtitle"> {{article.domaine== null?'':article.domaine.name}}</div>
-                    <div class="intro_subtitle"> {{article.resume== null?'':article.resume.slice(0, 100)}}...</div>
-                  </div>
-                  <div *ngIf="updateFinish==false">
-                    <a class="uk-navbar-right back-link uk-button uk-button-text"
-                      (click)="ObjetToUpdate(article)"><strong>Modifier</strong></a>
-                  </div>
+    </div>
+  </div>
+  <!-- partie confernce -->
+  <div *ngIf="conferences==null && conferenceSelected==null && AllconferencesNotSelected!=null  ">
+    <div class="super_container">
+      <div class="intro">
+        <div class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
+          <!-- Intro Item -->
+          <div class="intro_item">
+            <h4 class="athelas ph3 ph0-l">{{updateFinish==false?'Modifier LConference':' confernce est Modifier'}} :
+              {{conference.id}} </h4>
+            <div class="container">
+              <base href="/">
+              <div class="intro_image"><img src="/assets/images/intro_4.jpg" alt=""></div>
+              <div class="intro_body">
+                <div class="intro_title"><a href="#">Conference:{{article.id}}</a></div>
+                <div class="intro_subtitle"> {{conference.titrePresentation== null?'':conference.titrePresentation}}
                 </div>
+                <div class="intro_subtitle"> {{conference.nom}}</div>
+              </div>
+              <div *ngIf="updateFinish==false">
+                <a class="uk-navbar-right back-link uk-button uk-button-text"
+                  (click)="ObjetToUpdate(conference)"><strong>Modifier</strong></a>
               </div>
             </div>
           </div>
         </div>
-    </div>
-    <!-- partie confernce -->
-    <div class="container" *ngIf="conferences==null && conferenceSelected==null && AllconferencesNotSelected!=null  ">
-      <ul class="article-list">
-        <li class="article-list-article">
-          <div class="title-aricle-list">
-            <h4 class="athelas ph3 ph0-l">{{updateFinish==false?'Modifier LConference':' confernce est Modifier'}} :
-              {{conference.id}} </h4>
-          </div>
-          <div class="article">
-            <span class="article-category">
-              {{conference.titrePresentation== null?'':conference.titrePresentation}}
-            </span>
-            <div *ngIf="updateFinish==false"><a class="uk-navbar-right back-link uk-button uk-button-text"
-                (click)="ObjetToUpdate(conference)">Modifier
-                L'Confernce</a></div>
-            <p class="article-list-article-title">
-              {{conference.nom}}
-            </p>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <!-- partie chair -->
-    <div class="container" *ngIf="allchairsNotSelected!=null && chairs==null">
-      <ul class="article-list">
-        <li class="article-list-article">
-          <div class="title-aricle-list">
-            <h4 class="athelas ph3 ph0-l">{{updateFinish==false?'Modifier Chair':' Chair est Modifier'}} : {{chair.id}}
-            </h4>
-          </div>
-          <div class="article">
-            <span class="article-category">
-              {{chair.username== null?'':chair.username}}
-            </span>
-            <div *ngIf="updateFinish==false"><a class="uk-navbar-right back-link uk-button uk-button-text"
-                (click)="ObjetToUpdate(chair)">Modifier
-                Chair</a></div>
-            <p class="article-list-article-title">
-              {{chair.username}}
-            </p>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <!-- list des articles acceptée  -->
-    <div *ngIf="articlesAccepted!=null && conferences==null">
-      <ul class="article-list">
-        <div *ngFor="let articleView of allArticlesAccepted ">
-          <!-- <div *ngIf="articleView == article"> -->
-          <li class="article-list-article">
-            <div class="article">
-              <!-- <a class="article-list-article-link" (click)="show(article)"> -->
-              <span class="article-category">
-                {{articleView.domaine== null?'':articleView.domaine.name}}
-              </span>
-              <div *ngIf="updateFinish==false"><a class="uk-navbar-right back-link uk-button uk-button-text"
-                  (click)="ObjetSelected(articleView)">Choisi
-                  L'article</a></div>
-              <p class="article-list-article-title">
-                {{articleView.title}}
-              </p>
-              <p class="article-meta article-resume">
-                {{articleView.resume==null?"":articleView.resume.slice(0, 100)}}...
-              </p>
-              <!-- </a> -->
-            </div>
-          </li>
-          <!-- </div> -->
-        </div>
-      </ul>
-    </div>
-    <!-- list des conferences -->
-    <div *ngIf="conferences!=null && conferenceSelected!=null && allchairsNotSelected==null">
-      <ul class="article-list">
-        <div *ngFor="let conference of AllconferencesNotSelected ">
-          <li class="article-list-article">
-            <div class="article">
-              <span class="article-category">
-                {{conference.titrePresentation== null?'':conference.titrePresentation}}
-              </span>
-              <div *ngIf="updateFinish==false"><a class="uk-navbar-right back-link uk-button uk-button-text"
-                  (click)="ObjetSelected(conference)">Choisir
-                  conference</a></div>
-              <p class="article-list-article-title">
-                {{conference.nom}}
-              </p>
-            </div>
-          </li>
-        </div>
-      </ul>
-    </div>
-    <!-- list des chairs  -->
-    <div *ngIf="chairs!=null && chairSelected!=null">
-      <ul class="article-list">
-        <div *ngFor="let chair of allchairsNotSelected">
-          <li class="article-list-article">
-            <div class="article">
-              <span class="article-category">
-                {{chair.username== null?'':chair.username}}
-              </span>
-              <div *ngIf="updateFinish==false"><a class="uk-navbar-right back-link uk-button uk-button-text"
-                  (click)="ObjetSelected(chair)">Choisir
-                  chair</a></div>
-              <p class="article-list-article-title">
-                {{chair.username}}
-              </p>
-            </div>
-          </li>
-        </div>
-      </ul>
+      </div>
     </div>
   </div>
-</section>
+  <!-- partie chair -->
+  <div *ngIf="allchairsNotSelected!=null && chairs==null">
+    <div class="super_container">
+      <div class="intro">
+        <div class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
+          <!-- Intro Item -->
+          <div class="intro_item">
+            <h4 class="athelas ph3 ph0-l">{{updateFinish==false?'Modifier Chair':' Chair est Modifier'}} :
+              {{chair.id}}
+            </h4>
+            <div class="container">
+              <base href="/">
+              <div class="intro_image"><img src="/assets/images/intro_4.jpg" alt=""></div>
+              <div class="intro_body">
+                <div class="intro_title"><a href="#">Chair:{{chair.id}}</a></div>
+                <div class="intro_subtitle">{{chair.username== null?'':chair.username}}
+                </div>
+                <div class="intro_subtitle"> {{chair.username}}</div>
+              </div>
+              <div *ngIf="updateFinish==false">
+                <a class="uk-navbar-right back-link uk-button uk-button-text"
+                  (click)="ObjetToUpdate(chair)"><strong>Modifier</strong></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- list des articles acceptée  -->
+  <div *ngIf="articlesAccepted!=null && conferences==null">
+    <div class="super_container">
+      <div class="intro">
+        <div class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
+          <!-- Intro Item -->
+          <div class="intro_item" *ngFor="let articleView of allArticlesAccepted ">
+            <div class="container">
+              <base href="/">
+              <div class="intro_image"><img src="/assets/images/intro_4.jpg" alt=""></div>
+              <a (click)="show(article)">
+                <div class="intro_body">
+                  <div class="intro_title"><a>{{article.title}}</a></div>
+                  <div class="intro_subtitle"> {{article.domaine== null?'':article.domaine.name}}</div>
+                  <div class="intro_subtitle"> {{article.resume== null?'':article.resume.slice(0, 100)}}...</div>
+                </div>
+              </a>
+              <div>
+                <a class="uk-navbar-left back-link uk-button uk-button-text" (click)="ObjetSelected(articleView)">Choisi
+                  L'article</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- list des conferences -->
+  <div *ngIf="conferences!=null && conferenceSelected!=null && allchairsNotSelected==null">
+    <div class="super_container" style="background-color: grey">
+      <div class="intro">
+        <div class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
+          <!-- Intro Item -->
+          <div class="intro_item" *ngFor="let conference of AllconferencesNotSelected ">
+            <div class="container">
+              <base href="/">
+              <div class="intro_image"><img src="/assets/images/intro_4.jpg" alt=""></div>
+              <div class="intro_body">
+                <div class="intro_title"><a href="#">Conference:{{conference.id}}</a></div>
+                <div class="intro_subtitle"> {{conference.titrePresentation== null?'':conference.titrePresentation}}
+                </div>
+                <div class="intro_subtitle"> {{conference.nom}}</div>
+              </div>
+              <a class="uk-navbar-right back-link uk-button uk-button-text"
+                (click)="ObjetSelected(conference)"><strong>Choisir conference</strong></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- list des chairs  -->
+  <div *ngIf="chairs!=null && chairSelected!=null">
+    <div class="super_container" style="background-color: grey">
+      <div class="intro">
+        <div class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
+          <!-- Intro Item -->
+          <div class="intro_item" *ngFor="let chair of allchairsNotSelected">
+            <div class="container">
+              <base href="/">
+              <div class="intro_image"><img src="/assets/images/intro_4.jpg" alt=""></div>
+              <div class="intro_body">
+                <div class="intro_title"><a href="#">Chair:{{chair.id}}</a></div>
+                <div class="intro_subtitle">{{chair.username== null?'':chair.username}}
+                </div>
+                <div class="intro_subtitle"> {{chair.username}}</div>
+              </div>
+              <a class="uk-navbar-right back-link uk-button uk-button-text"
+                (click)="ObjetSelected(chair)"><strong>Choisir chair</strong></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

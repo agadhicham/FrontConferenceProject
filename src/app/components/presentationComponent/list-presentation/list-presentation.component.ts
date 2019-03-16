@@ -7,6 +7,7 @@ import { DomaineModule } from 'src/app/modules/domaine/domaine.module';
 import { Conference } from 'src/app/modules/conference/conference';
 import { ChairModule } from 'src/app/modules/chair/chair.module';
 import { RoleModule } from 'src/app/modules/role/role.module';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-list-presentation',
@@ -19,10 +20,12 @@ export class ListPresentationComponent implements OnInit {
   article = new ArticleModule(0, '', '', new DomaineModule(0, ''));
   conference = new Conference();
   chair = new ChairModule(0, "", "", new RoleModule(0, ""));
-  constructor(private presentationServie: PresentationService, private router: Router) { }
+  currentUser:string="";
+  constructor(private presentationServie: PresentationService, private router: Router,private accountService:AccountService) { }
 
   ngOnInit() {
     this.getAllPresentations();
+    this.currentUser = this.accountService.typeOfCurrentUser()
   }
   getAllPresentations() {
     this.presentationServie.getAll()
@@ -31,8 +34,15 @@ export class ListPresentationComponent implements OnInit {
           console.log(data)
       }, error => console.log(error));
   }
+
   navigateTo(path) {
-    this.router.navigate([path]);
+    if (this.currentUser == "ADMIN") {
+      this.router.navigate([path]);
+    } else if (this.currentUser != "ADMIN") {
+      this.router.navigate(['/']);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
   // showObjet(objet: any) {
   //   if (objet != null) {

@@ -14,17 +14,25 @@ export class ListArtclesComponent implements OnInit {
   articles: Array<ArticleModule>;
   allArticles: Array<ArticleModule>;
   currentUser: string;
+  currentUserRole: string="";
 
   constructor(private articleService: ArticleService, private router: Router, private accountService: AccountService) { }
 
   ngOnInit() {
     this.getAllArticles();
-    this.currentUser = this.accountService.getCurrentUser();
+    this.currentUser = this.accountService.typeOfCurrentUser()
   }
 
   navigateTo(path) {
-    this.router.navigate([path]);
+    if (this.currentUser == "ADMIN") {
+      this.router.navigate([path]);
+    } else if (this.currentUser != "ADMIN") {
+      this.router.navigate(['/']);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
+
 
 
   getAllArticles() {

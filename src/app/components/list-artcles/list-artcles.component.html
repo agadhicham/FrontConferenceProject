@@ -7,46 +7,41 @@
     Rechercher :
     <input #searchedTitle type="text" class="form-control" placeholder="Titre, Domaine ..."
       (keyup)="search(searchedTitle.value)">
-      <a class="uk-navbar-left" (click)="navigateTo('articles/create')">+ Poster un nouveau article</a>
   </div>
-<ul class="nav nav-tabs" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['/articles']" role="tab" data-toggle="tab">List Des Articles</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['/articles/create']" role="tab" data-toggle="tab">Ajouter Article</a>
-  </li>
-</ul>
-<div class="section-header">
-  <h2>List Des Articles</h2>
-</div>
-<div class="super_container">
-  <div class="intro">
-    <div class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
-      <!-- Intro Item -->
-      <div class="intro_item" *ngFor="let article of articles">
-        <div class="container">
-          <base href="/">
-          <div class="intro_image"><img src="/assets/images/intro_4.jpg" alt=""></div>
-          <a (click)="show(article)">
-            <div class="intro_body">
-              <div class="intro_title"><a>{{article.title}}</a></div>
-              <div class="intro_subtitle"> {{article.domaine== null?'':article.domaine.name}}</div>
-              <div class="intro_subtitle"> {{article.resume== null?'':article.resume.slice(0, 100)}}...</div>
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/articles']" role="tab" data-toggle="tab">List Des Articles</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/articles/create']" role="tab" data-toggle="tab">Ajouter Article</a>
+    </li>
+  </ul>
+  <div class="super_container">
+    <div class="intro">
+      <div class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
+        <!-- Intro Item -->
+        <div class="intro_item" *ngFor="let article of articles">
+          <div class="container">
+            <base href="/">
+            <div class="intro_image"><img src="/assets/images/intro_4.jpg" alt=""></div>
+            <a (click)="show(article)">
+              <div class="intro_body">
+                <div class="intro_title"><a>{{article.title}}</a></div>
+                <div class="intro_subtitle"> {{article.domaine== null?'':article.domaine.name}}</div>
+                <div class="intro_subtitle"> {{article.resume== null?'':article.resume.slice(0, 100)}}...</div>
+              </div>
+            </a>
+            <div>
+              <div class=" back-link uk-button-text article-date">
+                <span class="">
+                  Posté par <strong>{{currentUser}}</strong>
+                </span>
+              </div>
+              <a class="uk-navbar-left back-link uk-button uk-button-text"
+                (click)="edit(article)"><strong>Modifier</strong></a>
             </div>
-          </a>
-          <div>
-            <div class=" back-link uk-button-text article-date">
-              <span class="">
-                Posté par <strong>{{currentUser}}</strong> le
-                {{ article.postedAt | date:'yyyy-MM-dd à HH:mm'}}
-              </span>
-            </div>
-            <a class="uk-navbar-left back-link uk-button uk-button-text"
-              (click)="edit(article)"><strong>Modifier</strong></a>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
