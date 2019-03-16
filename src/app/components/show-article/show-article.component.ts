@@ -21,10 +21,12 @@ export class ShowArticleComponent implements OnInit {
   isShowReviews = false;
   article = new ArticleModule(0, '', '', new DomaineModule(0, ''));
   reviews: Array<ReviewModule>;
+  currentUserType:string
 
-  constructor(private articleService: ArticleService, private reviewService: ReviewService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private articleService: ArticleService, private reviewService: ReviewService, private router: Router, private route: ActivatedRoute, private accountService: AccountService) { }
 
   ngOnInit() {
+    this.currentUserType=this.accountService.typeOfCurrentUser();
     this.route.params.subscribe(params => {
       this.articleService.getOne(params.id).subscribe(data => {
         this.article = data;

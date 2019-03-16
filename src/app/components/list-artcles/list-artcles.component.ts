@@ -27,7 +27,7 @@ export class ListArtclesComponent implements OnInit {
     if (this.currentUser == "ADMIN") {
       this.router.navigate([path]);
     } else if (this.currentUser != "ADMIN") {
-      this.router.navigate(['/']);
+      this.router.navigate([path]);
     } else {
       this.router.navigate(['/']);
     }

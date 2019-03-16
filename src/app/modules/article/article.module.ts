@@ -13,6 +13,7 @@ export class ArticleModule {
   title: string;
   resume: string;
   postedAt: Date
+  status:string
   domaine: DomaineModule;
 
   constructor(

@@ -10,7 +10,7 @@
       <span class="article-category">
         {{article.domaine== null?'':article.domaine.name}}
       </span>
-      <a class="uk-navbar-right back-link uk-button uk-button-text" (click)="showReviews()">Review</a>
+      <a *ngIf="currentUserType=='REVIEWER'" class="uk-navbar-right back-link uk-button uk-button-text" (click)="showReviews()">Review</a>
       <h2 class="article-list-article-title">
         {{article.title}}
       </h2>
@@ -21,7 +21,7 @@
   </div>
   <div *ngIf="isShowReviews" >
   <div class="title-aricle-list">
-    <div class="uk-margin">
+    <div *ngIf="article.status=='IN_IVALUATION'"  class="uk-margin">
       <ngb-rating [(rate)]="review.rate" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly">
         <ng-template let-fill="fill" let-index="index">
           <span class="editable-star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
