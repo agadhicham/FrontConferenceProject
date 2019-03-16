@@ -1,24 +1,24 @@
 <div class="row">
-  <div class="bg bg-info mb-3 col-sm-3" uk-margin *ngFor="let chair of chaires">
-      <div class="card-header">Details for chair:</div>
+  <div class="bg bg-white mb-3 col-sm-3" uk-margin *ngFor="let chair of chaires">
+      <div class="card-header">Details for Domaine:</div>
       <div class="card-body" >
               <h2 >{{ chair.id }}</h2>
               <p >{{ chair.username }}</p>
               <div class="example-button-row">
                <!-- <a mat-fab color="primary" href="#modal-sections" uk-toggle>Updating Chair </a>
                 <a mat-fab color="warn"  href="#modal-delete" uk-toggle>Delete chair</a>-->
-                <button class="btn btn1 btn-xs " href="#modal-sections" uk-toggle (click)="editChair(chair)">Editing Chair</button>
-                <button class="btn btn-default btn-xs" href="#modal-delete" uk-toggle uk-toggle>Delete chair</button>
+                <button class="btn btn1 btn-xs " href="#modal-sections" uk-toggle (click)="editChair(chair)">Editing domaine</button>
+                <button class="btn btn-default btn-xs" href="#modal-delete" uk-toggle uk-toggle>Delete domaine</button>
 
                 <div id="modal-delete" uk-modal>
                   <div class="uk-modal-dialog">
                       <button class="uk-modal-close-default" type="button" uk-close></button>
                       <div class="uk-modal-header">
-                          <h2 class="uk-modal-title">chair à supprimer</h2>
+                          <h2 class="uk-modal-title">domaine deleting.</h2>
                       </div>
                       <div class="uk-modal-body">
-                      confirmer votre suppresion !
-                      <p>pour {{ chair.username }}</p>
+                      confirmer your  delete !
+                      <p>for {{ chair.username }}</p>
                       <div class="uk-modal-footer uk-text-right">
                           <button class="btn btn-xs btn-default uk-modal-close" type="button">Cancel</button>
                           <button class="btn btn-xs btn-warning" (click)="deletChair(chair.id)" type="button" >delete</button>
@@ -41,63 +41,32 @@
       <div class="uk-modal-body">
         <form class="uk-form-stacked"  >
             <div class="uk-container">
-                <label class="uk-form-label">Nom Chair</label>
+                <label class="uk-form-label">Name Domaine</label>
                 <div class="uk-margin">
                   <input
                     class="uk-input"
                     type="text"
                     placeholder="Some text..."
                     name="username"
-                    [(ngModel)]="chaire.username"
+                    [(ngModel)]="chaire.name"
                     minlength="4"
                     appForbiddenName="bob"
-                    #username="ngModel"
+                    #name="ngModel"
                     ngModel
                     required
                   />
                   <div
-                    *ngIf="username.invalid && (username.dirty || username.touched)"
+                    *ngIf="name.invalid && (name.dirty || name.touched)"
                     class="alert alert-danger"
                   >
-                    <div *ngIf="username?.errors.required">
+                    <div *ngIf="name?.errors.required">
                       Nom is required.
                     </div>
-                    <div *ngIf="username?.errors.minlength">
+                    <div *ngIf="name?.errors.minlength">
                       Nom must be at least 4 characters long.
                     </div>
-                    <div *ngIf="username?.errors.forbiddenName">
+                    <div *ngIf="name?.errors.forbiddenName">
                       Nom cannot be Bob.
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="uk-container">
-                <label class="uk-form-label">password</label>
-                <div class="uk-margin">
-                  <input
-                    class="uk-input"
-                    type="text"
-                    placeholder="password"
-                    name="password"
-                    [(ngModel)]="chaire.password"
-                    minlength="4"
-                    appForbiddenName="bob"
-                    #password="ngModel"
-                    ngModel
-                    required
-                  />
-                  <div
-                    *ngIf="password.invalid && (password.dirty || password.touched)"
-                    class="alert alert-danger"
-                  >
-                    <div *ngIf="password?.errors.required">
-                      password is required.
-                    </div>
-                    <div *ngIf="password?.errors.minlength">
-                        password must be at least 4 characters long.
-                    </div>
-                    <div *ngIf="password?.errors.forbiddenName">
-                        password cannot be Bob.
                     </div>
                   </div>
                 </div>
