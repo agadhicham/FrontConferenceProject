@@ -12,6 +12,11 @@ export class AffectationService {
 
   constructor(private http: HttpClient, private accountservice: AccountService) { }
 
+  findByPresentation(idPresentation): Observable<any> {
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.get(`${this.uri}/presentation/${idPresentation}`,{headers});
+  }
+
     getAll(): Observable<any> {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
     return this.http.get(`${this.uri}`,{headers});

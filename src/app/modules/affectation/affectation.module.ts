@@ -11,6 +11,7 @@ import { JuryModule } from '../jury/jury.module';
 })
 export class AffectationModule {
   id: number;
+  mark: number;
   presentation:PresentationModule;
   jury:JuryModule
   constructor(id: number,presentation:PresentationModule,

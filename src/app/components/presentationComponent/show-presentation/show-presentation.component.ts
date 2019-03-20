@@ -8,6 +8,8 @@ import { RoleModule } from 'src/app/modules/role/role.module';
 import { Conference } from 'src/app/modules/conference/conference';
 import { PresentationModule } from 'src/app/modules/presentation/presentation.module';
 import { AccountService } from 'src/app/services/account.service';
+import { AffectationService } from 'src/app/services/affectation.service';
+import { AffectationModule } from 'src/app/modules/affectation/affectation.module';
 
 @Component({
   selector: 'app-show-presentation',
@@ -19,22 +21,45 @@ export class ShowPresentationComponent implements OnInit {
   chair = new ChairModule(0, "", "", new RoleModule(0, ""));
   conference = new Conference();
   presentation = new PresentationModule(0, this.conference, this.article, this.chair);
-  constructor(private activateRoute: ActivatedRoute, private presentationService: PresentationService, private accountService: AccountService, private router: Router) { }
+  affectations: Array<AffectationModule>
+  note = 0;
+  constructor(private activateRoute: ActivatedRoute, private presentationService: PresentationService, private affectationService: AffectationService, private accountService: AccountService, private router: Router) { }
 
   ngOnInit() {
     if (this.accountService.typeOfCurrentUser() == "ADMIN") {
       this.activateRoute.params.subscribe(params => {
         this.presentationService.getOne(params.id).subscribe(data => {
           this.presentation = data;
-          this.article = this.presentation.article
-          this.chair = this.presentation.chair
-          this.conference = this.presentation.conference
-          console.log(data)
+          this.article = data.article
+          this.chair = data.chair
+          this.conference = data.conference
         }, error => console.log(error));
+        this.getAffectations(params.id) 
       });
     }
     else {
       this.router.navigate(['/'])
     }
+  }
+  getAffectations(id) {
+    this.affectationService.findByPresentation(id).subscribe(data => {
+      this.affectations = data
+      if (data.length>0) {
+        this.calculateNote(data);
+      }
+    }, error => console.log(error));
+  }
+
+  calculateNote(affectations){
+    let total=0
+  affectations.forEach(element => {
+    total += element.mark;
+  });
+  this.note =total/this.affectations.length
+}
+  saveMarks() {
+    this.affectations.forEach(affectation => {
+      this.affectationService.create(affectation).subscribe();
+    })
   }
 }

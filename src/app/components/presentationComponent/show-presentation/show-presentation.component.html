@@ -60,11 +60,49 @@
               <div class="intro_title"><a href="#"> {{chair.username== null?'':chair.username}}</a></div>
               <div class="intro_subtitle"> {{chair.username}}</div>
             </div>
-            <div>
-              <a class="uk-navbar-right back-link uk-button uk-button-text"
-                (click)="ObjetSelected(chair)"><strong>Choisi
-                  Chiar</strong></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf= "affectations.length > 0" class="intro_subtitle">
+  {{note}}
+    <a  data-toggle="modal" data-target="#degreModal">Notter
+      </a>
+
+  </div>
+</div>
+
+<!-- modal of the giving a degre -->
+<div *ngIf="true">
+  <div class="container">
+    <!-- The Modal -->
+    <div class="modal" id="degreModal">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h1 class="modal-title">Donner la note</h1>
+            <button type="button" class="close" data-dismiss="modal">×</button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div *ngFor="let affectation of affectations"  class="uk-container">
+                <label class="uk-form-label">{{affectation.jury.firstName}}</label>
+              <div class="uk-margin">
+                <input class="uk-input" type="number" placeholder="note" name="note" [(ngModel)]="affectation.mark"
+                  #title="ngModel" ngModel required>
+                <div *ngIf="(title.value < 0 || title.invalid) && (title.dirty || title.touched)" class="uk-alert-danger" uk-alert>
+                  <a class="uk-alert-close" uk-close></a>
+                  note non valid
+                </div>
+              </div>
             </div>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveMarks()">Enrigestrer</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
