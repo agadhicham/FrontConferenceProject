@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PresentationService } from 'src/app/services/presentation.service';
 import { ChairModule } from 'src/app/modules/chair/chair.module';
 import { ArticleModule } from 'src/app/modules/article/article.module';
@@ -7,6 +7,7 @@ import { DomaineModule } from 'src/app/modules/domaine/domaine.module';
 import { RoleModule } from 'src/app/modules/role/role.module';
 import { Conference } from 'src/app/modules/conference/conference';
 import { PresentationModule } from 'src/app/modules/presentation/presentation.module';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-show-presentation',
@@ -18,18 +19,22 @@ export class ShowPresentationComponent implements OnInit {
   chair = new ChairModule(0, "", "", new RoleModule(0, ""));
   conference = new Conference();
   presentation = new PresentationModule(0, this.conference, this.article, this.chair);
-  constructor(private activateRoute:ActivatedRoute,private presentationService:PresentationService ) { }
+  constructor(private activateRoute: ActivatedRoute, private presentationService: PresentationService, private accountService: AccountService, private router: Router) { }
 
   ngOnInit() {
-    this.activateRoute.params.subscribe(params => {
-      this.presentationService.getOne(params.id).subscribe(data => {
-        this.presentation = data;
-        this.article=this.presentation.article
-        this.chair=this.presentation.chair
-        this.conference=this.presentation.conference
-        console.log(data)
-      }, error => console.log(error));
-    });
+    if (this.accountService.typeOfCurrentUser() == "ADMIN") {
+      this.activateRoute.params.subscribe(params => {
+        this.presentationService.getOne(params.id).subscribe(data => {
+          this.presentation = data;
+          this.article = this.presentation.article
+          this.chair = this.presentation.chair
+          this.conference = this.presentation.conference
+          console.log(data)
+        }, error => console.log(error));
+      });
+    }
+    else {
+      this.router.navigate(['/'])
+    }
   }
-
 }

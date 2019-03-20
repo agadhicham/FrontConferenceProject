@@ -13,24 +13,23 @@ export class ListArtclesComponent implements OnInit {
 
   articles: Array<ArticleModule>;
   allArticles: Array<ArticleModule>;
-  currentUser: string;
-  currentUserRole: string="";
+  currentUser: string = "";
+  currentUserRole: string = "";
 
   constructor(private articleService: ArticleService, private router: Router, private accountService: AccountService) { }
 
   ngOnInit() {
-    this.getAllArticles();
-    this.currentUser = this.accountService.typeOfCurrentUser()
+    if (this.accountService.typeOfCurrentUser() == "ADMIN" || this.accountService.typeOfCurrentUser() == "AUTHOR" || this.accountService.typeOfCurrentUser() == "REVIEWER") {
+      this.getAllArticles();
+      this.currentUser = this.accountService.typeOfCurrentUser()
+    }
+    else {
+      this.router.navigate(['/'])
+    }
   }
 
   navigateTo(path) {
-    if (this.currentUser == "ADMIN") {
-      this.router.navigate([path]);
-    } else if (this.currentUser != "ADMIN") {
-      this.router.navigate([path]);
-    } else {
-      this.router.navigate(['/']);
-    }
+    this.router.navigate([path]);
   }
 
 
@@ -39,7 +38,7 @@ export class ListArtclesComponent implements OnInit {
       .subscribe(data => {
         this.allArticles = data,
           this.articles = data
-      }, error => console.log(error)); 
+      }, error => console.log(error));
   }
   search(title) {
     this.articles = this.allArticles.filter(item => (this.filterByTitle(item, title) || this.filterByDomaine(item, title)));

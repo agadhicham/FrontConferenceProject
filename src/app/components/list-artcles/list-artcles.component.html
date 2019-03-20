@@ -3,7 +3,7 @@
     <li class="nav-item">
       <a class="nav-link" [routerLink]="['/articles']" role="tab" data-toggle="tab">List Des Articles</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="currentUser=='ADMIN' || currentUser=='AUTHOR' ">
       <a class="nav-link" [routerLink]="['/articles/create']" role="tab" data-toggle="tab">Ajouter Article</a>
     </li>
   </ul>

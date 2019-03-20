@@ -15,18 +15,17 @@ export class ListAffectationsComponent implements OnInit {
   constructor(private affectationService: AffectationService, private router: Router, private accountService: AccountService) { }
 
   ngOnInit() {
-    this.getAllAffectations()
-    this.currentUser = this.accountService.typeOfCurrentUser()
+    if (this.accountService.typeOfCurrentUser() == "ADMIN") {
+      this.getAllAffectations()
+      this.currentUser = this.accountService.typeOfCurrentUser()
+    }
+    else {
+      this.router.navigate(['/'])
+    }
   }
 
   navigateTo(path) {
-    if (this.currentUser == "ADMIN") {
       this.router.navigate([path]);
-    } else if (this.currentUser != "ADMIN") {
-      this.router.navigate(['/']);
-    } else {
-      this.router.navigate(['/']);
-    }
   }
   getAllAffectations() {
     this.affectationService.getAll()

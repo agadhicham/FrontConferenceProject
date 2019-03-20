@@ -30,6 +30,9 @@ export class AccountService {
   }
   getCurrentUser() {
     let jwtHelper = new JwtHelperService();
+    jwtHelper.decodeToken(this.getToken()).roles.forEach(element => {
+      console.log(element.authority)
+    });
     return jwtHelper.decodeToken(this.getToken()).sub;
   }
   register(user) {
@@ -40,7 +43,10 @@ export class AccountService {
     return localStorage.getItem('token');
   }
   isAuthenticated() {
-    return localStorage.getItem('token') != null;
+    if(localStorage.getItem('token')!=null){
+      return true
+    }
+    return false
   }
   onLogout() {
     localStorage.removeItem('token');
@@ -52,6 +58,10 @@ export class AccountService {
     });
   }
   typeOfCurrentUser(){
+    let jwtHelper = new JwtHelperService();
+    jwtHelper.decodeToken(this.getToken()).roles.forEach(element => {
+     this.role=element.authority
+    });
     return this.role
   }
 }

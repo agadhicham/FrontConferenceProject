@@ -26,7 +26,7 @@ export class ArticleComponent implements OnInit {
   constructor(private articleService: ArticleService, private accountservice: AccountService, private domaineService: DomaineService, private router: Router,  private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.currentUser = this.accountservice.typeOfCurrentUser()
+    if(this.accountservice.typeOfCurrentUser()=="ADMIN" || this.accountservice.typeOfCurrentUser()=="AUTHOR"){
     this.route.params.subscribe(params => {
       if(params.id){
       this.articleService.getOne(params.id).subscribe(data => {
@@ -35,6 +35,9 @@ export class ArticleComponent implements OnInit {
       }, error => console.log(error));
     }
     });
+  }else{
+    this.router.navigate(['/'])
+  }
     
     this.getAllArticles();
     this.getAllDomaines();

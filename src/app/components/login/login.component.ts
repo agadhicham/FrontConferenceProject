@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    this.accountService.onLogout()
   }
 
   onSignup(form: NgForm) {
@@ -29,6 +30,8 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/articles']);
         } else if (this.accountService.typeOfCurrentUser() == "ADMIN") {
           this.router.navigate(['/home']);
+        } else if (this.accountService.typeOfCurrentUser() == "USER") {
+          this.router.navigate(['/articles']);
         } else if (this.accountService.typeOfCurrentUser() == "REVIEWER") {
           this.router.navigate(['/articles']);
         }

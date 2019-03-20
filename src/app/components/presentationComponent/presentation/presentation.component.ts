@@ -29,27 +29,26 @@ export class PresentationComponent implements OnInit {
   conferences: Array<any>
   conference = new Conference();
   presentation = new PresentationModule(0, this.conference, this.article, this.chair);
-  currentUser:string=""
+  currentUser: string = ""
 
 
   constructor(private presentationService: PresentationService, private conferenceService: ConferenceService,
     private articleService: ArticleService, private chairService: ChairService,
-    private router: Router,private accountService:AccountService) { }
+    private router: Router, private accountService: AccountService) { }
 
   ngOnInit() {
-    this.currentUser = this.accountService.typeOfCurrentUser()
-    this.getAllArticlesAccepted()
-  }
-  navigateTo(path) {
-    if (this.currentUser == "ADMIN") {
-      this.router.navigate([path]);
-    } else if (this.currentUser != "ADMIN") {
-      this.router.navigate(['/']);
-    } else {
-      this.router.navigate(['/']);
+    if (this.accountService.typeOfCurrentUser() == "ADMIN") {
+      this.currentUser = this.accountService.typeOfCurrentUser()
+      this.getAllArticlesAccepted()
+    }
+    else {
+      this.router.navigate(['/'])
     }
   }
-  
+  navigateTo(path) {
+      this.router.navigate([path]);
+  }
+
   getAllArticlesAccepted() {
     this.articleService.getAllAccepted()
       .subscribe(data => {
