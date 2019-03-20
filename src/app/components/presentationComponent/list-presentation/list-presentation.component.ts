@@ -21,6 +21,7 @@ export class ListPresentationComponent implements OnInit {
   conference = new Conference();
   chair = new ChairModule(0, "", "", new RoleModule(0, ""));
   currentUser: string = "";
+  note=0
   constructor(private presentationServie: PresentationService, private router: Router, private accountService: AccountService) { }
 
   ngOnInit() {

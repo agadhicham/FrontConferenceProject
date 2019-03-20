@@ -23,12 +23,18 @@
         <!-- Intro Item -->
         <div class="intro_item" *ngFor="let article of articles">
           <div class="container">
+            <div class="form-inline">
+                <a class="uk-navbar-left  uk-button-text"
+                (click)="edit(article)"><strong>Modifier</strong></a>
+                <a class="uk-navbar-right  uk-button-text"
+                (click)="delete(article)"><strong>Supprimer</strong></a>
+            </div>
             <base href="/">
             <div class="intro_image"><img src="/assets/images/intro_4.jpg" alt=""></div>
             <a (click)="show(article)">
               <div class="intro_body">
                 <div class="intro_title"><a>{{article.title}}</a></div>
-                <div class="intro_subtitle"> {{article.domaine== null?'':article.domaine.name}}</div>
+                <div class="article-category"> {{article.domaine== null?'':article.domaine.name}}</div>
                 <div class="intro_subtitle"> {{article.resume== null?'':article.resume.slice(0, 100)}}...</div>
               </div>
             </a>
@@ -40,11 +46,9 @@
                   </div>
               <div class=" back-link uk-button-text article-date">
                 <span class="">
-                  Posté par <strong>{{currentUser}}</strong>le {{ article.postedAt | date:'yyyy-MM-dd à HH:mm'}}
+                  Posté par <strong>{{article.author.username}}</strong> le  {{ article.postedAt | date:'yyyy-MM-dd à HH:mm'}}
                 </span>
               </div>
-              <a class="uk-navbar-left back-link uk-button uk-button-text"
-                (click)="edit(article)"><strong>Modifier</strong></a>
             </div>
           </div>
         </div>

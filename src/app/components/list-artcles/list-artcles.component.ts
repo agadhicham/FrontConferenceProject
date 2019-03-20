@@ -58,5 +58,9 @@ export class ListArtclesComponent implements OnInit {
   edit(article) {
     this.navigateTo('articles/edit/' + article.id);
   }
+  delete(article) {
+    this.getAllArticles();
+    this.articleService.remove(article.id).subscribe();
+  }
 
 }
