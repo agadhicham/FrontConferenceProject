@@ -74,4 +74,7 @@ export class ListPresentationComponent implements OnInit {
   edit(presentation) {
     this.navigateTo('presentations/edit/' + presentation.id);
   }
+  giveMark(){
+    
+  }
 }
