@@ -1,25 +1,29 @@
 <header id="header" style="background-color: grey">
-  <div class="container">
-
-    <div id="logo" class="pull-left">
-      <a href="#intro" class="scrollto"><img src="img/logo.png" alt="" title=""></a>
+  <div>
+    <div class="logo_container d-flex flex-row align-items-start justify-content-start">
+      <base href="/">
+      <div class="logo_image"><div><img src="/assets/images/logo.png" alt=""></div></div>
+      <div class="logo_content">
+        <div id="logo_text" class="logo_text logo_text_not_ie">Conference</div>
+      </div>
+      <nav id="nav-menu-container" style="margin-left: 10%">
+          <ul class="nav-menu">
+            <li class="menu-active" *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/home']">Home</a></li>
+            <li *ngIf="currentUser=='ADMIN' || currentUser=='AUTHOR' "><a [routerLink]="['/articles']"> Articles</a></li>
+            <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/home']">Conference</a></li>
+            <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/affectations']">Affectations</a></li>
+            <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/presentations']">Presentations</a></li>
+            <!-- <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/juryList']">Jury</a></li>
+            <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/Auteur']">Auteurs</a></li>
+            <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/chairList']">Chair</a></li>
+            <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/reviwerList']">Reviwer</a></li>
+            <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/domaineList']">Domaine</a></li> -->
+            <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/administration']">Administration Des Utilisateur</a></li>
+            <li class="buy-tickets"><a (click)="onLogout()">Déconnection</a></li>
+          </ul>
+        </nav><!-- #nav-menu-container -->
     </div>
 
-    <nav id="nav-menu-container">
-      <ul class="nav-menu">
-        <li class="menu-active" *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/home']">Home</a></li>
-        <li *ngIf="currentUser=='ADMIN' || currentUser=='AUTHOR' "><a [routerLink]="['/articles']"> Articles</a></li>
-        <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/home']">Conference</a></li>
-        <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/affectations']">Affectations</a></li>
-        <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/presentations']">Presentations</a></li>
-        <!-- <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/juryList']">Jury</a></li>
-        <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/Auteur']">Auteurs</a></li>
-        <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/chairList']">Chair</a></li>
-        <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/reviwerList']">Reviwer</a></li>
-        <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/domaineList']">Domaine</a></li> -->
-        <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/administration']">Administration Des Utilisateur</a></li>
-        <li class="buy-tickets"><a (click)="onLogout()">Déconnection</a></li>
-      </ul>
-    </nav><!-- #nav-menu-container -->
+   
   </div>
 </header>
