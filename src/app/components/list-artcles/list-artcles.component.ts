@@ -11,8 +11,8 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class ListArtclesComponent implements OnInit {
 
-  articles: Array<ArticleModule>;
-  allArticles: Array<ArticleModule>;
+  articles: Array<ArticleModule> =[];
+  allArticles: Array<ArticleModule>=[];
   currentUser: string = "";
   currentUserRole: string = "";
 
@@ -36,8 +36,7 @@ export class ListArtclesComponent implements OnInit {
   getAllArticles() {
     this.articleService.getAll()
       .subscribe(data => {
-        this.allArticles = data,
-          this.articles = data
+        this.getImages(data)
       }, error => console.log(error));
   }
   search(title) {
@@ -58,5 +57,18 @@ export class ListArtclesComponent implements OnInit {
   edit(article) {
     this.navigateTo('articles/edit/' + article.id);
   }
+  delete(article) {
+    this.getAllArticles();
+    this.articleService.remove(article.id).subscribe();
+  }
 
+  getImages(articlesData){
+    articlesData.forEach(article=>{
+      this.articleService.getImage(article.id).subscribe(data =>{
+        article.image =data;
+      } );
+    })
+    this.allArticles = articlesData;
+    this.articles=articlesData;
+  }
 }

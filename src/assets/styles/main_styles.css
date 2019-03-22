@@ -841,6 +841,7 @@ section
 	width: calc((100% - 60px) / 3);
 	background: #f3f7f9;
 	margin-bottom: 48px;
+	border-radius: 2%;
 }
 .intro_image
 {

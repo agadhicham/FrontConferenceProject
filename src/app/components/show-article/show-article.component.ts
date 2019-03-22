@@ -53,4 +53,8 @@ export class ShowArticleComponent implements OnInit {
     );
   }
 
+  purchase(){
+    this.navigateTo('payments/'+ this.article.id)
+  }
+
 }

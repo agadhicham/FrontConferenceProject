@@ -21,7 +21,7 @@ export class ShowPresentationComponent implements OnInit {
   chair = new ChairModule(0, "", "", new RoleModule(0, ""));
   conference = new Conference();
   presentation = new PresentationModule(0, this.conference, this.article, this.chair);
-  affectations: Array<AffectationModule>
+  affectations: Array<AffectationModule> = [];
   note = 0;
   constructor(private activateRoute: ActivatedRoute, private presentationService: PresentationService, private affectationService: AffectationService, private accountService: AccountService, private router: Router) { }
 
@@ -33,7 +33,6 @@ export class ShowPresentationComponent implements OnInit {
           this.article = data.article
           this.chair = data.chair
           this.conference = data.conference
-          console.log(data)
         }, error => console.log(error));
         this.getAffectations(params.id) 
       });
@@ -45,7 +44,9 @@ export class ShowPresentationComponent implements OnInit {
   getAffectations(id) {
     this.affectationService.findByPresentation(id).subscribe(data => {
       this.affectations = data
-      this.calculateNote(data);
+      if (data.length>0) {
+        this.calculateNote(data);
+      }
     }, error => console.log(error));
   }
 
@@ -60,5 +61,10 @@ export class ShowPresentationComponent implements OnInit {
     this.affectations.forEach(affectation => {
       this.affectationService.create(affectation).subscribe();
     })
+    this.calculateNote(this.affectations)
+  }
+
+  navigateTo(path) {
+    this.router.navigate([path]);
   }
 }

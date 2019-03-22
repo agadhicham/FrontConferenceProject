@@ -1,18 +1,17 @@
 <app-nav-bar></app-nav-bar>
-  <div class="title-aricle-list">
-    <div class="athelas ph3 ph0-l"><div class="section-header">
-        <h2>Paiement</h2>
-      </div>
+<div class="title-aricle-list">
+  <div class="athelas ph3 ph0-l">
+    <div class="section-header">
+      <h2>Paiement</h2>
+    </div>
   </div>
-<div class="ngx-braintree">
-    <ngx-braintree 
-    [clientTokenURL]="'http://localhost:8080/client/token'"
-      [createPurchase]="createPurchase.bind(this)" 
-      [chargeAmount]="5"
-      [buttonText]="'Payer'"
-      [enabledStyle]="enabledStyle"
-      [disabledStyle]="disabledStyle">>
+
+  <div class="ngx-braintree" *ngIf="isUserHasAcessToPay()" >
+    <ngx-braintree  [clientTokenURL]="'http://localhost:8080/client/token'"
+      [createPurchase]="createPurchase.bind(this)" [chargeAmount]="5" [buttonText]="'Payer'"
+      [enabledStyle]="enabledStyle" [disabledStyle]="disabledStyle">>
     </ngx-braintree>
   </div>
 
-  <a class="uk-navbar-left" style="color:indianred" (click)="navigateTo('articles')">Liste des article</a></div>
+  <a class="uk-navbar-left" style="color:indianred" (click)="navigateTo('articles')">Liste des article</a>
+</div>

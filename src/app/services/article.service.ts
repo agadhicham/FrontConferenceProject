@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AccountService } from './account.service';
 import { PaymentModule } from '../modules/payment/payment.module';
+import { ArticleModule } from '../modules/article/article.module';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class ArticleService {
     return this.http.get(`${this.uri}/${id}`, { headers });
   }
 
-  create(article) {
+  create(article): any {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
     return this.http.post(`${this.uri}`, article, { headers });
   }
@@ -47,12 +48,24 @@ export class ArticleService {
     return this.http.get(`${this.uri}/${id}` + '/files', { headers });
   }
 
+  public getImage(id): Observable<any> {
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.get(`${this.uri}/${id}` + '/image', { headers });
+  }
+
   public saveUploadedFile(file) {
     this.files.push(file);
   }
-  createPurchase(payment: PaymentModule): Observable<any> { 
+  createPurchase(payment: PaymentModule): Observable<any> {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
     return this.http
       .post('http://localhost:8080/client/payment/process', payment, { 'headers': headers })
+  }
+  
+  getBraintreeClientToken():any{
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http
+      .get('http://localhost:8080/client/token', { headers });
     }
+
 }
