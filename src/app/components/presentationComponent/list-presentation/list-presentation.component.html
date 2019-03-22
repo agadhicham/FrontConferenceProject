@@ -18,25 +18,24 @@
           <!-- Intro Item -->
           <div class="intro_item" *ngFor="let presentation of allPresentations ">
             <div class="container">
+                <div>
+                    <a class="uk-navbar-right uk-button uk-button-text"
+                      (click)="edit(presentation)"><strong>Modifier</strong></a>
+                  </div>
               <base href="/">
               <div class="intro_image"><img src="/assets/images/intro_2.jpg" alt=""></div>
               <div class="intro_body">
-                <div class="intro_title"><a (click)="show(presentation)"> Presentation : {{presentation.id== null?'':presentation.id}}</a>
+                <div class="intro_title"><a (click)="show(presentation)"> Presentation : {{presentation.article== null?'':presentation.article.title}}</a>
                 </div>
                 <div class="intro_subtitle">
                   <a (click)="showConference(presentation.conference)" data-toggle="modal" data-target="#myModal1">Voir
                     conference</a>
                 </div>
                 <div class="intro_subtitle">
-                  <a (click)="showChair(presentation.chair)" data-toggle="modal" data-target="#myModal2">Voir
-                    Chair</a>
+                 Chair : {{presentation.chair.username}}
 
                 </div>
               </div>
-            </div>
-            <div>
-              <a class="uk-navbar-right back-link uk-button uk-button-text"
-                (click)="edit(presentation)"><strong>Modifier</strong></a>
             </div>
           </div>
         </div>
@@ -88,31 +87,6 @@
             <h3>{{conference.detail}}</h3>
             <p>{{conference.adresseConference}}
               <p> {{conference.titrePresentation}}</p>
-          </div>
-          <!-- Modal footer -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- modal of the chair view -->
-<div *ngIf="chair!=null">
-  <div class="container">
-    <!-- The Modal -->
-    <div class="modal" id="myModal2">
-      <div class="modal-dialog modal-dialog-scrollable">
-        <div class="modal-content">
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h1 class="modal-title">Chair:{{chair.id}}</h1>
-            <button type="button" class="close" data-dismiss="modal">×</button>
-          </div>
-          <!-- Modal body -->
-          <div class="modal-body">
-            <h3>{{chair.username== null?'':chair.username}}</h3>
           </div>
           <!-- Modal footer -->
           <div class="modal-footer">

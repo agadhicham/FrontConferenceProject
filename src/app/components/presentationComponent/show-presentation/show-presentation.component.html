@@ -8,68 +8,59 @@
   </li>
 </ul>
 <div class="section-header">
-  <h2>Presentation :{{presentation.id}}</h2>
+  <h2>Details de Presentation</h2>
 </div>
-<div class="container" style="margin-left: 25%">
-  <div *ngIf="article!=null">
-    <div class="intro">
-      <div class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
-        <!-- Intro Item -->
-        <div class="intro_item">
-          <div class="container">
-            <base href="/">
-            <div class="intro_image"><img src="/assets/images/intro_4.jpg" alt=""></div>
-            <div class="intro_body">
-              <div class="intro_title"><a href="#">Article:{{article.id}}</a></div>
-              <div class="intro_subtitle"> {{article.domaine== null?'':article.domaine.name}}</div>
-              <div class="intro_subtitle"> {{article.resume== null?'':article.resume.slice(0, 100)}}...</div>
-            </div>
-          </div>
-        </div>
+<div class="container" style="padding: 5% 0% 5% 10%">
+  <div>
+    <div class="article-category"> {{article.domaine== null?'':article.domaine.name}}</div>
+    <div *ngIf="conference!=null" class="uk-margin">
+      <div class="intro_title"><a (click)="navigateTo('show/'+conference.id)"> Conference: {{conference.nom ==
+          null?'':conference.nom}}</a></div>
+      <div class="intro_subtitle" style="padding-left: 5%"> Titre : {{conference.titrePresentation==
+        null?'':conference.titrePresentation}}
+      </div>
+      <div class="intro_subtitle" style="padding-left: 5%">Adresse :  {{conference.adresseConference}} A
+        {{conference.dateConference | date:'yyyy-MM-dd à
+        HH:mm'}}</div>
+    </div>
+    <div class="uk-margin">
+      Article:
+      <div class="intro_subtitle" style="padding-left: 5%"> <span>{{article.resume== null?'':article.resume.slice(0,
+          100)}}...</span><a (click)="navigateTo('articles/show/'+article.id)">Details
+          sur l'article</a></div>
+    </div>
+  </div>
+  <div *ngIf="chair!=null" class="uk-margin">
+    Chair:
+    <div class="intro_subtitle" style="padding-left: 5%">
+      {{chair.username== null?'':chair.username}}
+    </div>
+  </div>
+  Jury:
+  <div class="uk-margin">
+    <div *ngIf="affectations.length==0">
+      Aucun jury est affecté !   
+      <a (click)="navigateTo('affectations/create')" style="color:lightcoral"> Affecter des jury</a>
+    </div>
+    <div *ngFor="let affectation of affectations">
+      <div class="intro_subtitle" style="padding-left: 5%">
+        - {{affectation.jury.firstName + ' ' + affectation.jury.lastName}}
       </div>
     </div>
   </div>
-  <div *ngIf="conference!=null" >
-    <div class="intro">
-      <div class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
-        <!-- Intro Item -->
-        <div class="intro_item">
-          <div class="container">
-            <base href="/">
-            <div class="intro_image"><img src="/assets/images/intro_1.jpg" alt=""></div>
-            <div class="intro_body">
-              <div class="intro_title"><a href="#"> Conference: {{conference.id== 0?0:conference.id}}</a></div>
-              <div class="intro_subtitle"> {{conference.titrePresentation== null?'':conference.titrePresentation}}
-              </div>
-              <div class="intro_subtitle"> {{conference.nom}}</div>
-            </div>
-          </div>
-        </div>
+  <div class="uk-margin">
+    <div *ngIf="affectations.length>2">
+      Note:
+      <div class="intro_subtitle" style="padding-left: 5%">
+        {{note==0? 'Non renseigné':note.toPrecision(3)}}
       </div>
     </div>
   </div>
-  <div *ngIf="chair!=null">
-    <div class="intro">
-      <div class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
-        <!-- Intro Item -->
-        <div class="intro_item">
-          <div class="container">
-            <base href="/">
-            <div class="intro_image"><img src="/assets/images/intro_3.jpg" alt=""></div>
-            <div class="intro_body">
-              <div class="intro_title"><a href="#"> {{chair.username== null?'':chair.username}}</a></div>
-              <div class="intro_subtitle"> {{chair.username}}</div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="uk-margin" style="position: relative; right: 40%; left: 40%;">
+    <div *ngIf="affectations.length > 0" class="intro_subtitle">
+      <button  class="btn btn-primary" data-toggle="modal" data-target="#degreModal">Donner la note
+      </button>
     </div>
-  </div>
-  <div *ngIf= "affectations.length > 0" class="intro_subtitle">
-  {{note}}
-    <a  data-toggle="modal" data-target="#degreModal">Notter
-      </a>
-
   </div>
 </div>
 
@@ -87,12 +78,51 @@
           </div>
           <!-- Modal body -->
           <div class="modal-body">
-            <div *ngFor="let affectation of affectations"  class="uk-container">
-                <label class="uk-form-label">{{affectation.jury.firstName}}</label>
+            <div *ngFor="let affectation of affectations" class="uk-container">
+              <label class="uk-form-label">{{affectation.jury.firstName}}</label>
+              <div class="uk-margin">
+                <input class="uk-input" style="width: 70%; position: relative; left: 10%;" type="number" placeholder="note" name="note" [(ngModel)]="affectation.mark"
+                  #title="ngModel" ngModel required>
+                <div *ngIf="(title.value < 0 || title.invalid) && (title.dirty || title.touched)" class="uk-alert-danger"
+                  uk-alert>
+                  <a class="uk-alert-close" uk-close></a>
+                  note non valid
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveMarks()">Enrigestrer</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal of the giving a degre -->
+<div *ngIf="true">
+  <div class="container">
+    <!-- The Modal -->
+    <div class="modal" id="degreModal">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h1 class="modal-title">Donner la note</h1>
+            <button type="button" class="close" data-dismiss="modal">×</button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div *ngFor="let affectation of affectations" class="uk-container">
+              <label class="uk-form-label">{{affectation.jury.firstName}}</label>
               <div class="uk-margin">
                 <input class="uk-input" type="number" placeholder="note" name="note" [(ngModel)]="affectation.mark"
                   #title="ngModel" ngModel required>
-                <div *ngIf="(title.value < 0 || title.invalid) && (title.dirty || title.touched)" class="uk-alert-danger" uk-alert>
+                <div *ngIf="(title.value < 0 || title.invalid) && (title.dirty || title.touched)" class="uk-alert-danger"
+                  uk-alert>
                   <a class="uk-alert-close" uk-close></a>
                   note non valid
                 </div>

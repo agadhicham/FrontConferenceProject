@@ -22,11 +22,12 @@ export class ArticleComponent implements OnInit {
   allArticles: Array<ArticleModule>;
   uploader = new FileUploader({ url: '', itemAlias: '' });
   uri: string = 'http://localhost:8080/';
-  currentUser: String = ""
+  currentUserRole: string = ""
   constructor(private articleService: ArticleService, private accountservice: AccountService, private domaineService: DomaineService, private router: Router,  private route: ActivatedRoute) { }
 
   ngOnInit() {
-    if(this.accountservice.typeOfCurrentUser()=="ADMIN" || this.accountservice.typeOfCurrentUser()=="AUTHOR"){
+    this.currentUserRole = this.accountservice.typeOfCurrentUser();
+    if(this.currentUserRole=="ADMIN" || this.currentUserRole=="AUTHOR"){
     this.route.params.subscribe(params => {
       if(params.id){
       this.articleService.getOne(params.id).subscribe(data => {
@@ -51,13 +52,7 @@ export class ArticleComponent implements OnInit {
     }, error => console.log(error));
   }
   navigateTo(path) {
-    if (this.currentUser == "ADMIN") {
       this.router.navigate([path]);
-    } else if (this.currentUser != "ADMIN") {
-      this.router.navigate(['/']);
-    } else {
-      this.router.navigate(['/']);
-    }
   }
 
   getAllArticles() {

@@ -11,7 +11,7 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class ListArtclesComponent implements OnInit {
 
-  articles: Array<ArticleModule>;
+  articles: Array<ArticleModule> =[];
   allArticles: Array<ArticleModule>;
   currentUser: string = "";
   currentUserRole: string = "";
@@ -57,6 +57,10 @@ export class ListArtclesComponent implements OnInit {
 
   edit(article) {
     this.navigateTo('articles/edit/' + article.id);
+  }
+  delete(article) {
+    this.getAllArticles();
+    this.articleService.remove(article.id).subscribe();
   }
 
 }
