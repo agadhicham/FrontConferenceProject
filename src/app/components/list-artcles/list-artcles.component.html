@@ -7,11 +7,11 @@
       <a class="nav-link" [routerLink]="['/articles/create']" role="tab" data-toggle="tab">Ajouter Article</a>
     </li>
   </ul>
-  <div class="section-header" *ngIf="articles.length ==0 ">
+  <div class="section-header" *ngIf="allArticles.length ==0 ">
     <h2>Liste des Article est vide</h2>
     <p *ngIf="currentUser=='AUTHOR'" ><a [routerLink]="['/articles/create']" > Clicker ici </a> pour creer votre premier article</p>
   </div>
-<div *ngIf="articles.length > 0">
+<div *ngIf="allArticles.length > 0">
   <div class="section-header">
     <h2>List Des Articles</h2>
   </div>
@@ -34,7 +34,7 @@
                 (click)="delete(article)"><strong>Supprimer</strong></a>
             </div>
             <base href="/">
-            <div class="intro_image"><img src="/assets/images/intro_4.jpg" alt=""></div>
+            <div *ngIf="article.image" class="intro_image"><img src={{article.image.fileDownloadUri}} alt="article image"></div>
             <a (click)="show(article)">
               <div class="intro_body">
                 <div class="intro_title"><a>{{article.title}}</a></div>
@@ -50,7 +50,7 @@
                   </div>
               <div class=" back-link uk-button-text article-date">
                 <span class="">
-                  Posté par <strong>{{article.author.username}}</strong> le  {{ article.postedAt | date:'yyyy-MM-dd à HH:mm'}}
+                  Posté par <strong *ngIf="article.author">{{article.author.username}}</strong> le  {{ article.postedAt | date:'yyyy-MM-dd à HH:mm'}}
                 </span>
               </div>
             </div>

@@ -17,6 +17,9 @@
       <p class="article-meta">
         {{article.resume}}
       </p>
+    <div *ngIf="currentUserType =='AUTHOR' && article.status =='ACCEPTED'" style="position: relative; left: 0%; right: 20%;;bottom: 5%; top: 10%;">
+      <button (click)="purchase()" class="btn btn-success form-control">Procéder au paiement</button>
+    </div>
     </div>
   </div>
   <div *ngIf="isShowReviews" >

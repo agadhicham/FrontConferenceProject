@@ -27,6 +27,14 @@ export class PaymentComponent implements OnInit {
     });
 
   }
+  navigateTo(path) {
+    this.router.navigate([path]);
+  }
+  getBraintreeClientToken() {
+    console.log(this.articleService.getBraintreeClientToken())
+    return 'fs'
+  }
+
   createPurchase(nonce: string, chargeAmount: number) {
     console.log(nonce)
     this.payment.article = this.article

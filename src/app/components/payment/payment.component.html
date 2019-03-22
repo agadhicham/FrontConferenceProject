@@ -6,7 +6,7 @@
   </div>
 <div class="ngx-braintree">
     <ngx-braintree 
-    [clientTokenURL]="'http://localhost:8080/client/token'"
+    [getClientToken]="getBraintreeClientToken.bind(this)"
       [createPurchase]="createPurchase.bind(this)" 
       [chargeAmount]="5"
       [buttonText]="'Payer'"

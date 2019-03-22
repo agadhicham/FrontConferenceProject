@@ -17,6 +17,7 @@ export class ArticleModule {
   status:string
   domaine: DomaineModule;
   author: UserModule
+  image:any;
 
   constructor(
     id: number,
