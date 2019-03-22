@@ -33,7 +33,7 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  
+
 }
 
 p{
@@ -105,7 +105,7 @@ p{
 
 a:focus,
 input:focus {
-  outline-color: #ff5066;          
+  outline-color: #ff5066;
 }
 
 h2 {
@@ -155,7 +155,7 @@ input {
 }
 
 .article-meta {
-  font-style: italic;  
+  font-style: italic;
 }
 
 .article-list-article-link {

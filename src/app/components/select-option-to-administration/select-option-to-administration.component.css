@@ -1,15 +1,22 @@
 .tog1{
   margin-left: 150px;
   margin-right: 10px;
-
+  margin-bottom: 10px;
 
 }
 .togo{
   margin-right: 10px;
   width: 500px;
 
-}
-.card{
-
 
 }
+.link{
+margin-right:8px;
+color: rebeccapurple;
+}
+
+
+.link1{
+  margin-right:8px;
+  color:darkcyan;
+  }
