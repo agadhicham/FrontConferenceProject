@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {Conference} from './modules/conference/conference';
+import { AccountService } from './services/account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,15 @@ import {Conference} from './modules/conference/conference';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  conference:Conference=new Conference()
+ 
   title = 'projetconference';
+  constructor(private accountService: AccountService,
+    private router: Router) { }
+
+  ngOnInit() {
+    if(!this.accountService.isAuthenticated()){
+      this.router.navigate(['/']);
+      console.log("test")
+    }
+  }
 }

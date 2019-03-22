@@ -23,24 +23,25 @@ export class AccountService {
     localStorage.setItem("token", token);
     let jwtHelper = new JwtHelperService();
     this.roles = jwtHelper.decodeToken(token).roles;
-    // console.log('Token : '+this.getToken());
-    // console.log("Roles : " + JSON.stringify(this.role));
     this.getRoles()
-    console.log(this.role)
   }
   getCurrentUser() {
     let jwtHelper = new JwtHelperService();
+    jwtHelper.decodeToken(this.getToken()).roles.forEach(element => {
+    });
     return jwtHelper.decodeToken(this.getToken()).sub;
   }
   register(user) {
-    console.log('service log ' + user)
     return this.http.post(this.url + "/register", user, { observe: "response" });
   }
   getToken() {
     return localStorage.getItem('token');
   }
   isAuthenticated() {
-    return localStorage.getItem('token') != null;
+    if(localStorage.getItem('token')!=null){
+      return true
+    }
+    return false
   }
   onLogout() {
     localStorage.removeItem('token');
@@ -52,6 +53,10 @@ export class AccountService {
     });
   }
   typeOfCurrentUser(){
+    let jwtHelper = new JwtHelperService();
+    jwtHelper.decodeToken(this.getToken()).roles.forEach(element => {
+     this.role=element.authority
+    });
     return this.role
   }
 }

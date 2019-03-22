@@ -16,38 +16,46 @@ import { PaymentModule } from 'src/app/modules/payment/payment.module';
 })
 export class ArticleComponent implements OnInit {
 
-  article = new ArticleModule(0, '', '',new DomaineModule(0,''));
+  article :ArticleModule = new ArticleModule(0, '', '',new DomaineModule(0,''));
   articles: Array<ArticleModule>;
   domaines: Array<DomaineModule>;
   allArticles: Array<ArticleModule>;
   uploader = new FileUploader({ url: '', itemAlias: '' });
   uri: string = 'http://localhost:8080/';
+  currentUserRole: string = ""
   constructor(private articleService: ArticleService, private accountservice: AccountService, private domaineService: DomaineService, private router: Router,  private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.currentUserRole = this.accountservice.typeOfCurrentUser();
+    if(this.currentUserRole=="ADMIN" || this.currentUserRole=="AUTHOR"){
     this.route.params.subscribe(params => {
       if(params.id){
       this.articleService.getOne(params.id).subscribe(data => {
         this.article = data;
-        this.setArtile();
+        this.setArticle(data);
       }, error => console.log(error));
     }
     });
+  }else{
+    this.router.navigate(['/'])
+  }
     
     this.getAllArticles();
     this.getAllDomaines();
   }
   create() {
-    if(this.article.id){
-      this.uploader.uploadAll();
+    if(!this.article.id){
+      this.article.postedAt = new Date();
     }
     this.articleService.create(this.article).subscribe(data => {
-      this.navigateTo('articles');
+      this.article = data;
+      this.setArticle(this.article);
     }, error => console.log(error));
+    this.uploader.uploadAll();
+     this.navigateTo('articles')
   }
-
   navigateTo(path) {
-    this.router.navigate([path]);
+      this.router.navigate([path]);
   }
 
   getAllArticles() {
@@ -64,8 +72,8 @@ export class ArticleComponent implements OnInit {
       }, error => console.log(error));
   }
   
-  setArtile() {
-    this.uploader = new FileUploader({ url: this.uri + this.article.id + '/uploadFile', itemAlias: 'file'});
+  setArticle(article) {
+    this.uploader = new FileUploader({ url: this.uri + article.id + '/uploadFile', itemAlias: 'file'});
     var uploaderOptions: FileUploaderOptions = {};
     uploaderOptions.headers = [{ name: 'authorization', value : this.accountservice.getToken() } ]
     this.uploader.setOptions(uploaderOptions);

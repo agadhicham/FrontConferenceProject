@@ -11,6 +11,7 @@ import { ChairModule } from 'src/app/modules/chair/chair.module';
 import { RoleModule } from 'src/app/modules/role/role.module';
 import { JuryModule } from 'src/app/modules/jury/jury.module';
 import { AffectationModule } from 'src/app/modules/affectation/affectation.module';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-affectation',
@@ -33,9 +34,10 @@ export class AffectationComponent implements OnInit {
   updateFinished:boolean
 
   constructor(private affectationService: AffectationService, private presentationService: PresentationService, private juryService: JuryService, private router: Router,
-    private activateRoute: ActivatedRoute) { }
+    private activateRoute: ActivatedRoute,private accountSerivce:AccountService) { }
 
   ngOnInit() {
+    if(this.accountSerivce.typeOfCurrentUser()=="ADMIN"){
     this.getAllPresentations()
     this.updateFinished=false
     this.affectationTopdate = null
@@ -51,6 +53,9 @@ export class AffectationComponent implements OnInit {
         }, error => console.log(error));
       }
     });
+  }else{
+    this.router.navigate(['/']);
+  }
   }
   getAllPresentations() {
     this.presentationService.getAll().subscribe(data => {

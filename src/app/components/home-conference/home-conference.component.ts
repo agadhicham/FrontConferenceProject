@@ -24,26 +24,41 @@ export class HomeConferenceComponent implements OnInit {
   constructor(private  conferenceService:ConferenceService, private route:Router) { }
 
   ngOnInit() {
-    this.conferenceService.getAll().subscribe(data=>
-    {
-    this.conferences=data;
-    })
-    this.doSearch();
+    this.conferenceService.getConferences(this.motCle, this.pageActuel, this.size).subscribe(
+      data => {
+        this.pageConferences = data;
+
+       // this.pages = new Array(this.totalPages);
+           //console.log(this.pages);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
   showOne(id:number){
     this.route.navigate(['show',id]);
   }
 
-  doSearch(){
-    this.conferenceService.getConferences(this.motCle, this.page, this.size).
-    subscribe(data=>{
-       this.pageConferences=data;
-      // this.pages=new Array(data.totalPages);
-
-    })
+  doSearch() {
+    this.pageConferences;
+    this.conferenceService
+      .getConferences(this.motCle, this.page, this.size)
+      .subscribe(
+        data => {
+          console.log("*********");
+          this.pageConferences = data;
+          // this.pages= new Array(data.totalPages);
+          // this.pages = new Array(this.totalPages);
+          // console.log(this.pages);
+          console.log(this.pageConferences);
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
-
-  chercher(){
+  chercher() {
     this.doSearch();
   }
 

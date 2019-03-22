@@ -21,10 +21,12 @@ export class ShowArticleComponent implements OnInit {
   isShowReviews = false;
   article = new ArticleModule(0, '', '', new DomaineModule(0, ''));
   reviews: Array<ReviewModule>;
+  currentUserType:string
 
-  constructor(private articleService: ArticleService, private reviewService: ReviewService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private articleService: ArticleService, private reviewService: ReviewService, private router: Router, private route: ActivatedRoute, private accountService: AccountService) { }
 
   ngOnInit() {
+    this.currentUserType=this.accountService.typeOfCurrentUser();
     this.route.params.subscribe(params => {
       this.articleService.getOne(params.id).subscribe(data => {
         this.article = data;
@@ -49,6 +51,10 @@ export class ShowArticleComponent implements OnInit {
       this.review =new ReviewModule(0,0,'',null,null);
     }, error => console.error(error)
     );
+  }
+
+  purchase(){
+    this.navigateTo('payments/'+ this.article.id)
   }
 
 }

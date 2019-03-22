@@ -47,6 +47,15 @@ p{
   text-transform: uppercase;
   margin-top: -20px
 }
+.article-status{
+  margin-left: 8%;
+  position: absolute;
+  left:0;
+  font-family: "Raleway", sans-serif;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  margin-top: -20px
+}
 .article{
   position: relative;
   padding: 1em;

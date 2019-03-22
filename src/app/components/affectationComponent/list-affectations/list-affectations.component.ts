@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AffectationService } from 'src/app/services/affectation.service';
 import { AffectationModule } from 'src/app/modules/affectation/affectation.module';
 import { Router } from '@angular/router';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-list-affectations',
@@ -9,15 +10,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-affectations.component.css']
 })
 export class ListAffectationsComponent implements OnInit {
-  allAffectation:Array<AffectationModule>
-  constructor(private affectationService:AffectationService , private router: Router) { }
+  allAffectation: Array<AffectationModule>
+  currentUser: String = ""
+  constructor(private affectationService: AffectationService, private router: Router, private accountService: AccountService) { }
 
   ngOnInit() {
-    this.getAllAffectations()
+    if (this.accountService.typeOfCurrentUser() == "ADMIN") {
+      this.getAllAffectations()
+      this.currentUser = this.accountService.typeOfCurrentUser()
+    }
+    else {
+      this.router.navigate(['/'])
+    }
   }
-  
+
   navigateTo(path) {
-    this.router.navigate([path]);
+      this.router.navigate([path]);
   }
   getAllAffectations() {
     this.affectationService.getAll()
@@ -26,7 +34,7 @@ export class ListAffectationsComponent implements OnInit {
           console.log(data)
       }, error => console.log(error));
   }
- edit(affectation) {
+  edit(affectation) {
     this.navigateTo('affectations/edit/' + affectation.id);
   }
 
