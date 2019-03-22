@@ -48,8 +48,9 @@
       </div>
     </div>
   </div>
+  <div  *ngIf="affectations.length > 2">
   <div class="uk-margin">
-    <div *ngIf="affectations.length>2">
+    <div >
       Note:
       <div class="intro_subtitle" style="padding-left: 5%">
         {{note==0? 'Non renseigné':note.toPrecision(3)}}
@@ -57,11 +58,12 @@
     </div>
   </div>
   <div class="uk-margin" style="position: relative; right: 40%; left: 40%;">
-    <div *ngIf="affectations.length > 0" class="intro_subtitle">
+    <div class="intro_subtitle">
       <button  class="btn btn-primary" data-toggle="modal" data-target="#degreModal">Donner la note
       </button>
     </div>
   </div>
+</div>
 </div>
 
 <!-- modal of the giving a degre -->

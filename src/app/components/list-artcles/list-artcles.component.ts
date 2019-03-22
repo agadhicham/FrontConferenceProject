@@ -66,7 +66,6 @@ export class ListArtclesComponent implements OnInit {
     articlesData.forEach(article=>{
       this.articleService.getImage(article.id).subscribe(data =>{
         article.image =data;
-        console.log(data);
       } );
     })
     this.allArticles = articlesData;

@@ -50,10 +50,9 @@ export class ArticleComponent implements OnInit {
     this.articleService.create(this.article).subscribe(data => {
       this.article = data;
       this.setArticle(this.article);
-      console.log(data)
     }, error => console.log(error));
     this.uploader.uploadAll();
-    // this.navigateTo('articles')
+     this.navigateTo('articles')
   }
   navigateTo(path) {
       this.router.navigate([path]);

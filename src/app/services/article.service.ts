@@ -62,7 +62,7 @@ export class ArticleService {
       .post('http://localhost:8080/client/payment/process', payment, { 'headers': headers })
   }
   
-  getBraintreeClientToken(){
+  getBraintreeClientToken():any{
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
     return this.http
       .get('http://localhost:8080/client/token', { headers });

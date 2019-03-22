@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ArticleModule } from 'src/app/modules/article/article.module';
 import { DomaineModule } from 'src/app/modules/domaine/domaine.module';
 import { PaymentModule } from 'src/app/modules/payment/payment.module';
+import { Observable } from 'rxjs';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-payment',
@@ -14,8 +16,8 @@ export class PaymentComponent implements OnInit {
 
   article = new ArticleModule(0, '', '', new DomaineModule(0, ''));
   payment = new PaymentModule(0,0, '', this.article);
-
-  constructor(private articleService: ArticleService, private router: Router, private route: ActivatedRoute) { }
+  clientToken:any =''
+  constructor(private articleService: ArticleService, private router: Router, private route: ActivatedRoute, private accountService: AccountService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -30,17 +32,14 @@ export class PaymentComponent implements OnInit {
   navigateTo(path) {
     this.router.navigate([path]);
   }
-  getBraintreeClientToken() {
-    console.log(this.articleService.getBraintreeClientToken())
-    return 'fs'
+  isUserHasAcessToPay():boolean{
+    return (this.article.status=='ACCEPTED') && (this.article.author.username==this.accountService.getCurrentUser());
   }
 
   createPurchase(nonce: string, chargeAmount: number) {
-    console.log(nonce)
     this.payment.article = this.article
     this.payment.chargeAmount = chargeAmount;
     this.payment.nonce = nonce
-    console.log(this.payment)
     return this.articleService.createPurchase(this.payment);
   }
   enabledStyle = {
