@@ -37,7 +37,7 @@ export class HomeConferenceComponent implements OnInit {
     );
   }
   showOne(id:number){
-    this.route.navigate(['show',id]);
+    this.route.navigate(['showe',id]);
   }
 
   doSearch() {

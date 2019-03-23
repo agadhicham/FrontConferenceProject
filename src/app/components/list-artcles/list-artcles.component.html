@@ -1,56 +1,105 @@
 <app-nav-bar></app-nav-bar>
 <ul class="nav nav-tabs" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/articles']" role="tab" data-toggle="tab">List Des Articles</a>
-    </li>
-    <li class="nav-item" *ngIf="currentUser=='ADMIN' || currentUser=='AUTHOR' ">
-      <a class="nav-link" [routerLink]="['/articles/create']" role="tab" data-toggle="tab">Ajouter Article</a>
-    </li>
-  </ul>
-  <div class="section-header" *ngIf="allArticles.length ==0 ">
-    <h2>Liste des Article est vide</h2>
-    <p *ngIf="currentUser=='AUTHOR'" ><a [routerLink]="['/articles/create']" > Clicker ici </a> pour creer votre premier article</p>
-  </div>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      [routerLink]="['/articles']"
+      role="tab"
+      data-toggle="tab"
+      >List Des Articles</a
+    >
+  </li>
+  <li
+    class="nav-item"
+    *ngIf="currentUser == 'ADMIN' || currentUser == 'AUTHOR'"
+  >
+    <a
+      class="nav-link"
+      [routerLink]="['/articles/create']"
+      role="tab"
+      data-toggle="tab"
+      >Ajouter Article</a
+    >
+  </li>
+</ul>
+<div class="section-header" *ngIf="allArticles.length == 0">
+  <h2>Liste des Article est vide</h2>
+  <p *ngIf="currentUser == 'AUTHOR'">
+    <a [routerLink]="['/articles/create']"> Clicker ici </a> pour creer votre
+    premier article
+  </p>
+</div>
 <div *ngIf="allArticles.length > 0">
   <div class="section-header">
     <h2>List Des Articles</h2>
   </div>
-  <div class="uk-navbar-right input-group" style="display: inline-flex;width: 80%;padding-left: 20%">
+  <div
+    class="uk-navbar-right input-group"
+    style="display: inline-flex;width: 80%;padding-left: 20%"
+  >
     Rechercher :
-    <input #searchedTitle type="text" class="form-control" placeholder="Titre, Domaine ..."
-      (keyup)="search(searchedTitle.value)">
+    <input
+      #searchedTitle
+      type="text"
+      class="form-control"
+      placeholder="Titre, Domaine ..."
+      (keyup)="search(searchedTitle.value)"
+    />
   </div>
- 
+
   <div class="super_container">
     <div class="intro">
-      <div class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
+      <div
+        class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between"
+      >
         <!-- Intro Item -->
         <div class="intro_item" *ngFor="let article of articles">
           <div class="container">
             <div class="form-inline">
-                <a class="uk-navbar-left  uk-button-text"
-                (click)="edit(article)"><strong>Modifier</strong></a>
-                <a class="uk-navbar-right  uk-button-text"
-                (click)="delete(article)"><strong>Supprimer</strong></a>
+              <a class="uk-navbar-left  uk-button-text" (click)="edit(article)"
+                ><strong>Modifier</strong></a
+              >
+              <a
+                class="uk-navbar-right  uk-button-text"
+                (click)="delete(article)"
+                ><strong>Supprimer</strong></a
+              >
             </div>
-            <base href="/">
-            <div *ngIf="article.image" class="intro_image"><img src={{article.image.fileDownloadUri}} alt="article image"></div>
+            <base href="/" />
+            <div *ngIf="article.image" class="intro_image">
+              <img
+                src="{{ article.image.fileDownloadUri }}"
+                alt="article image"
+              />
+            </div>
             <a (click)="show(article)">
               <div class="intro_body">
-                <div class="intro_title"><a>{{article.title}}</a></div>
-                <div class="article-category"> {{article.domaine== null?'':article.domaine.name}}</div>
-                <div class="intro_subtitle"> {{article.resume== null?'':article.resume.slice(0, 100)}}...</div>
+                <div class="intro_title">
+                  <a>{{ article.title }}</a>
+                </div>
+                <div class="article-category">
+                  {{ article.domaine == null ? "" : article.domaine.name }}
+                </div>
+                <div class="intro_subtitle">
+                  {{
+                    article.resume == null ? "" : article.resume.slice(0, 100)
+                  }}...
+                </div>
               </div>
             </a>
             <div>
-                <div class=" back-link uk-button-text article-status">
-                    <span class="">
-                    <strong>{{article.status}}</strong>
-                    </span>
-                  </div>
+              <div class=" back-link uk-button-text article-status">
+                <span class="">
+                  <strong>{{ article.status }}</strong>
+                </span>
+              </div>
               <div class=" back-link uk-button-text article-date">
                 <span class="">
-                  Posté par <strong *ngIf="article.author">{{article.author.username}}</strong> le  {{ article.postedAt | date:'yyyy-MM-dd à HH:mm'}}
+                  Posté par
+                  <strong *ngIf="article.author">{{
+                    article.author.username
+                  }}</strong>
+                  le {{ article.postedAt | date: "yyyy-MM-dd à HH:mm" }}
                 </span>
               </div>
             </div>

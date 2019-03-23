@@ -1,19 +1,29 @@
-<div>
-  <input class="form-control in" type="text" [(ngModel)]="motCle" />
-  <button (click)="chercher()" class="btn btn-primary btn-xs">
-    saersh
-  </button>
-</div>
+<app-nav-bar></app-nav-bar>
+<div class="col-sm-12 row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6 row">
+        <input class="form-control in col-sm-10" type="text" [(ngModel)]="motCle" />
+          <button class="uk-button uk-button-text col-sm-2" style="color:darkslategrey;font-family: Verdana, Geneva, Tahoma, sans-serif" (click)="chercher()">rechercher</button>
+    </div>
+  </div>
 <div class="uk-child-width-1-4@s uk-grid-match "   uk-grid >
-    <div *ngFor="let conference of (pageConferences?.content| paginate: { itemsPerPage: 4, currentPage: pageActuel })" class="uk-animation-toggle" >
-      <div class="uk-card-hover uk-card uk-card-primary uk-card-body  uk-animation-scale-up">
-        <h3 class="uk-card-title">Default</h3>
-        <p >{{conference.nom}}</p>
-        <p >{{conference.dateConference}}</p>
-        <p >{{conference.adresseConference}}</p>
-       <p uk-margin>
-          <button class="btn btn-xs btn-" (click)="showOne(conference.id)">Show this conference</button>
-        </p>
+    <div *ngFor="let conference of (pageConferences?.content| paginate: { itemsPerPage: 4, currentPage: pageActuel })" class="uk-animation-toggle car" >
+
+
+          <div class="card" style="width:400px;margin-top: 30px;">
+              <img class="card-img-top" src="./assets/images/conf1.jpg" alt="Card image">
+              <div class="card-body">
+                  <h3 class="uk-card-title">Default</h3>
+                  <p >{{conference.nom}}</p>
+                  <p >{{conference.dateConference}}</p>
+                  <p >{{conference.adresseConference}}</p>
+                 <p uk-margin>
+                    <button class="uk-button uk-button-text" (click)="showOne(conference.id)">Show this conference</button>
+                  </p>
+              </div>
+            </div>
+
+<!--
         <div id="modal-full2" class="uk-modal-full" uk-modal>
           <div class="uk-modal-dialog">
             <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
@@ -27,11 +37,11 @@
             </div>
           </div>
         </div>
-      </div>
-      </div>
+      </div> -->
     </div>
+  </div>
     <pagination-controls (pageChange)="pageActuel = $event"></pagination-controls>
-    <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #modal-close-outside">Outside</button>
+    <!-- <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #modal-close-outside">Outside</button>
     <div id="modal-close-outside" class="uk-modal-full" uk-modal>
       <div class="uk-modal-dialog">
         <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
@@ -190,4 +200,4 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->

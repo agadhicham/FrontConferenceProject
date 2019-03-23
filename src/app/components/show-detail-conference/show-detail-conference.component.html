@@ -1,25 +1,29 @@
+<app-nav-bar></app-nav-bar>
+<div class="row">
+  <div class="col-sm-3"></div>
+  <div class="card-deck col-sm-6">
+      <div class="card">
+        <img class="card-img-top" src="./assets/images/conf2.jpg" alt="Card image cap">
+        <div class="card-body">
+<span class="badge badge-dark uk-card-title">Details sur la conference: {{ conference.nom }} </span><br>
+<h2><span class="badge badge-secondary">{{ conference.titrePresentation}}</span></h2><br>
+<span class="badge badge-success">Success</span><br>
+<span class="badge badge-danger">{{ conference.nombreEquipe }}</span><br>
+<span class="badge badge-warning">{{ conference.dateConference }}</span><br>
+<span class="badge badge-info">{{ conference.detail }}</span><br>
+<span class="badge badge-light">{{conference.adresseConference}}</span><br>
+<div class="example-button-row">
+    <a mat-fab color="primary" href="#modal-sections" uk-toggle>Modier</a>
+    <a mat-fab color="warn" (click)="deletConf(conference.id)" uk-toggle>Delete</a>
 
-<div class="uk-child-width-1-2@s" uk-grid>
-  <div class="uk-animation-toggle" tabindex="0">
-      <div class="uk-card uk-card-primary uk-card-large uk-card-body uk-animation-shake">
-          <h3 class="uk-card-title">Details for conference: {{ conference.nom }} </h3>
-          <h2 >{{conference.titrePresentation}}</h2>
-          <p >{{conference.dateConference}}</p>
-          <p >{{conference.detail}}</p>
-          <p >{{conference.nombreEquipe}}</p>
-          <p >{{conference.adresseConference}}</p>
-          <div class="example-button-row">
-            <button mat-fab>Basic</button>
-            <a mat-fab color="primary" href="#modal-sections" uk-toggle>Modier</a>
-            <a mat-fab color="warn" (click)="deletConf(conference.id)" uk-toggle>Delete</a>
-            <a mat-fab color="primary"  (click)="onEdit(conference.id)" >Modier Confer</a>
-
-
-          </div>
-        </div>
 
   </div>
+        </div>
+      </div>
+    </div>
 </div>
+
+
 
 <div id="modal-sections" uk-modal>
     <div class="uk-modal-dialog">
@@ -174,7 +178,7 @@ Nom cannot be Bob.
 
         <div class="uk-modal-footer uk-text-right">
             <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-            <button class="uk-button uk-button-primary" type="button" (click)="upConf()">Save</button>
+            <!-- <button class="uk-button uk-button-primary" type="button" (click)="upConf()">Save</button> -->
         </div>
     </div>
 </div>

@@ -1,7 +1,4 @@
 <app-nav-bar></app-nav-bar>
-
-
-<app-nav-bar></app-nav-bar>
 <div class="container">
 <div class="row">
     <div class="col-sm-2"></div>
@@ -29,6 +26,7 @@
                         ngModel
                         required
                       />
+                        </div>
                       <div
                         *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
                         class="alert alert-danger"
@@ -44,7 +42,6 @@
                         </div>
                       </div>
                     </div>
-                  </div>
                   <div class="uk-container">
                     <label class="uk-form-label">lastName</label>
                     <div class="uk-margin">

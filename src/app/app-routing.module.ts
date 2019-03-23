@@ -1,3 +1,4 @@
+import { ShowConfernceUserComponent } from './show-confernce-user/show-confernce-user.component';
 import { ListReviewerComponent } from './components/reviwer/list-reviewer/list-reviewer.component';
 import { ListDomaineComponent } from './components/domaine/list-domaine/list-domaine.component';
 import { ListJuryComponent } from './components/jury/list-jury/list-jury.component';
@@ -111,6 +112,10 @@ const routes: Routes = [
   },
   {
     path: 'show/:id', component: ShowDetailConferenceComponent
+  },
+
+  {
+    path: 'showe/:id', component: ShowConfernceUserComponent
   },
   {
     path: 'edit/:id', component: EditConferenceComponent
