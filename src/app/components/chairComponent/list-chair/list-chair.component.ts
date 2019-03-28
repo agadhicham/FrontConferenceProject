@@ -18,7 +18,6 @@ export class ListChairComponent implements OnInit {
 
   ngOnInit() {
     this.chairService.getAll().subscribe(data=>{
-
       this.chaires=data
     },error=>{
       console.log(error)
@@ -31,8 +30,6 @@ export class ListChairComponent implements OnInit {
   {
     this.chairService.remove(id)
     .subscribe(data=>{
-      console.log('deleting.............. of this conference it done')
-      alert('chaire deleted with success')
       this.router.navigate(['chairList'])
     },error=>{
       console.log(error)
@@ -49,8 +46,6 @@ export class ListChairComponent implements OnInit {
   {
     this.chairService.edit(this.chaire)
     .subscribe(data=>{
-      console.log('update of this chair it done')
-      alert('alert updating with success')
     },error=>{
       console.log(error)
     })

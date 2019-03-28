@@ -18,8 +18,8 @@ export class ListReviewerComponent implements OnInit {
   constructor(private chairService: ChairService, private router:Router) { }
 
   ngOnInit() {
-    this.chairService.getAll().subscribe(data=>{
-
+    this.chairService.getAllReviwers().subscribe(data=>{
+      console.log(data)
       this.chaires=data
     },error=>{
       console.log(error)

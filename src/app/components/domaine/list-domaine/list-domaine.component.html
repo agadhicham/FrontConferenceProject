@@ -1,35 +1,27 @@
 <app-nav-bar></app-nav-bar>
+<div class="section-header" >
+    <h2>Liste des Jurys</h2>
+  </div>
+<div class="container">
 <div class="row">
-  <div class="bg bg-white mb-3 col-sm-3" uk-margin *ngFor="let chair of chaires">
-      <div class="card-header">Details for Domaine:</div>
-      <div class="card-body" >
-              <h2 >{{ chair.id }}</h2>
-              <p >{{ chair.username }}</p>
-              <div class="example-button-row">
-               <!-- <a mat-fab color="primary" href="#modal-sections" uk-toggle>Updating Chair </a>
-                <a mat-fab color="warn"  href="#modal-delete" uk-toggle>Delete chair</a>-->
-                <button class="btn btn1 btn-xs " href="#modal-sections" uk-toggle (click)="editChair(chair)">Editing domaine</button>
-                <button class="btn btn-default btn-xs" href="#modal-delete" uk-toggle uk-toggle>Delete domaine</button>
-
-                <div id="modal-delete" uk-modal>
-                  <div class="uk-modal-dialog">
-                      <button class="uk-modal-close-default" type="button" uk-close></button>
-                      <div class="uk-modal-header">
-                          <h2 class="uk-modal-title">domaine deleting.</h2>
-                      </div>
-                      <div class="uk-modal-body">
-                      confirmer your  delete !
-                      <p>for {{ chair.username }}</p>
-                      <div class="uk-modal-footer uk-text-right">
-                          <button class="btn btn-xs btn-default uk-modal-close" type="button">Cancel</button>
-                          <button class="btn btn-xs btn-warning" (click)="deletChair(chair.id)" type="button" >delete</button>
-                        </div>
-                  </div>
-                </div>
-                </div>
-              </div>
-      </div>
-    </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Actoins</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let chair of chaires">
+          <tr>
+            <th scope="row">{{chair.id}}</th>
+            <td>{{chair.name}}</td>
+            <td><button class="btn btn1 btn-xs " href="#modal-sections" uk-toggle (click)="editChair(chair)">Modifier</button>
+              <button class="btn btn-default btn-xs" href="#modal-delete" uk-toggle uk-toggle>Supprimer</button></td>
+          </tr>
+        </tbody>
+      </table>
+</div>
 </div>
 
 

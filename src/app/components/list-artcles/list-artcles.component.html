@@ -1,25 +1,10 @@
 <app-nav-bar></app-nav-bar>
 <ul class="nav nav-tabs" role="tablist">
   <li class="nav-item">
-    <a
-      class="nav-link"
-      [routerLink]="['/articles']"
-      role="tab"
-      data-toggle="tab"
-      >List Des Articles</a
-    >
+    <a class="nav-link" [routerLink]="['/articles']" role="tab" data-toggle="tab">List Des Articles</a>
   </li>
-  <li
-    class="nav-item"
-    *ngIf="currentUser == 'ADMIN' || currentUser == 'AUTHOR'"
-  >
-    <a
-      class="nav-link"
-      [routerLink]="['/articles/create']"
-      role="tab"
-      data-toggle="tab"
-      >Ajouter Article</a
-    >
+  <li class="nav-item" *ngIf="currentUser == 'ADMIN' || currentUser == 'AUTHOR'">
+    <a class="nav-link" [routerLink]="['/articles/create']" role="tab" data-toggle="tab">Ajouter Article</a>
   </li>
 </ul>
 <div class="section-header" *ngIf="allArticles.length == 0">
@@ -33,44 +18,25 @@
   <div class="section-header">
     <h2>List Des Articles</h2>
   </div>
-  <div
-    class="uk-navbar-right input-group"
-    style="display: inline-flex;width: 80%;padding-left: 20%"
-  >
+  <div class="uk-navbar-right input-group" style="display: inline-flex;width: 80%;padding-left: 20%">
     Rechercher :
-    <input
-      #searchedTitle
-      type="text"
-      class="form-control"
-      placeholder="Titre, Domaine ..."
-      (keyup)="search(searchedTitle.value)"
-    />
+    <input #searchedTitle type="text" class="form-control" placeholder="Titre, Domaine ..."
+      (keyup)="search(searchedTitle.value)" />
   </div>
 
   <div class="super_container">
     <div class="intro">
-      <div
-        class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between"
-      >
+      <div class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
         <!-- Intro Item -->
         <div class="intro_item" *ngFor="let article of articles">
           <div class="container">
             <div class="form-inline">
-              <a class="uk-navbar-left  uk-button-text" (click)="edit(article)"
-                ><strong>Modifier</strong></a
-              >
-              <a
-                class="uk-navbar-right  uk-button-text"
-                (click)="delete(article)"
-                ><strong>Supprimer</strong></a
-              >
+              <a class="uk-navbar-left  uk-button-text" (click)="edit(article)"><strong>Modifier</strong></a>
+              <a class="uk-navbar-right  uk-button-text" (click)="delete(article)"><strong>Supprimer</strong></a>
             </div>
             <base href="/" />
             <div *ngIf="article.image" class="intro_image">
-              <img
-                src="{{ article.image.fileDownloadUri }}"
-                alt="article image"
-              />
+              <img src="{{ article.image.fileDownloadUri }}" alt="article image" />
             </div>
             <a (click)="show(article)">
               <div class="intro_body">

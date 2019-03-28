@@ -17,6 +17,10 @@ export class ChairService {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
     return this.http.get(`${this.uri}`,{headers});
   }
+  getAllReviwers(): Observable<any> {
+    const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
+    return this.http.get('http://localhost:8080/reviwers',{headers});
+  }
   getOne(id:number): Observable<any> {
     const headers = new HttpHeaders().set("authorization", this.accountservice.getToken());
     return this.http.get(`${this.uri}/${id}`,{headers});

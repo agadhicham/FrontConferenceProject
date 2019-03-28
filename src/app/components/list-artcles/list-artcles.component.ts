@@ -32,7 +32,6 @@ export class ListArtclesComponent implements OnInit {
     this.router.navigate([path]);
   }
 
-
   getAllArticles() {
     this.articleService.getAll()
       .subscribe(data => {
@@ -58,8 +57,8 @@ export class ListArtclesComponent implements OnInit {
     this.navigateTo('articles/edit/' + article.id);
   }
   delete(article) {
-    this.getAllArticles();
     this.articleService.remove(article.id).subscribe();
+    this.getAllArticles();
   }
 
   getImages(articlesData){

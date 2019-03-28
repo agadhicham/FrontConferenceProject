@@ -17,7 +17,7 @@ export class ListJuryComponent implements OnInit {
 
   ngOnInit() {
     this.chairService.getAll().subscribe(data=>{
-
+      console.log(data)
       this.chaires=data
     },error=>{
       console.log(error)
