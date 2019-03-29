@@ -11,28 +11,29 @@
   <h2>List Des Presentations</h2>
 </div>
 <section>
-  <div >
+  <div>
     <div class="super_container">
       <div class="intro">
         <div class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
           <!-- Intro Item -->
           <div class="intro_item" *ngFor="let presentation of allPresentations ">
             <div class="container">
-                <div>
-                    <a class="uk-navbar-right uk-button uk-button-text"
-                      (click)="edit(presentation)"><strong>Modifier</strong></a>
-                  </div>
+              <div>
+                <a class="uk-navbar-right uk-button uk-button-text"
+                  (click)="edit(presentation)"><strong>Modifier</strong></a>
+              </div>
               <base href="/">
               <div class="intro_image"><img src="/assets/images/intro_2.jpg" alt=""></div>
               <div class="intro_body">
-                <div class="intro_title"><a (click)="show(presentation)"> Presentation : {{presentation.article== null?'':presentation.article.title}}</a>
+                <div class="intro_title"><a (click)="show(presentation)"> Presentation :
+                    {{presentation.article== null?'':presentation.article.title}}</a>
                 </div>
                 <div class="intro_subtitle">
                   <a (click)="showConference(presentation.conference)" data-toggle="modal" data-target="#myModal1">Voir
                     conference</a>
                 </div>
                 <div class="intro_subtitle">
-                 Chair : {{presentation.chair.username}}
+                  Chair : {{presentation.chair.username}}
 
                 </div>
               </div>
@@ -79,14 +80,14 @@
         <div class="modal-content">
           <!-- Modal Header -->
           <div class="modal-header">
-            <h1 class="modal-title">Conference: {{conference.id }} {{conference.nom== null?'':conference.nom}}</h1>
+            <h1 class="modal-title"> {{conference.nom== null?'':conference.nom}}</h1>
             <button type="button" class="close" data-dismiss="modal">×</button>
           </div>
           <!-- Modal body -->
           <div class="modal-body">
-            <h3>{{conference.detail}}</h3>
-            <p>{{conference.adresseConference}}
-              <p> {{conference.titrePresentation}}</p>
+            <span style="position: relative;right: 50%; left:40%;"> {{conference.titrePresentation}}</span>
+            <p>{{conference.detail}}</p>
+            <p style="position: relative;right: 0; float:right;">{{conference.adresseConference}}</p>
           </div>
           <!-- Modal footer -->
           <div class="modal-footer">

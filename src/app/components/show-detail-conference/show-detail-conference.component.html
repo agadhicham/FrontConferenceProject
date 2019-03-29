@@ -5,14 +5,12 @@
       <div class="card">
         <img class="card-img-top" src="./assets/images/conf2.jpg" alt="Card image cap">
         <div class="card-body">
-<span class="badge badge-dark uk-card-title">Details sur la conference: {{ conference.nom }} </span><br>
+<h3 >Details sur la conference: {{ conference.nom }} </h3><br>
 <h2><span class="badge badge-secondary">{{ conference.titrePresentation}}</span></h2><br>
-<span class="badge badge-success">Success</span><br>
-<span class="badge badge-danger">{{ conference.nombreEquipe }}</span><br>
-<span class="badge badge-warning">{{ conference.dateConference }}</span><br>
-<span class="badge badge-info">{{ conference.detail }}</span><br>
-<span class="badge badge-light">{{conference.adresseConference}}</span><br>
-<div class="example-button-row">
+<span style="position: relative;right: 0; float:right;" >Date du Conference: {{ conference.dateConference }}</span><br>
+<p>{{ conference.detail }}</p>
+<span class="badge badge-light" >{{conference.adresseConference}}</span><br>
+<div class="example-button-row" style="position: relative;right: 0; float:right;" >
     <a mat-fab color="primary" href="#modal-sections" uk-toggle>Modier</a>
     <a mat-fab color="warn" (click)="deletConf(conference.id)" uk-toggle>Delete</a>
 
