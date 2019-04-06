@@ -51,7 +51,7 @@
       </div>
     </div>
 
-    <div class="uk-container">
+    <div *ngIf="article.id" class="uk-container">
       <label class="uk-form-label">Importer Fichier</label>
       <div class="uk-margin articleInput">
         <input type="file" class="uk-i" name="articlePdf" ng2FileSelect [uploader]="uploader" id="exampleInputFile" />

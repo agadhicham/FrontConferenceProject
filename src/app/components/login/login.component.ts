@@ -30,9 +30,11 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/articles']);
         } else if (this.accountService.typeOfCurrentUser() == "ADMIN") {
           this.router.navigate(['/home']);
-        } else if (this.accountService.typeOfCurrentUser() == "USER") {
-          this.router.navigate(['/articles']);
+        } else if (this.accountService.typeOfCurrentUser() == "CHAIR") {
+          this.router.navigate(['/presentations']);
         } else if (this.accountService.typeOfCurrentUser() == "REVIEWER") {
+          this.router.navigate(['/articles']);
+        }else{
           this.router.navigate(['/articles']);
         }
       },

@@ -26,7 +26,7 @@ export class ShowPresentationComponent implements OnInit {
   constructor(private activateRoute: ActivatedRoute, private presentationService: PresentationService, private affectationService: AffectationService, private accountService: AccountService, private router: Router) { }
 
   ngOnInit() {
-    if (this.accountService.typeOfCurrentUser() == "ADMIN") {
+    if (this.accountService.typeOfCurrentUser() == "ADMIN" || this.accountService.typeOfCurrentUser() == "CHAIR") {
       this.activateRoute.params.subscribe(params => {
         this.presentationService.getOne(params.id).subscribe(data => {
           this.presentation = data;

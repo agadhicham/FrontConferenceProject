@@ -37,7 +37,7 @@ export class EditPresentationComponent implements OnInit {
     private conferenceService: ConferenceService, private accountService: AccountService, private router: Router) { }
 
   ngOnInit() {
-    if (this.accountService.typeOfCurrentUser() == "ADMIN") {
+    if (this.accountService.typeOfCurrentUser() == "ADMIN" || this.accountService.typeOfCurrentUser() == "CHAIR") {
       this.activateRoute.params.subscribe(params => {
         this.presentationService.getOne(params.id).subscribe(data => {
           this.presentation = data;

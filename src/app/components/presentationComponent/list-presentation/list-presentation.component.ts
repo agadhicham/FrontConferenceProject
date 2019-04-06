@@ -25,7 +25,7 @@ export class ListPresentationComponent implements OnInit {
   constructor(private presentationServie: PresentationService, private router: Router, private accountService: AccountService) { }
 
   ngOnInit() {
-    if (this.accountService.typeOfCurrentUser() == "ADMIN") {
+    if (this.accountService.typeOfCurrentUser() == "ADMIN" || this.accountService.typeOfCurrentUser() == "CHAIR" ) {
       this.getAllPresentations();
     }
     else {

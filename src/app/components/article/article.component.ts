@@ -46,13 +46,14 @@ export class ArticleComponent implements OnInit {
   create() {
     if(!this.article.id){
       this.article.postedAt = new Date();
+    }else{
+      this.uploader.uploadAll();
     }
     this.articleService.create(this.article).subscribe(data => {
       this.article = data;
       this.setArticle(this.article);
+      this.navigateTo('articles')
     }, error => console.log(error));
-    this.uploader.uploadAll();
-     this.navigateTo('articles')
   }
   navigateTo(path) {
       this.router.navigate([path]);

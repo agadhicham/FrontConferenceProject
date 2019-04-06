@@ -37,7 +37,7 @@ export class PresentationComponent implements OnInit {
     private router: Router, private accountService: AccountService) { }
 
   ngOnInit() {
-    if (this.accountService.typeOfCurrentUser() == "ADMIN") {
+    if (this.accountService.typeOfCurrentUser() == "ADMIN" || this.accountService.typeOfCurrentUser() == "CHAIR") {
       this.currentUser = this.accountService.typeOfCurrentUser()
       this.getAllArticlesAccepted()
     }

@@ -10,9 +10,8 @@
           <ul class="nav-menu">
             <li class="menu-active" *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/home']">Home</a></li>
             <li *ngIf="currentUser=='ADMIN' || currentUser=='AUTHOR' "><a [routerLink]="['/articles']"> Articles</a></li>
-            <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/home']">Conference</a></li>
             <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/affectations']">Affectations</a></li>
-            <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/admin']">administration Conference</a></li>
+            <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/admin']">Conference</a></li>
            <!-- <li *ngIf="currentUser=='ADMIN'"><a class="nav-link" role="tab" data-toggle="tab" href="#modal-full" uk-toggle>Create new conference</a></li>
 -->
             <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/presentations']">Presentations</a></li>
@@ -22,7 +21,7 @@
             <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/reviwerList']">Reviwer</a></li>
             <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/domaineList']">Domaine</a></li> -->
             <li *ngIf="currentUser=='ADMIN'"><a [routerLink]="['/administration']">Administration Des Utilisateur</a></li>
-            <li class="buy-tickets"><a (click)="onLogout()">Déconnection</a></li>
+            <li class="buy-tickets" style="float: right;"><a (click)="onLogout()">Déconnection</a></li>
           </ul>
         </nav><!-- #nav-menu-container -->
     </div>
